@@ -1,5 +1,4 @@
-# Análisis y Diseño de Sistemas II
- Sistema de alarmas
+# Análisis y Diseño de Sistemas II - Sistema de alarmas
 # Grupo 6
- . Ercoli Franco
+ . Ercoli Franco  
  . Gutiérrez Matías
