@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_qcHe4MMUEey9y-y9nWuRWA" name="eventoSolicitudEmergencia">
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_u9IL8MMUEey9y-y9nWuRWA" name="diagrama de secuencia">
+    <ownedAttribute xmi:id="_3nd-gMMXEey9y-y9nWuRWA" name="Actor1" type="_3mGskMMXEey9y-y9nWuRWA"/>
+    <ownedAttribute xmi:id="_9yWMYMMXEey9y-y9nWuRWA" name="UI Botonera" type="_9yJ_IMMXEey9y-y9nWuRWA"/>
+    <ownedAttribute xmi:id="__nESUMMXEey9y-y9nWuRWA" name="Class2" type="__m0asMMXEey9y-y9nWuRWA"/>
+    <ownedAttribute xmi:id="_B24Y0MMYEey9y-y9nWuRWA" name="Class3" type="_B2v18MMYEey9y-y9nWuRWA"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mbrLcMMYEey9y-y9nWuRWA" name="Operation_1"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_0sOf8MMYEey9y-y9nWuRWA" name="Operation_1"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_RblAUcMZEey9y-y9nWuRWA" name="Operation_1"/>
+    <lifeline xmi:id="_3nDHwMMXEey9y-y9nWuRWA" name="Actor1" represents="_3nd-gMMXEey9y-y9nWuRWA" coveredBy="_mbsZkMMYEey9y-y9nWuRWA _mbtnsMMYEey9y-y9nWuRWA"/>
+    <lifeline xmi:id="_9yVlUMMXEey9y-y9nWuRWA" name="Componente" represents="_9yWMYMMXEey9y-y9nWuRWA" coveredBy="_mbsZkcMYEey9y-y9nWuRWA _mbtAocMYEey9y-y9nWuRWA _mbtAoMMYEey9y-y9nWuRWA _0sPuEMMYEey9y-y9nWuRWA _0sQVI8MYEey9y-y9nWuRWA"/>
+    <lifeline xmi:id="__m1BwMMXEey9y-y9nWuRWA" name="Componente" represents="__nESUMMXEey9y-y9nWuRWA" coveredBy="_0sQVIMMYEey9y-y9nWuRWA _0sQVIsMYEey9y-y9nWuRWA _0sQVIcMYEey9y-y9nWuRWA _RblnYcMZEey9y-y9nWuRWA _RblnZcMZEey9y-y9nWuRWA"/>
+    <lifeline xmi:id="_B23KsMMYEey9y-y9nWuRWA" name="Class3" represents="_B24Y0MMYEey9y-y9nWuRWA" coveredBy="_RblnYsMZEey9y-y9nWuRWA _RblnZMMZEey9y-y9nWuRWA _RblnY8MZEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_mbsZkMMYEey9y-y9nWuRWA" name="Operation_1_sender" covered="_3nDHwMMXEey9y-y9nWuRWA" message="_mbQUsMMYEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_mbsZkcMYEey9y-y9nWuRWA" name="Operation_1_receiver" covered="_9yVlUMMXEey9y-y9nWuRWA" message="_mbQUsMMYEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_mbtAocMYEey9y-y9nWuRWA" name="" covered="_9yVlUMMXEey9y-y9nWuRWA" finish="_mbtAoMMYEey9y-y9nWuRWA" start="_mbsZkcMYEey9y-y9nWuRWA" behavior="_mbrLcMMYEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0sPuEMMYEey9y-y9nWuRWA" name="Operation_1_sender" covered="_9yVlUMMXEey9y-y9nWuRWA" message="_0sN44cMYEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0sQVIMMYEey9y-y9nWuRWA" name="Operation_1_receiver" covered="__m1BwMMXEey9y-y9nWuRWA" message="_0sN44cMYEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_0sQVIsMYEey9y-y9nWuRWA" name="" covered="__m1BwMMXEey9y-y9nWuRWA" finish="_0sQVIcMYEey9y-y9nWuRWA" start="_0sQVIMMYEey9y-y9nWuRWA" behavior="_0sOf8MMYEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_RblnYcMZEey9y-y9nWuRWA" name="Operation_1_sender" covered="__m1BwMMXEey9y-y9nWuRWA" message="_RblAUMMZEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_RblnYsMZEey9y-y9nWuRWA" name="Operation_1_receiver" covered="_B23KsMMYEey9y-y9nWuRWA" message="_RblAUMMZEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_RblnZMMZEey9y-y9nWuRWA" name="" covered="_B23KsMMYEey9y-y9nWuRWA" finish="_RblnY8MZEey9y-y9nWuRWA" start="_RblnYsMZEey9y-y9nWuRWA" behavior="_RblAUcMZEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_RblnY8MZEey9y-y9nWuRWA" name="Operation_1_reply_sender" covered="_B23KsMMYEey9y-y9nWuRWA" message="_RblnYMMZEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_RblnZcMZEey9y-y9nWuRWA" name="Operation_1_reply_receiver" covered="__m1BwMMXEey9y-y9nWuRWA" message="_RblnYMMZEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0sQVIcMYEey9y-y9nWuRWA" name="Operation_1_reply_sender" covered="__m1BwMMXEey9y-y9nWuRWA" message="_0sPHAMMYEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0sQVI8MYEey9y-y9nWuRWA" name="Operation_1_reply_receiver" covered="_9yVlUMMXEey9y-y9nWuRWA" message="_0sPHAMMYEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_mbtAoMMYEey9y-y9nWuRWA" name="Operation_1_reply_sender" covered="_9yVlUMMXEey9y-y9nWuRWA" message="_mbrygMMYEey9y-y9nWuRWA"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_mbtnsMMYEey9y-y9nWuRWA" name="Operation_1_reply_receiver" covered="_3nDHwMMXEey9y-y9nWuRWA" message="_mbrygMMYEey9y-y9nWuRWA"/>
+    <message xmi:id="_mbQUsMMYEey9y-y9nWuRWA" name="Notificar Emergencia" receiveEvent="_mbsZkcMYEey9y-y9nWuRWA" sendEvent="_mbsZkMMYEey9y-y9nWuRWA" signature="_maTScMMYEey9y-y9nWuRWA"/>
+    <message xmi:id="_mbrygMMYEey9y-y9nWuRWA" name="Emergencia notificada" messageSort="reply" receiveEvent="_mbtnsMMYEey9y-y9nWuRWA" sendEvent="_mbtAoMMYEey9y-y9nWuRWA"/>
+    <message xmi:id="_0sN44cMYEey9y-y9nWuRWA" name="obtenerTipoDeNotificación()" receiveEvent="_0sQVIMMYEey9y-y9nWuRWA" sendEvent="_0sPuEMMYEey9y-y9nWuRWA" signature="_0sN44MMYEey9y-y9nWuRWA"/>
+    <message xmi:id="_0sPHAMMYEey9y-y9nWuRWA" name="Tipo de notificacion" messageSort="reply" receiveEvent="_0sQVI8MYEey9y-y9nWuRWA" sendEvent="_0sQVIcMYEey9y-y9nWuRWA"/>
+    <message xmi:id="_RblAUMMZEey9y-y9nWuRWA" name="enviarNotificacion()" receiveEvent="_RblnYsMZEey9y-y9nWuRWA" sendEvent="_RblnYcMZEey9y-y9nWuRWA" signature="_RbikEMMZEey9y-y9nWuRWA"/>
+    <message xmi:id="_RblnYMMZEey9y-y9nWuRWA" name="Notificacion enviada" messageSort="reply" receiveEvent="_RblnZcMZEey9y-y9nWuRWA" sendEvent="_RblnY8MZEey9y-y9nWuRWA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_3mGskMMXEey9y-y9nWuRWA" name="Usuario"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9yJ_IMMXEey9y-y9nWuRWA" name="Botonera">
+    <ownedOperation xmi:id="_maTScMMYEey9y-y9nWuRWA" name="Operation_1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="__m0asMMXEey9y-y9nWuRWA" name="Gestor de emergencias">
+    <ownedOperation xmi:id="_0sN44MMYEey9y-y9nWuRWA" name="Operation_1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_B2v18MMYEey9y-y9nWuRWA" name="Comunicación Exterior">
+    <ownedOperation xmi:id="_RbikEMMZEey9y-y9nWuRWA" name="Operation_1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_TOwUgMMhEey9y-y9nWuRWA" name="eventoConfirmarEmergencia"/>
+</uml:Model>

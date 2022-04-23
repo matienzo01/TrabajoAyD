@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_FK8VIMMZEey9y-y9nWuRWA" name="diagrama de clases">
+  <packagedElement xmi:type="uml:Class" xmi:id="_b4EloMMfEey9y-y9nWuRWA" name="VistaEmisor" visibility="public"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_eXnxQMMfEey9y-y9nWuRWA" name="Emergencia" visibility="public">
+    <ownedOperation xmi:id="_QAIR0MMgEey9y-y9nWuRWA" name="obtenerTipoDeEmergencia"/>
+    <ownedOperation xmi:id="_wP9F8MM5Eey9y-y9nWuRWA" name="horaDeEmergencia"/>
+    <ownedOperation xmi:id="_zjALEMM5Eey9y-y9nWuRWA" name="ubicacionDeEmergencia"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_kLvE8MMfEey9y-y9nWuRWA" name="Gestor de emergencias" visibility="public">
+    <ownedAttribute xmi:id="_hJBagMMiEey9y-y9nWuRWA" name="Fecha"/>
+    <ownedAttribute xmi:id="_kxU98MMiEey9y-y9nWuRWA" name="Hora"/>
+    <ownedAttribute xmi:id="_lE3lAMMiEey9y-y9nWuRWA" name="Ubicacion">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_m9kzEMMiEey9y-y9nWuRWA" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_wJnMMMMfEey9y-y9nWuRWA" client="_b4EloMMfEey9y-y9nWuRWA" supplier="_eXnxQMMfEey9y-y9nWuRWA"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_xiRBMMMfEey9y-y9nWuRWA" client="_kLvE8MMfEey9y-y9nWuRWA" supplier="_eXnxQMMfEey9y-y9nWuRWA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_95jG8MMfEey9y-y9nWuRWA" name="Medica" visibility="public">
+    <generalization xmi:id="_D2eYYMMgEey9y-y9nWuRWA" general="_kLvE8MMfEey9y-y9nWuRWA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_-8OE4MMfEey9y-y9nWuRWA" name="Seguridad" visibility="public">
+    <generalization xmi:id="_EqwVAMMgEey9y-y9nWuRWA" general="_kLvE8MMfEey9y-y9nWuRWA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AImYcMMgEey9y-y9nWuRWA" name="Incendio" visibility="public">
+    <generalization xmi:id="_E-z5cMMgEey9y-y9nWuRWA" general="_kLvE8MMfEey9y-y9nWuRWA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_xyOocMMiEey9y-y9nWuRWA" name="Notificacion" visibility="public">
+    <ownedOperation xmi:id="_-4AL4MMiEey9y-y9nWuRWA" name="enviarNotificacion"/>
+    <ownedOperation xmi:id="_A5s94MMjEey9y-y9nWuRWA" name="mostratConfirmacion"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_1ct9MMMiEey9y-y9nWuRWA" client="_kLvE8MMfEey9y-y9nWuRWA" supplier="_xyOocMMiEey9y-y9nWuRWA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2X-rkMMiEey9y-y9nWuRWA" name="Comunicacion" visibility="public"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_8EWYgMMiEey9y-y9nWuRWA" client="_2X-rkMMiEey9y-y9nWuRWA" supplier="_xyOocMMiEey9y-y9nWuRWA"/>
+</uml:Model>

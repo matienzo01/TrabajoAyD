@@ -16,6 +16,16 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Cursor;
 import javax.swing.JCheckBox;
+import javax.swing.JTabbedPane;
+import javax.swing.JScrollPane;
+import javax.swing.JLayeredPane;
+import javax.swing.JInternalFrame;
+import javax.swing.JDesktopPane;
+import javax.swing.JToolBar;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JSplitPane;
+import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
 
 public class VentanaReceptor {
 
@@ -49,6 +59,7 @@ public class VentanaReceptor {
 	 */
 	private void initialize() {
 		frmRecepcinDeEmergencias = new JFrame();
+		frmRecepcinDeEmergencias.setForeground(Color.BLACK);
 		frmRecepcinDeEmergencias.setTitle("Emergencias");
 		frmRecepcinDeEmergencias.getContentPane().setBackground(Color.DARK_GRAY);
 		
@@ -63,44 +74,25 @@ public class VentanaReceptor {
 		frmRecepcinDeEmergencias.getContentPane().setLayout(null);
 		frmRecepcinDeEmergencias.getContentPane().add(botonConfirmar);
 		
-		JPanel panelTipos = new JPanel();
-		panelTipos.setBounds(54, 297, 143, 83);
-		frmRecepcinDeEmergencias.getContentPane().add(panelTipos);
-		panelTipos.setLayout(null);
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(10, 11, 244, 241);
+		frmRecepcinDeEmergencias.getContentPane().add(tabbedPane);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Foco de incendios");
-		chckbxNewCheckBox.setSelected(true);
-		chckbxNewCheckBox.setBounds(6, 7, 137, 23);
-		panelTipos.add(chckbxNewCheckBox);
+		JScrollPane panelNotificaciones = new JScrollPane();
+		panelNotificaciones.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		tabbedPane.addTab("Notificaciones", null, panelNotificaciones, null);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Personal de seguridad");
-		chckbxNewCheckBox_1.setBounds(6, 33, 137, 23);
-		panelTipos.add(chckbxNewCheckBox_1);
-		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Asistencia m\u00E9dica");
-		chckbxNewCheckBox_2.setSelected(true);
-		chckbxNewCheckBox_2.setBounds(6, 59, 131, 23);
-		panelTipos.add(chckbxNewCheckBox_2);
-		
-		JPanel panelNotificaciones = new JPanel();
-		panelNotificaciones.setBounds(20, 30, 220, 229);
-		frmRecepcinDeEmergencias.getContentPane().add(panelNotificaciones);
-		panelNotificaciones.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Incendio");
-		lblNewLabel.setBackground(new Color(238, 232, 170));
-		lblNewLabel.setBounds(2, 2, 216, 25);
-		panelNotificaciones.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Asistencia m\u00E9dica");
-		lblNewLabel_1.setBackground(new Color(250, 128, 114));
-		lblNewLabel_1.setToolTipText("");
-		lblNewLabel_1.setBounds(2, 27, 220, 25);
-		panelNotificaciones.add(lblNewLabel_1);
+		JPanel panelConfiguracion = new JPanel();
+		panelConfiguracion.setBackground(Color.DARK_GRAY);
+		panelConfiguracion.setForeground(Color.DARK_GRAY);
+		tabbedPane.addTab("Configuraci\u00F3n", null, panelConfiguracion, null);
+		tabbedPane.setForegroundAt(1, Color.WHITE);
+		tabbedPane.setBackgroundAt(1, Color.DARK_GRAY);
+		panelConfiguracion.setLayout(new CardLayout(0, 0));
 		frmRecepcinDeEmergencias.setBackground(Color.DARK_GRAY);
 		frmRecepcinDeEmergencias.setAlwaysOnTop(true);
 		frmRecepcinDeEmergencias.setResizable(false);
-		frmRecepcinDeEmergencias.setBounds(100, 100, 270, 420);
+		frmRecepcinDeEmergencias.setBounds(100, 100, 270, 360);
 		frmRecepcinDeEmergencias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

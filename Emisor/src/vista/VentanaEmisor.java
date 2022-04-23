@@ -24,6 +24,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
+import javax.swing.JRadioButtonMenuItem;
 
 public class VentanaEmisor {
 
@@ -64,7 +65,7 @@ public class VentanaEmisor {
 		frmSolicitudDeEmergencias.setBackground(Color.WHITE);
 		frmSolicitudDeEmergencias.getContentPane().setBackground(Color.DARK_GRAY);
 		frmSolicitudDeEmergencias.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		frmSolicitudDeEmergencias.setBounds(100, 100, 440, 180);
+		frmSolicitudDeEmergencias.setBounds(100, 100, 440, 230);
 		frmSolicitudDeEmergencias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSolicitudDeEmergencias.getContentPane().setLayout(null);
 		
