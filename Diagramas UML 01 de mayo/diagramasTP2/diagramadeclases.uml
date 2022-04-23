@@ -29,6 +29,9 @@
     <ownedOperation xmi:id="_A5s94MMjEey9y-y9nWuRWA" name="mostratConfirmacion"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_1ct9MMMiEey9y-y9nWuRWA" client="_kLvE8MMfEey9y-y9nWuRWA" supplier="_xyOocMMiEey9y-y9nWuRWA"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_2X-rkMMiEey9y-y9nWuRWA" name="Comunicacion" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2X-rkMMiEey9y-y9nWuRWA" name="Comunicacion" visibility="public">
+    <ownedOperation xmi:id="_Q53dwMNCEey9y-y9nWuRWA" name="Operation_1"/>
+    <ownedOperation xmi:id="_rWmR4MNbEey9y-y9nWuRWA" name="Operation_2"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_8EWYgMMiEey9y-y9nWuRWA" client="_2X-rkMMiEey9y-y9nWuRWA" supplier="_xyOocMMiEey9y-y9nWuRWA"/>
 </uml:Model>
