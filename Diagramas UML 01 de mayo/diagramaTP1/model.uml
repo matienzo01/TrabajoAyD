@@ -107,4 +107,32 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_T5hb4MM5Eey9y-y9nWuRWA" client="_oz3TYMMvEey9y-y9nWuRWA _UWcBYMM5Eey9y-y9nWuRWA" supplier="_EWxucMMzEey9y-y9nWuRWA"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_ZgENoMM5Eey9y-y9nWuRWA" client="_fhphIMMvEey9y-y9nWuRWA _Z42hEMM5Eey9y-y9nWuRWA" supplier="_pvva4MMxEey9y-y9nWuRWA"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_J8hjEMNAEeyX-MSm3uOr_A" client="_m8x18MMvEey9y-y9nWuRWA _OQvKQMNAEeyX-MSm3uOr_A" supplier="_Fy40MMNAEeyX-MSm3uOr_A"/>
+  <packagedElement xmi:type="uml:Device" xmi:id="_uwOVYMWmEeytDqYtbYQDxQ" name="Computadora del emisor">
+    <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_yJ4_4MWmEeytDqYtbYQDxQ" name="Windows 10">
+      <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_0X0QAMWmEeytDqYtbYQDxQ" name="JVM">
+        <nestedClassifier xmi:type="uml:Artifact" xmi:id="_4cYRoMWmEeytDqYtbYQDxQ" name="Emisor.jar">
+          <manifestation xmi:id="_V4l4AMWnEeytDqYtbYQDxQ" client="_4cYRoMWmEeytDqYtbYQDxQ" supplier="_SIgVwMMvEey9y-y9nWuRWA" utilizedElement="_SIgVwMMvEey9y-y9nWuRWA"/>
+        </nestedClassifier>
+      </nestedNode>
+    </nestedNode>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Device" xmi:id="_BfR1gMWnEeytDqYtbYQDxQ" name="Computadora del receptor">
+    <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_Ev__YMWnEeytDqYtbYQDxQ" name="Windows 10">
+      <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_G0JocMWnEeytDqYtbYQDxQ" name="JVM">
+        <nestedClassifier xmi:type="uml:Artifact" xmi:id="_Ijb0wMWnEeytDqYtbYQDxQ" name="Receptor.jar">
+          <manifestation xmi:id="_UTzEcMWnEeytDqYtbYQDxQ" client="_Ijb0wMWnEeytDqYtbYQDxQ" supplier="_T4Om8MMvEey9y-y9nWuRWA" utilizedElement="_T4Om8MMvEey9y-y9nWuRWA"/>
+        </nestedClassifier>
+      </nestedNode>
+    </nestedNode>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ZG8DUMWnEeytDqYtbYQDxQ" name="TCP/Ip" memberEnd="_ZG8qYMWnEeytDqYtbYQDxQ _ZG_GocWnEeytDqYtbYQDxQ" navigableOwnedEnd="_ZG8qYMWnEeytDqYtbYQDxQ _ZG_GocWnEeytDqYtbYQDxQ">
+    <ownedEnd xmi:id="_ZG8qYMWnEeytDqYtbYQDxQ" name="computadora del emisors" type="_uwOVYMWmEeytDqYtbYQDxQ" association="_ZG8DUMWnEeytDqYtbYQDxQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZG-fkMWnEeytDqYtbYQDxQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZG_GoMWnEeytDqYtbYQDxQ" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_ZG_GocWnEeytDqYtbYQDxQ" name="computadora del receptors" type="_BfR1gMWnEeytDqYtbYQDxQ" association="_ZG8DUMWnEeytDqYtbYQDxQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZG_tsMWnEeytDqYtbYQDxQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZG_tscWnEeytDqYtbYQDxQ" value="*"/>
+    </ownedEnd>
+  </packagedElement>
 </uml:Model>

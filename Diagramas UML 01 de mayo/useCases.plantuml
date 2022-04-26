@@ -1,7 +1,7 @@
 @startuml prueba
 left to right direction
 skinparam monochrome true
-actor "Usario emisor" as a1
+actor "Emisor" as a1
 rectangle SistemaDeAlarma{
     rectangle SubsistemaEmisor{
         usecase "Emitir emergencia" as UC1
@@ -20,11 +20,11 @@ rectangle SistemaDeAlarma{
         usecase "Configurar puerto" as UC10
     }
 }
-actor "Usuario receptor" as a2
-a1-->UC1
-a1-->UC8
-a1-->UC9
-a2-->UC6
-a2-->UC7
-a2-->UC10
+actor "Receptor" as a2
+a1---UC1
+a1---UC8
+a1---UC9
+a2---UC6
+a2---UC7
+a2---UC10
 @enduml
