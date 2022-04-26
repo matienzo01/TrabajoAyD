@@ -6,7 +6,7 @@
     <ownedOperation xmi:id="_wP9F8MM5Eey9y-y9nWuRWA" name="horaDeEmergencia"/>
     <ownedOperation xmi:id="_zjALEMM5Eey9y-y9nWuRWA" name="ubicacionDeEmergencia"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_kLvE8MMfEey9y-y9nWuRWA" name="Gestor de emergencias" visibility="public">
+  <packagedElement xmi:type="uml:Class" xmi:id="_kLvE8MMfEey9y-y9nWuRWA" name="Notificacion" visibility="public">
     <ownedAttribute xmi:id="_hJBagMMiEey9y-y9nWuRWA" name="Fecha"/>
     <ownedAttribute xmi:id="_kxU98MMiEey9y-y9nWuRWA" name="Hora"/>
     <ownedAttribute xmi:id="_lE3lAMMiEey9y-y9nWuRWA" name="Ubicacion">
@@ -14,7 +14,6 @@
     </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_wJnMMMMfEey9y-y9nWuRWA" client="_b4EloMMfEey9y-y9nWuRWA" supplier="_eXnxQMMfEey9y-y9nWuRWA"/>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_xiRBMMMfEey9y-y9nWuRWA" client="_kLvE8MMfEey9y-y9nWuRWA" supplier="_eXnxQMMfEey9y-y9nWuRWA"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_95jG8MMfEey9y-y9nWuRWA" name="Medica" visibility="public">
     <generalization xmi:id="_D2eYYMMgEey9y-y9nWuRWA" general="_kLvE8MMfEey9y-y9nWuRWA"/>
   </packagedElement>
@@ -28,10 +27,19 @@
     <ownedOperation xmi:id="_-4AL4MMiEey9y-y9nWuRWA" name="enviarNotificacion"/>
     <ownedOperation xmi:id="_A5s94MMjEey9y-y9nWuRWA" name="mostratConfirmacion"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Dependency" xmi:id="_1ct9MMMiEey9y-y9nWuRWA" client="_kLvE8MMfEey9y-y9nWuRWA" supplier="_xyOocMMiEey9y-y9nWuRWA"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_2X-rkMMiEey9y-y9nWuRWA" name="Comunicacion" visibility="public">
+    <ownedAttribute xmi:id="_YoW60MWwEeytDqYtbYQDxQ" name="Port" isStatic="true"/>
+    <interfaceRealization xmi:id="_kur-AMWxEeytDqYtbYQDxQ" client="_2X-rkMMiEey9y-y9nWuRWA" supplier="_xyOocMMiEey9y-y9nWuRWA" contract="_xyOocMMiEey9y-y9nWuRWA"/>
     <ownedOperation xmi:id="_Q53dwMNCEey9y-y9nWuRWA" name="Operation_1"/>
     <ownedOperation xmi:id="_rWmR4MNbEey9y-y9nWuRWA" name="Operation_2"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_8EWYgMMiEey9y-y9nWuRWA" client="_2X-rkMMiEey9y-y9nWuRWA" supplier="_xyOocMMiEey9y-y9nWuRWA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="__VhIIMWwEeytDqYtbYQDxQ" name="Emisor" visibility="public">
+    <ownedOperation xmi:id="_9dzjIMWxEeytDqYtbYQDxQ" name="enviarNotificacion">
+      <ownedParameter xmi:id="_HBI6kMWyEeytDqYtbYQDxQ" name="Tipo" type="_ZYDAcMWyEeytDqYtbYQDxQ"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_PzBcYMWxEeytDqYtbYQDxQ" client="__VhIIMWwEeytDqYtbYQDxQ" supplier="_eXnxQMMfEey9y-y9nWuRWA"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_jmEJEMWxEeytDqYtbYQDxQ" client="__VhIIMWwEeytDqYtbYQDxQ" supplier="_xyOocMMiEey9y-y9nWuRWA"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_ZYDAcMWyEeytDqYtbYQDxQ" name="int" visibility="public"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_I0bAoMWzEeytDqYtbYQDxQ" client="__VhIIMWwEeytDqYtbYQDxQ" supplier="_kLvE8MMfEey9y-y9nWuRWA"/>
 </uml:Model>
