@@ -1,4 +1,4 @@
-package vista;
+package emisor;
 
 import java.awt.EventQueue;
 
