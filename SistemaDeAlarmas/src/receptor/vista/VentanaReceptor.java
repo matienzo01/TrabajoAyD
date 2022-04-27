@@ -26,6 +26,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JSplitPane;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
+import java.awt.Font;
 
 public class VentanaReceptor {
 
@@ -74,21 +75,19 @@ public class VentanaReceptor {
 		frmRecepcinDeEmergencias.getContentPane().setLayout(null);
 		frmRecepcinDeEmergencias.getContentPane().add(botonConfirmar);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 244, 241);
-		frmRecepcinDeEmergencias.getContentPane().add(tabbedPane);
+		JPanel panelNotificaciones = new JPanel();
+		panelNotificaciones.setBounds(10, 35, 232, 217);
+		frmRecepcinDeEmergencias.getContentPane().add(panelNotificaciones);
 		
-		JScrollPane panelNotificaciones = new JScrollPane();
-		panelNotificaciones.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		tabbedPane.addTab("Notificaciones", null, panelNotificaciones, null);
+		JLabel labelTitulo = new JLabel("Ultimas notificaciones : ");
+		labelTitulo.setForeground(new Color(240, 255, 255));
+		labelTitulo.setBounds(10, 10, 145, 14);
+		frmRecepcinDeEmergencias.getContentPane().add(labelTitulo);
 		
-		JPanel panelConfiguracion = new JPanel();
-		panelConfiguracion.setBackground(Color.DARK_GRAY);
-		panelConfiguracion.setForeground(Color.DARK_GRAY);
-		tabbedPane.addTab("Configuraci\u00F3n", null, panelConfiguracion, null);
-		tabbedPane.setForegroundAt(1, Color.WHITE);
-		tabbedPane.setBackgroundAt(1, Color.DARK_GRAY);
-		panelConfiguracion.setLayout(new CardLayout(0, 0));
+		JButton btnConfiguracion = new JButton("Configuracion");
+		btnConfiguracion.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnConfiguracion.setBounds(10, 297, 104, 23);
+		frmRecepcinDeEmergencias.getContentPane().add(btnConfiguracion);
 		frmRecepcinDeEmergencias.setBackground(Color.DARK_GRAY);
 		frmRecepcinDeEmergencias.setAlwaysOnTop(true);
 		frmRecepcinDeEmergencias.setResizable(false);

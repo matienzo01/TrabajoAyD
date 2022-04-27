@@ -26,6 +26,15 @@ import javax.swing.JRadioButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButtonMenuItem;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import java.awt.Component;
+import javax.swing.Box;
+import javax.swing.JComboBox;
+import javax.swing.JEditorPane;
+import javax.swing.JDesktopPane;
 
 public class VentanaEmisor {
 
@@ -70,44 +79,80 @@ public class VentanaEmisor {
 		frmSolicitudDeEmergencias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSolicitudDeEmergencias.getContentPane().setLayout(null);
 		
+		JLabel txtIncendio = new JLabel("INCENDIO");
+		txtIncendio.setForeground(Color.GRAY);
+		txtIncendio.setFont(new Font("Monospaced", Font.BOLD, 17));
+		txtIncendio.setBounds(40, 110, 87, 14);
+		frmSolicitudDeEmergencias.getContentPane().add(txtIncendio);
+
 		JButton btnIncendio = new JButton("");
+		btnIncendio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtIncendio.setForeground(Color.ORANGE);
+			}
+		});
 		btnIncendio.setBorderPainted(false);
 		btnIncendio.setIcon(new ImageIcon(VentanaEmisor.class.getResource("/img/incendio.png")));
 		btnIncendio.setBounds(30, 29, 106, 80);
 		frmSolicitudDeEmergencias.getContentPane().add(btnIncendio);
-		
-		JButton botonEmergenciaMedica_1 = new JButton("");
-		botonEmergenciaMedica_1.setBorderPainted(false);
-		botonEmergenciaMedica_1.setIcon(new ImageIcon(VentanaEmisor.class.getResource("/img/medica.png")));
-		botonEmergenciaMedica_1.setBounds(166, 29, 106, 80);
-		frmSolicitudDeEmergencias.getContentPane().add(botonEmergenciaMedica_1);
-		
+
+		JLabel txtMedica = new JLabel("MEDICA");
+		txtMedica.setForeground(Color.GRAY);
+		txtMedica.setFont(new Font("Monospaced", Font.BOLD, 17));
+		txtMedica.setBounds(186, 110, 78, 14);
+		frmSolicitudDeEmergencias.getContentPane().add(txtMedica);
+
+		JButton botonEmergenciaMedica = new JButton("");
+		botonEmergenciaMedica.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtMedica.setForeground(new Color(220, 20, 60));
+			}
+		});
+		botonEmergenciaMedica.setBorderPainted(false);
+		botonEmergenciaMedica.setIcon(new ImageIcon(VentanaEmisor.class.getResource("/img/medica.png")));
+		botonEmergenciaMedica.setBounds(166, 29, 106, 80);
+		frmSolicitudDeEmergencias.getContentPane().add(botonEmergenciaMedica);
+
+		JLabel txtSeguridad = new JLabel("SEGURIDAD");
+		txtSeguridad.setForeground(Color.GRAY);
+		txtSeguridad.setFont(new Font("Monospaced", Font.BOLD, 17));
+		txtSeguridad.setBounds(310, 110, 96, 14);
+		frmSolicitudDeEmergencias.getContentPane().add(txtSeguridad);
+
 		JButton btnSeguridad = new JButton("");
+		btnSeguridad.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtSeguridad.setForeground(SystemColor.textHighlight);
+			}
+		});
 		btnSeguridad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+
 		btnSeguridad.setBorderPainted(false);
 		btnSeguridad.setIcon(new ImageIcon(VentanaEmisor.class.getResource("/img/seguridad.png")));
 		btnSeguridad.setBounds(300, 29, 106, 80);
 		frmSolicitudDeEmergencias.getContentPane().add(btnSeguridad);
+
+		JButton btnConfiguracion = new JButton("Configuracion");
+		btnConfiguracion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnConfiguracion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//abrir ventanaConfiguracion
+			}
+		});
+		btnConfiguracion.setBounds(10, 163, 126, 27);
+		frmSolicitudDeEmergencias.getContentPane().add(btnConfiguracion);
 		
-		JLabel txtIncendio = new JLabel("INCENDIO");
-		txtIncendio.setForeground(Color.ORANGE);
-		txtIncendio.setFont(new Font("Monospaced", Font.BOLD, 17));
-		txtIncendio.setBounds(40, 110, 87, 14);
-		frmSolicitudDeEmergencias.getContentPane().add(txtIncendio);
 		
-		JLabel txtMedica = new JLabel("MEDICA");
-		txtMedica.setForeground(new Color(220, 20, 60));
-		txtMedica.setFont(new Font("Monospaced", Font.BOLD, 17));
-		txtMedica.setBounds(186, 110, 78, 14);
-		frmSolicitudDeEmergencias.getContentPane().add(txtMedica);
-		
-		JLabel txtSeguridad = new JLabel("SEGURIDAD");
-		txtSeguridad.setForeground(SystemColor.textHighlight);
-		txtSeguridad.setFont(new Font("Monospaced", Font.BOLD, 17));
-		txtSeguridad.setBounds(310, 110, 96, 14);
-		frmSolicitudDeEmergencias.getContentPane().add(txtSeguridad);
 	}
+
 }
