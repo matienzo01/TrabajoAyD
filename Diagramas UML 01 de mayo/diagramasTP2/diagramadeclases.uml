@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_FK8VIMMZEey9y-y9nWuRWA" name="diagrama de clases">
-  <packagedElement xmi:type="uml:Class" xmi:id="_b4EloMMfEey9y-y9nWuRWA" name="VistaEmisor" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_b4EloMMfEey9y-y9nWuRWA" name="VentanaEmisor" visibility="public"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_eXnxQMMfEey9y-y9nWuRWA" name="Emergencia" visibility="public">
     <ownedOperation xmi:id="_QAIR0MMgEey9y-y9nWuRWA" name="obtenerTipoDeEmergencia"/>
     <ownedOperation xmi:id="_wP9F8MM5Eey9y-y9nWuRWA" name="horaDeEmergencia"/>
@@ -23,7 +23,7 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_AImYcMMgEey9y-y9nWuRWA" name="Incendio" visibility="public">
     <generalization xmi:id="_E-z5cMMgEey9y-y9nWuRWA" general="_kLvE8MMfEey9y-y9nWuRWA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_xyOocMMiEey9y-y9nWuRWA" name="Notificacion" visibility="public">
+  <packagedElement xmi:type="uml:Interface" xmi:id="_xyOocMMiEey9y-y9nWuRWA" name="Solicitud" visibility="public">
     <ownedOperation xmi:id="_-4AL4MMiEey9y-y9nWuRWA" name="enviarNotificacion"/>
     <ownedOperation xmi:id="_A5s94MMjEey9y-y9nWuRWA" name="mostratConfirmacion"/>
   </packagedElement>
@@ -35,11 +35,22 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="__VhIIMWwEeytDqYtbYQDxQ" name="Emisor" visibility="public">
     <ownedOperation xmi:id="_9dzjIMWxEeytDqYtbYQDxQ" name="enviarNotificacion">
-      <ownedParameter xmi:id="_HBI6kMWyEeytDqYtbYQDxQ" name="Tipo" type="_ZYDAcMWyEeytDqYtbYQDxQ"/>
+      <ownedParameter xmi:id="_HBI6kMWyEeytDqYtbYQDxQ" name="Tipo"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_PzBcYMWxEeytDqYtbYQDxQ" client="__VhIIMWwEeytDqYtbYQDxQ" supplier="_eXnxQMMfEey9y-y9nWuRWA"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_jmEJEMWxEeytDqYtbYQDxQ" client="__VhIIMWwEeytDqYtbYQDxQ" supplier="_xyOocMMiEey9y-y9nWuRWA"/>
   <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_ZYDAcMWyEeytDqYtbYQDxQ" name="int" visibility="public"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_I0bAoMWzEeytDqYtbYQDxQ" client="__VhIIMWwEeytDqYtbYQDxQ" supplier="_kLvE8MMfEey9y-y9nWuRWA"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Oyj6kMXVEeyaMYJb824HhQ" name="VentanaConfiguracion" visibility="public"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ZhWYgMXVEeyaMYJb824HhQ" memberEnd="_ZhWYgcXVEeyaMYJb824HhQ _ZhWYhMXVEeyaMYJb824HhQ" navigableOwnedEnd="_ZhWYhMXVEeyaMYJb824HhQ">
+    <ownedEnd xmi:id="_ZhWYgcXVEeyaMYJb824HhQ" name="ventanaEmisors" type="_b4EloMMfEey9y-y9nWuRWA" association="_ZhWYgMXVEeyaMYJb824HhQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZhWYgsXVEeyaMYJb824HhQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZhWYg8XVEeyaMYJb824HhQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_ZhWYhMXVEeyaMYJb824HhQ" name="ventanaConfiguracions" type="_Oyj6kMXVEeyaMYJb824HhQ" aggregation="composite" association="_ZhWYgMXVEeyaMYJb824HhQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZhWYhcXVEeyaMYJb824HhQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZhWYhsXVEeyaMYJb824HhQ" value="*"/>
+    </ownedEnd>
+  </packagedElement>
 </uml:Model>
