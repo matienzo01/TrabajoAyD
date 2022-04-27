@@ -1,17 +1,13 @@
 package receptor.vista;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JToggleButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JCheckBox;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 
 public class VentanaConfiguracionR {
 
