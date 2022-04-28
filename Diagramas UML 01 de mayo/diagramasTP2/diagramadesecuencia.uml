@@ -46,9 +46,7 @@
     <message xmi:id="_PokN88NCEey9y-y9nWuRWA" name="Emergencia solicitada" messageSort="reply" receiveEvent="_PokN-MNCEey9y-y9nWuRWA" sendEvent="_PokN9sNCEey9y-y9nWuRWA"/>
     <message xmi:id="_QcYQgcNCEey9y-y9nWuRWA" name="obtenerTipoEmergencia()" receiveEvent="_QcYQhcNCEey9y-y9nWuRWA" sendEvent="_QcYQhMNCEey9y-y9nWuRWA" signature="_QcYQgMNCEey9y-y9nWuRWA"/>
     <message xmi:id="_QcYQg8NCEey9y-y9nWuRWA" name="Deteccion tipo de emergencia" messageSort="reply" receiveEvent="_QcYQiMNCEey9y-y9nWuRWA" sendEvent="_QcYQhsNCEey9y-y9nWuRWA"/>
-    <message xmi:id="_Q53dwcNCEey9y-y9nWuRWA" name="enviarNotificacion(tipoEmergencia)" receiveEvent="_Q53dxcNCEey9y-y9nWuRWA" sendEvent="_Q53dxMNCEey9y-y9nWuRWA">
-      <signature xmi:type="uml:Operation" href="diagramadeclases.uml#_Q53dwMNCEey9y-y9nWuRWA"/>
-    </message>
+    <message xmi:id="_Q53dwcNCEey9y-y9nWuRWA" name="enviarNotificacion(tipoEmergencia)" receiveEvent="_Q53dxcNCEey9y-y9nWuRWA" sendEvent="_Q53dxMNCEey9y-y9nWuRWA"/>
     <message xmi:id="_Q53dw8NCEey9y-y9nWuRWA" name="Detalles notifcacion" messageSort="reply" receiveEvent="_Q53dyMNCEey9y-y9nWuRWA" sendEvent="_Q53dxsNCEey9y-y9nWuRWA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Actor" xmi:id="_gcodgMNBEey9y-y9nWuRWA" name="Usuario"/>
@@ -110,9 +108,7 @@
     <message xmi:id="_qIHsk8NbEey9y-y9nWuRWA" name="Confirmacion" messageSort="reply" receiveEvent="_qIHsmMNbEey9y-y9nWuRWA" sendEvent="_qIHslsNbEey9y-y9nWuRWA"/>
     <message xmi:id="_q5pQIcNbEey9y-y9nWuRWA" name="confirmar()" receiveEvent="_q5pQJcNbEey9y-y9nWuRWA" sendEvent="_q5pQJMNbEey9y-y9nWuRWA" signature="_q5pQIMNbEey9y-y9nWuRWA"/>
     <message xmi:id="_q5pQI8NbEey9y-y9nWuRWA" name="Confirmacion enviada" messageSort="reply" receiveEvent="_q5pQKMNbEey9y-y9nWuRWA" sendEvent="_q5pQJsNbEey9y-y9nWuRWA"/>
-    <message xmi:id="_rWmR4cNbEey9y-y9nWuRWA" name="enviarConfirmacion(notificacion)" receiveEvent="_rWmR5cNbEey9y-y9nWuRWA" sendEvent="_rWmR5MNbEey9y-y9nWuRWA">
-      <signature xmi:type="uml:Operation" href="diagramadeclases.uml#_rWmR4MNbEey9y-y9nWuRWA"/>
-    </message>
+    <message xmi:id="_rWmR4cNbEey9y-y9nWuRWA" name="enviarConfirmacion(notificacion)" receiveEvent="_rWmR5cNbEey9y-y9nWuRWA" sendEvent="_rWmR5MNbEey9y-y9nWuRWA"/>
     <message xmi:id="_rWmR48NbEey9y-y9nWuRWA" name="Confirmacion enviada" messageSort="reply" receiveEvent="_rWwC4MNbEey9y-y9nWuRWA" sendEvent="_rWmR5sNbEey9y-y9nWuRWA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_6zEcYMNaEey9y-y9nWuRWA" name="Configuracion">

@@ -2,7 +2,6 @@ package emisor.vista;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -15,25 +14,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class VentanaEmisor {
+public class VentanaEmisor implements IVista{
 
 	private JFrame frmSolicitudDeEmergencias;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaEmisor window = new VentanaEmisor();
-					window.frmSolicitudDeEmergencias.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JButton botonEmergenciaMedica;
+	private JButton btnConfiguracion;
 
 	/**
 	 * Create the application.
@@ -82,7 +67,7 @@ public class VentanaEmisor {
 		txtMedica.setBounds(186, 110, 78, 14);
 		frmSolicitudDeEmergencias.getContentPane().add(txtMedica);
 
-		JButton botonEmergenciaMedica = new JButton("");
+		botonEmergenciaMedica = new JButton("");
 		botonEmergenciaMedica.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -117,20 +102,26 @@ public class VentanaEmisor {
 		btnSeguridad.setBounds(300, 29, 106, 80);
 		frmSolicitudDeEmergencias.getContentPane().add(btnSeguridad);
 
-		JButton btnConfiguracion = new JButton("Configuracion");
-		btnConfiguracion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnConfiguracion.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//abrir ventanaConfiguracion
-			}
-		});
+		btnConfiguracion = new JButton("Configuracion");
+//		btnConfiguracion.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+		btnConfiguracion.setActionCommand("Abrir configuracion");
 		btnConfiguracion.setBounds(10, 163, 126, 27);
 		frmSolicitudDeEmergencias.getContentPane().add(btnConfiguracion);
+		this.frmSolicitudDeEmergencias.setVisible(true);
 		
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+		this.btnConfiguracion.addActionListener(actionListener);
+	}
+
+	@Override
+	public void solicitarEmergencia() {
+		// TODO Auto-generated method stub
 		
 	}
 

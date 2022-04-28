@@ -5,22 +5,21 @@
       <packagedElement xmi:type="uml:Package" xmi:id="_aziAoMWqEeytDqYtbYQDxQ" name="Vista">
         <packagedElement xmi:type="uml:Usage" xmi:id="_p7wukMWrEeytDqYtbYQDxQ" client="_aziAoMWqEeytDqYtbYQDxQ" supplier="_oRMDIMWrEeytDqYtbYQDxQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_7HIq4MWqEeytDqYtbYQDxQ" name="Comunicacion">
-        <packagedElement xmi:type="uml:Usage" xmi:id="_7ghl0MWrEeytDqYtbYQDxQ" client="_7HIq4MWqEeytDqYtbYQDxQ" supplier="_5piPAMWrEeytDqYtbYQDxQ"/>
-      </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_BvYUwMWsEeytDqYtbYQDxQ" name="Modelo">
-        <packagedElement xmi:type="uml:Usage" xmi:id="_FzecUMWsEeytDqYtbYQDxQ" client="_BvYUwMWsEeytDqYtbYQDxQ" supplier="_7HIq4MWqEeytDqYtbYQDxQ"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_f5ZwYMZ9Eey8cZjCgLHpkw" client="_BvYUwMWsEeytDqYtbYQDxQ" supplier="_5piPAMWrEeytDqYtbYQDxQ"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_h06a0MZ9Eey8cZjCgLHpkw" name="Controlador"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_JxeN0MWqEeytDqYtbYQDxQ" name="Receptor">
       <packagedElement xmi:type="uml:Package" xmi:id="_coWNMMWqEeytDqYtbYQDxQ" name="Vista">
         <packagedElement xmi:type="uml:Usage" xmi:id="_qoGQIMWrEeytDqYtbYQDxQ" client="_coWNMMWqEeytDqYtbYQDxQ" supplier="_oRMDIMWrEeytDqYtbYQDxQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_LIsC8MWrEeytDqYtbYQDxQ" name="Comunicacion">
+      <packagedElement xmi:type="uml:Package" xmi:id="_LIsC8MWrEeytDqYtbYQDxQ" name="Modelo">
         <packagedElement xmi:type="uml:Usage" xmi:id="_7-XYYMWrEeytDqYtbYQDxQ" client="_LIsC8MWrEeytDqYtbYQDxQ" supplier="_5piPAMWrEeytDqYtbYQDxQ"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_qE2QsMZ9Eey8cZjCgLHpkw" name="Controlador"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_oRMDIMWrEeytDqYtbYQDxQ" name="java.swing"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_oRMDIMWrEeytDqYtbYQDxQ" name="javax.swing"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_5piPAMWrEeytDqYtbYQDxQ" name="java.net"/>
 </uml:Model>
