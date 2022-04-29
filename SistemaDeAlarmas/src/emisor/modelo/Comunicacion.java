@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class Comunicacion implements IEmergencia{
 	
-	private int puerto;
+	private int puertoEscucha;
 	private ArrayList<Integer> ips;
+	private String ubicacion;
 	
 
 	@Override
