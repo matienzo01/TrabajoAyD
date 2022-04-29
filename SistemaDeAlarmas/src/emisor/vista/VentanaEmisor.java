@@ -234,7 +234,6 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 	@Override
 	public void limpiaCampoNuevaUbicacion() {
 		this.textFieldNuevaUbicacion.setText("");
-		
 	}
 	
 	

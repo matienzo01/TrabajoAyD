@@ -18,10 +18,9 @@ public class Controlador implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equalsIgnoreCase("Agregar IP")) {
-			int IP;
+			String IP = this.vista.getNuevaIp();
 			int puerto;
 			try {
-				IP = Integer.parseInt(this.vista.getNuevaIp());
 				puerto = Integer.parseInt( this.vista.getNuevaPuerto());
 				System.out.println("Agregar IP " + IP +" " + puerto);
 				emisor.agregarDestinatario(IP, puerto);
@@ -30,7 +29,7 @@ public class Controlador implements ActionListener {
 				this.vista.mostrarError("El puerto y la IP deben ser numeros enteros");
 			}
 		}else if(e.getActionCommand().equalsIgnoreCase("Incencio"))
-			System.out.println("Incencio");
+			emisor.enviarNotificacion("incendio");
 		else if(e.getActionCommand().equalsIgnoreCase("Ambulancia"))
 			System.out.println("Ambulancia");
 		else if(e.getActionCommand().equalsIgnoreCase("Seguridad"))

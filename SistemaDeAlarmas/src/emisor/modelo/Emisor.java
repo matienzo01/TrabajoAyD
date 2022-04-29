@@ -14,13 +14,18 @@ public class Emisor {
 		return instance;
 	}
 
-	public void agregarDestinatario(int IP, int puerto) {
+	public void agregarDestinatario(String IP, int puerto) {
 		c.agregarDestinatario(IP, puerto);
 		
 	}
 
 	public void cambiarUbicacion(String nuevaUbicacion) {
 		this.ubicacion = nuevaUbicacion;
+	}
+	
+	public void enviarNotificacion(String tipo) {
+		Notificacion n = NotificacionFactory.getNotificacion(tipo, this.ubicacion);
+		c.enviaNotificacion(n);
 	}
 	
 	

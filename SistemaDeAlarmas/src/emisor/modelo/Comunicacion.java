@@ -1,22 +1,36 @@
 package emisor.modelo;
 
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.HashMap;
 
 public class Comunicacion implements IEmergencia{
 	
 	private int puertoEscucha;
-	private ArrayList<Integer> ips;
+	private HashMap<String, Integer> destinatarios = new HashMap<String, Integer>();
 	
 
 	@Override
 	public void enviaNotificacion(Notificacion notificacion) {
-		// TODO Auto-generated method stub
+		for(String direccion : this.destinatarios.keySet()) System.out.println(direccion + " " + this.destinatarios.get(direccion));
+		for(String direccion : this.destinatarios.keySet()) {
+			try {
+				Socket socket = new Socket(direccion, this.destinatarios.get(direccion));
+				PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+				out.println(notificacion);
+				out.close();
+				socket.close();	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 		
 	}
 
 
-	public void agregarDestinatario(int iP, int puerto) {
-		// TODO Auto-generated method stub
+	public void agregarDestinatario(String IP, int puerto) {
+		this.destinatarios.put(IP, puerto);
 		
 	}
 
