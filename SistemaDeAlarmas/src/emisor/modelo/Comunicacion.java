@@ -6,11 +6,16 @@ public class Comunicacion implements IEmergencia{
 	
 	private int puertoEscucha;
 	private ArrayList<Integer> ips;
-	private String ubicacion;
 	
 
 	@Override
 	public void enviaNotificacion(Notificacion notificacion) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void agregarDestinatario(int iP, int puerto) {
 		// TODO Auto-generated method stub
 		
 	}

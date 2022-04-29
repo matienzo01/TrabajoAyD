@@ -9,8 +9,6 @@ public class Prueba {
 	public static void main(String[] args) {
 		IVistaEmisor vista = new VentanaEmisor();
 		Controlador c = new Controlador(vista);
-		System.out.println("Se ejecuto bien");
-
 	}
 
 }

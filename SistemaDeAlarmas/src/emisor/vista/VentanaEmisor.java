@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
-public class VentanaEmisor extends JFrame implements IVistaEmisor, IVistaConfiguracion{
+public class VentanaEmisor extends JFrame implements IVistaEmisor{
 
 	private JFrame frmSolicitudDeEmergencias;
 	private JTabbedPane tabbedPane;
@@ -62,12 +62,12 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor, IVistaConfigu
 		frmSolicitudDeEmergencias.setBackground(Color.WHITE);
 		frmSolicitudDeEmergencias.getContentPane().setBackground(Color.DARK_GRAY);
 		frmSolicitudDeEmergencias.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		frmSolicitudDeEmergencias.setBounds(100, 100, 516, 228);
+		frmSolicitudDeEmergencias.setBounds(100, 100, 597, 311);
 		frmSolicitudDeEmergencias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frmSolicitudDeEmergencias.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		this.tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		this.tabbedPane.setToolTipText("HOla");
+		this.tabbedPane.setToolTipText("");
 		this.frmSolicitudDeEmergencias.getContentPane().add(this.tabbedPane);
 		
 		this.panelSolicitudes = new JPanel();
@@ -120,25 +120,32 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor, IVistaConfigu
 		
 		this.panelDirecciones = new JPanel();
 		this.panelConfiguracion.add(this.panelDirecciones);
+		this.panelDirecciones.setLayout(null);
 		
 		this.lblNewLabel = new JLabel("Direcciones receptoras");
+		this.lblNewLabel.setBounds(9, 8, 104, 13);
 		this.panelDirecciones.add(this.lblNewLabel);
 		
 		this.lblNewLabel_1 = new JLabel("IP : ");
+		this.lblNewLabel_1.setBounds(118, 8, 19, 13);
 		this.panelDirecciones.add(this.lblNewLabel_1);
 		
 		this.textFieldIP = new JTextField();
+		this.textFieldIP.setBounds(142, 5, 96, 19);
 		this.textFieldIP.setColumns(10);
 		this.panelDirecciones.add(this.textFieldIP);
 		
 		this.lblNewLabel_2 = new JLabel("Puerto : ");
+		this.lblNewLabel_2.setBounds(58, 60, 40, 13);
 		this.panelDirecciones.add(this.lblNewLabel_2);
 		
 		this.textFieldPuerto = new JTextField();
+		this.textFieldPuerto.setBounds(108, 57, 96, 19);
 		this.textFieldPuerto.setColumns(10);
 		this.panelDirecciones.add(this.textFieldPuerto);
 		
 		this.btnAgregarIp = new JButton("Agregar");
+		this.btnAgregarIp.setBounds(89, 108, 69, 21);
 		this.btnAgregarIp.setFocusPainted(false);
 		this.btnAgregarIp.setBorderPainted(false);
 		this.btnAgregarIp.setBackground(new Color(152, 251, 152));
@@ -154,7 +161,7 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor, IVistaConfigu
 		this.panelUbicacion.add(this.labelTextoUbicacionActual);
 		
 		this.labelUbicacionActual = new JLabel("-");
-		this.labelUbicacionActual.setBounds(171, 21, 4, 13);
+		this.labelUbicacionActual.setBounds(134, 21, 96, 13);
 		this.panelUbicacion.add(this.labelUbicacionActual);
 		
 		this.labelUbicacion = new JLabel("Nueva ubicacion : ");
@@ -208,13 +215,25 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor, IVistaConfigu
 
 	@Override
 	public void mostrarNuevaUbicacion(String ubicacion) {
-		this.labelTextoUbicacionActual.setText(ubicacion);
+		this.labelUbicacionActual.setText(ubicacion);
 		
 	}
 
 	@Override
 	public void mostrarError(String error) {
 		JOptionPane.showMessageDialog(this, error, "error", 1);
+	}
+
+	@Override
+	public void limpiaCamposIP() {
+		this.textFieldIP.setText("");
+		this.textFieldPuerto.setText("");
+		
+	}
+
+	@Override
+	public void limpiaCampoNuevaUbicacion() {
+		this.textFieldNuevaUbicacion.setText("");
 		
 	}
 	
