@@ -1,9 +1,9 @@
 package emisor.modelo;
 
 public abstract class  Notificacion {
-	private String ubicicacion;
+	private String ubicacion;
 	
 	public Notificacion(String ubicacion) {
-		this.ubicicacion = ubicacion;
+		this.ubicacion = ubicacion;
 	}
 }
