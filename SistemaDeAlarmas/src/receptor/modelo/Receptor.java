@@ -7,7 +7,7 @@ public class Receptor {
 	
 	
 	private Receptor() {
-		c = new ComunicacionR();
+		c = ComunicacionR.getInstance();
 		this.incendios=false;
 		this.ambulancia=false;
 		this.seguridad=false;
@@ -42,6 +42,10 @@ public class Receptor {
 		System.out.println("Incendio :" + this.incendios);
 		System.out.println("Ambulancia :" + this.ambulancia);
 		System.out.println("Seguridad :" + this.seguridad);
+	}
+
+	public static ComunicacionR getC() {
+		return ComunicacionR.getInstance();
 	}
 
 	public void comienzaEscucha() {

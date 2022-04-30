@@ -9,4 +9,5 @@ public interface IVistaReceptor {
 	public String getNuevoPuerto();
 	public void limpiaCampoPuerto();
 	public void muestraPuerto(String puerto);
+	void agregarNotificacion(String o);
 }

@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +17,12 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import javax.swing.BoxLayout;
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import javax.swing.SwingConstants;
 
 public class VentanaReceptor extends JFrame implements IVistaReceptor{
 
@@ -35,6 +43,7 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	private JLabel txtNumeroPuerto;
 	private JLabel txtActualizarPuerto;
 	private JButton btnActualizarPuerto;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Create the application.
@@ -66,6 +75,8 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.panelNotificaciones = new JPanel();
 		this.panelNotificaciones.setBounds(10, 35, 232, 217);
 		this.frmRecepcinDeEmergencias.getContentPane().add(panelNotificaciones);
+		panelNotificaciones.setLayout(new BoxLayout(panelNotificaciones, BoxLayout.Y_AXIS));
+		
 		
 		this.labelTitulo = new JLabel("Ultimas notificaciones : ");
 		this.labelTitulo.setForeground(new Color(240, 255, 255));
@@ -167,4 +178,12 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.txtNumeroPuerto.setText(puerto);
 		
 	}
+
+	@Override
+	public void agregarNotificacion(String nuevaNotificacion) {
+		lblNewLabel = new JLabel(nuevaNotificacion);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panelNotificaciones.add(lblNewLabel);
+	}
+
 }
