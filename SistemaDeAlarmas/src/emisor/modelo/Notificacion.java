@@ -1,6 +1,8 @@
 package emisor.modelo;
 
-public abstract class Notificacion {
+import java.io.Serializable;
+
+public abstract class Notificacion implements Serializable{
 	private String ubicacion;
 
 	public Notificacion(String ubicacion) {

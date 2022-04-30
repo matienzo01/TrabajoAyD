@@ -1,10 +1,11 @@
 package receptor.modelo;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Observable;
+
+import emisor.modelo.Notificacion;
 
 @SuppressWarnings("deprecation")
 public class ComunicacionR extends Observable{
@@ -37,15 +38,15 @@ public class ComunicacionR extends Observable{
 					while (true) {
 
 						Socket soc = s.accept();
-						BufferedReader in = new BufferedReader(new InputStreamReader(soc.getInputStream()));
+						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
 
-						String msg = in.readLine();
+						Notificacion notificacion = (Notificacion) in.readObject();
 						System.out.println("LLEGO LA EMERGENCIA");
-						System.out.println("Lo que se envio fue = "+msg);
+						System.out.println("Lo que se envio fue = "+ notificacion.toString());
 					
 						ComunicacionR c = ComunicacionR.getInstance();
 						setChanged();
-						c.notifyObservers(msg);
+						c.notifyObservers(notificacion);
 						
 						
 					}

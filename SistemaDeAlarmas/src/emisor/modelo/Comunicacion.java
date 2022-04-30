@@ -1,6 +1,6 @@
 package emisor.modelo;
 
-import java.io.PrintWriter;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.HashMap;
 
@@ -12,12 +12,12 @@ public class Comunicacion implements IEmergencia{
 
 	@Override
 	public void enviaNotificacion(Notificacion notificacion) {
-		for(String direccion : this.destinatarios.keySet()) System.out.println(direccion + " " + this.destinatarios.get(direccion));
+//		for(String direccion : this.destinatarios.keySet()) System.out.println(direccion + " " + this.destinatarios.get(direccion));
 		for(String direccion : this.destinatarios.keySet()) {
 			try {
 				Socket socket = new Socket(direccion, this.destinatarios.get(direccion));
-				PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-				out.println(notificacion);
+				ObjectOutputStream out = new ObjectOutputStream (socket.getOutputStream());
+				out.writeObject(notificacion);
 				System.out.println("se envia el siguiente mensaje: "+notificacion.toString());
 				out.close();
 				socket.close();	
