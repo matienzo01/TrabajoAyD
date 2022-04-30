@@ -2,6 +2,8 @@ package receptor.vista;
 
 import java.awt.event.ActionListener;
 
+import emisor.modelo.Notificacion;
+
 public interface IVistaReceptor {
 
 	void setActionListener(ActionListener actionListener);
@@ -9,5 +11,8 @@ public interface IVistaReceptor {
 	public String getNuevoPuerto();
 	public void limpiaCampoPuerto();
 	public void muestraPuerto(String puerto);
-	void agregarNotificacion(String o);
+	public void agregarNotificacion(Notificacion n);
+	public void toggleIncendio(boolean flag);
+	public void toggleSeguridad(boolean flag);
+	public void toggleAmbulancia(boolean flag);
 }

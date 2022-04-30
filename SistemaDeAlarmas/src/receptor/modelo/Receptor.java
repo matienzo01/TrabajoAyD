@@ -19,6 +19,20 @@ public class Receptor {
 		return instance;
 	}
 	
+	
+	
+	public boolean isIncendios() {
+		return incendios;
+	}
+
+	public boolean isAmbulancia() {
+		return ambulancia;
+	}
+
+	public boolean isSeguridad() {
+		return seguridad;
+	}
+
 	public void actualizarPuerto(int puerto) {
 		this.c.actualizarPuerto(puerto);
 	}

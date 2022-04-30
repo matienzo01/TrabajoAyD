@@ -1,37 +1,31 @@
 package receptor.vista;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.JCheckBox;
 import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.BoxLayout;
-import java.awt.Component;
-import java.awt.ComponentOrientation;
-import javax.swing.SwingConstants;
+import javax.swing.ListSelectionModel;
+
+import emisor.modelo.Notificacion;
 
 public class VentanaReceptor extends JFrame implements IVistaReceptor{
 
 	private JFrame frmRecepcinDeEmergencias;
 	private JTextField textFieldNuevoPuerto;
 	private JButton botonConfirmar;
-	private JPanel panelNotificaciones;
 	private JLabel labelTitulo;
-	private JTabbedPane tabbedPane_2;
 	private JTabbedPane panelConfiguracion;
 	private JPanel panelTipos;
 	private JLabel titlePanelTipos;
@@ -44,18 +38,19 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	private JLabel txtActualizarPuerto;
 	private JButton btnActualizarPuerto;
 	private JLabel lblNewLabel;
+	private JTabbedPane tabbedPaneAlertas;
+	private JPanel panelIncendios;
+	private JPanel panelSeguridad;
+	private JPanel panelAmbulancia;
+	private JList<Notificacion> listIncendios;
+	private JList<Notificacion> listSeguridad;
+	private JList<Notificacion> listAmbulancia;
+	private DefaultListModel<Notificacion> display = new DefaultListModel<Notificacion>();
 
 	/**
 	 * Create the application.
 	 */
 	public VentanaReceptor() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		this.frmRecepcinDeEmergencias = new JFrame();
 		this.frmRecepcinDeEmergencias.setForeground(Color.BLACK);
 		this.frmRecepcinDeEmergencias.setTitle("Emergencias");
@@ -72,20 +67,11 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.frmRecepcinDeEmergencias.getContentPane().setLayout(null);
 		this.frmRecepcinDeEmergencias.getContentPane().add(botonConfirmar);
 		
-		this.panelNotificaciones = new JPanel();
-		this.panelNotificaciones.setBounds(10, 35, 232, 217);
-		this.frmRecepcinDeEmergencias.getContentPane().add(panelNotificaciones);
-		panelNotificaciones.setLayout(new BoxLayout(panelNotificaciones, BoxLayout.Y_AXIS));
-		
 		
 		this.labelTitulo = new JLabel("Ultimas notificaciones : ");
 		this.labelTitulo.setForeground(new Color(240, 255, 255));
 		this.labelTitulo.setBounds(10, 10, 145, 14);
 		this.frmRecepcinDeEmergencias.getContentPane().add(labelTitulo);
-		
-		this.tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-		this.tabbedPane_2.setBounds(0, 0, 5, 5);
-		this.frmRecepcinDeEmergencias.getContentPane().add(tabbedPane_2);
 		
 		this.panelConfiguracion = new JTabbedPane(JTabbedPane.TOP);
 		this.panelConfiguracion.setBounds(10, 289, 232, 131);
@@ -140,6 +126,37 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.btnActualizarPuerto.setActionCommand("actualizar puerto");
 		this.panelPuerto.add(btnActualizarPuerto);
 		
+		this.tabbedPaneAlertas = new JTabbedPane(JTabbedPane.TOP);
+		this.tabbedPaneAlertas.setBounds(10, 34, 232, 219);
+		this.frmRecepcinDeEmergencias.getContentPane().add(this.tabbedPaneAlertas);
+		
+		this.panelIncendios = new JPanel();
+		this.tabbedPaneAlertas.addTab("Incendio", null, this.panelIncendios, null);
+		this.tabbedPaneAlertas.setEnabledAt(0, false);
+		this.panelIncendios.setLayout(new BorderLayout(0, 0));
+		
+		this.listIncendios = new JList<Notificacion>(display);
+		this.listIncendios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.panelIncendios.add(this.listIncendios);
+		
+		this.panelSeguridad = new JPanel();
+		this.tabbedPaneAlertas.addTab("Seguridad", null, this.panelSeguridad, null);
+		this.tabbedPaneAlertas.setEnabledAt(1, false);
+		this.panelSeguridad.setLayout(new BorderLayout(0, 0));
+		
+		this.listSeguridad = new JList<Notificacion>(display);;
+		this.listSeguridad.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.panelSeguridad.add(this.listSeguridad);
+		
+		this.panelAmbulancia = new JPanel();
+		this.tabbedPaneAlertas.addTab("Ambulancia", null, this.panelAmbulancia, null);
+		this.tabbedPaneAlertas.setEnabledAt(2, false);
+		this.panelAmbulancia.setLayout(new BorderLayout(0, 0));
+		
+		this.listAmbulancia = new JList<Notificacion>(display);
+		this.listAmbulancia.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);;
+		this.panelAmbulancia.add(this.listAmbulancia);
+		
 		this.frmRecepcinDeEmergencias.setBackground(Color.DARK_GRAY);
 		this.frmRecepcinDeEmergencias.setAlwaysOnTop(true);
 		this.frmRecepcinDeEmergencias.setResizable(false);
@@ -180,10 +197,24 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	}
 
 	@Override
-	public void agregarNotificacion(String nuevaNotificacion) {
-		lblNewLabel = new JLabel(nuevaNotificacion);
+	public void agregarNotificacion(Notificacion nuevaNotificacion) {
+		/*lblNewLabel = new JLabel(nuevaNotificacion);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panelNotificaciones.add(lblNewLabel);
+		panelNotificaciones.add(lblNewLabel);*/
 	}
 
+	@Override
+	public void toggleIncendio(boolean flag) {
+		this.tabbedPaneAlertas.setEnabledAt(0, flag);
+	}
+
+	@Override
+	public void toggleSeguridad(boolean flag) {
+		this.tabbedPaneAlertas.setEnabledAt(1, flag);
+	}
+
+	@Override
+	public void toggleAmbulancia(boolean flag) {
+		this.tabbedPaneAlertas.setEnabledAt(2, flag);
+	}
 }

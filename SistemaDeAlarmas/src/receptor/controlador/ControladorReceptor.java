@@ -5,21 +5,18 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
-import emisor.modelo.Emisor;
-import emisor.vista.IVistaEmisor;
+import emisor.modelo.Notificacion;
 import receptor.modelo.ComunicacionR;
 import receptor.modelo.Receptor;
 import receptor.vista.IVistaReceptor;
 
+@SuppressWarnings("deprecation")
 public class ControladorReceptor implements ActionListener, Observer {
 	private IVistaReceptor vista;
 	private Receptor receptor;
 	private ComunicacionR observado;
 
-	@SuppressWarnings("deprecation")
+	
 	public ControladorReceptor(IVistaReceptor vista) {
 		this.vista = vista;
 		this.vista.setActionListener(this);
@@ -35,29 +32,32 @@ public class ControladorReceptor implements ActionListener, Observer {
 			try {
 				String puertoString = this.vista.getNuevoPuerto();
 				int puerto = Integer.parseInt(puertoString);
-				receptor.actualizarPuerto(puerto);
+				this.receptor.actualizarPuerto(puerto);
 				this.vista.limpiaCampoPuerto();
 				this.vista.muestraPuerto(puertoString);
-				receptor.comienzaEscucha();
+				this.receptor.comienzaEscucha();
 			} catch (NumberFormatException err) {
 				this.vista.mostrarError("El puerto debe ser un numero entero");
 			}
 		} else if (e.getActionCommand().equalsIgnoreCase("incendio")) {
 			receptor.toggleIncendio();
+			this.vista.toggleIncendio(receptor.isIncendios());
 		} else if (e.getActionCommand().equalsIgnoreCase("seguridad")) {
 			receptor.toggleSeguridad();
+			this.vista.toggleSeguridad(receptor.isSeguridad());
 		} else if (e.getActionCommand().equalsIgnoreCase("medico")) {
 			receptor.toggleAmbulancia();
+			this.vista.toggleAmbulancia(receptor.isAmbulancia());
 		}
 	}
 
 	@Override
 	public void update(Observable o, Object nuevaNotificacion) {
 		ComunicacionR c = (ComunicacionR) o;
-		String mensaje = (String) nuevaNotificacion;
-		//if(this.observado==c)ç
-			this.vista.agregarNotificacion(mensaje);
+		Notificacion mensaje = (Notificacion) nuevaNotificacion;
+//		receptor.
+		this.vista.agregarNotificacion(mensaje);
 		
-		System.out.println("llega a update del controlador.....");
+//		System.out.println("llega a update del controlador.....");
 	}
 }
