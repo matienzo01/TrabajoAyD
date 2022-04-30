@@ -221,7 +221,7 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 
 	@Override
 	public void mostrarError(String error) {
-		JOptionPane.showMessageDialog(this, error, "error", 1);
+		JOptionPane.showMessageDialog(this, error, "Error", JOptionPane.ERROR_MESSAGE);
 	}
 
 	@Override

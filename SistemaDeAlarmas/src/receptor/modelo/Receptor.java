@@ -19,10 +19,29 @@ public class Receptor {
 		return instance;
 	}
 	
-	public void cambiarPuerto(String puerto) {
-		
+	public void actualizarPuerto(int puerto) {
+		this.c.actualizarPuerto(puerto);
 	}
 	
+	public void toggleIncendio() {
+		this.incendios = !this.incendios;
+		this.diceEstados();
+	}
 	
+	public void toggleSeguridad() {
+		this.seguridad = !this.seguridad;
+		this.diceEstados();
+	}
+	
+	public void toggleAmbulancia() {
+		this.ambulancia = !this.ambulancia;
+		this.diceEstados();
+	}
+	
+	private void diceEstados() {
+		System.out.println("Incendio :" + this.incendios);
+		System.out.println("Ambulancia :" + this.ambulancia);
+		System.out.println("Seguridad :" + this.seguridad);
+	}
 	
 }

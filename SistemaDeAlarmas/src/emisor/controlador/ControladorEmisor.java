@@ -6,11 +6,11 @@ import java.awt.event.ActionListener;
 import emisor.modelo.Emisor;
 import emisor.vista.IVistaEmisor;
 
-public class Controlador implements ActionListener {
+public class ControladorEmisor implements ActionListener {
 	private IVistaEmisor vista;
 	private Emisor emisor = Emisor.getInstance();
 
-	public Controlador(IVistaEmisor vista) {
+	public ControladorEmisor(IVistaEmisor vista) {
 		this.vista = vista;
 		this.vista.setActionListener(this);
 	}
