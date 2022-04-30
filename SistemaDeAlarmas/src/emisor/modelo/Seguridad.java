@@ -7,4 +7,9 @@ public class Seguridad extends Notificacion {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "Personal de seguridad en " + this.getUbicacion();
+	}
+
 }

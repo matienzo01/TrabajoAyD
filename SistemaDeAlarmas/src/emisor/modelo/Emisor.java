@@ -7,7 +7,6 @@ public class Emisor {
 	
 	private Emisor(){}
 	
-	//El emisor es singleton
 	public static Emisor getInstance(){
 		if(instance == null)
 			instance = new Emisor();

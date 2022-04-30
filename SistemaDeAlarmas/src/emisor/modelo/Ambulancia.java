@@ -7,4 +7,9 @@ public class Ambulancia extends Notificacion {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "Asistencia Medica en " + this.getUbicacion();
+	}
+
 }

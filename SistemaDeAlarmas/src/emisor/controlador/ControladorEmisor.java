@@ -31,9 +31,9 @@ public class ControladorEmisor implements ActionListener {
 		}else if(e.getActionCommand().equalsIgnoreCase("Incencio"))
 			emisor.enviarNotificacion("incendio");
 		else if(e.getActionCommand().equalsIgnoreCase("Ambulancia"))
-			System.out.println("Ambulancia");
+			emisor.enviarNotificacion("Ambulancia");
 		else if(e.getActionCommand().equalsIgnoreCase("Seguridad"))
-			System.out.println("Seguridad");
+			emisor.enviarNotificacion("Seguridad");
 		else if(e.getActionCommand().equalsIgnoreCase("Cambiar Ubicacion")) {
 			String nuevaUbicacion = this.vista.getUbicacion();
 			if(nuevaUbicacion == null || nuevaUbicacion.isBlank())

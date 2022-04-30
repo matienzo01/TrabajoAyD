@@ -28,6 +28,7 @@ public class ControladorReceptor implements ActionListener {
 				receptor.actualizarPuerto(puerto);
 				this.vista.limpiaCampoPuerto();
 				this.vista.muestraPuerto(puertoString);
+				receptor.comienzaEscucha();
 			}catch(NumberFormatException err) {
 				this.vista.mostrarError("El puerto debe ser un numero entero");
 			}		

@@ -7,4 +7,9 @@ public class Incendio extends Notificacion {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "Incendio en " + this.getUbicacion();
+	}
+
 }

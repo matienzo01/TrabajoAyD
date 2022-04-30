@@ -9,7 +9,7 @@ public class NotificacionFactory {
 			respuesta = new Incendio(ubicacion);
 		}else if(tipo.equalsIgnoreCase("seguridad")) {
 			respuesta = new Seguridad(ubicacion);
-		}else if(tipo.equalsIgnoreCase("ambulacia")) {
+		}else if(tipo.equalsIgnoreCase("ambulancia")) {
 			respuesta = new Ambulancia(ubicacion);
 		}
 		

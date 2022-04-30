@@ -43,5 +43,11 @@ public class Receptor {
 		System.out.println("Ambulancia :" + this.ambulancia);
 		System.out.println("Seguridad :" + this.seguridad);
 	}
+
+	public void comienzaEscucha() {
+		// TODO Auto-generated method stub
+		c.comienzaEscucha();
+	}
+
 	
 }

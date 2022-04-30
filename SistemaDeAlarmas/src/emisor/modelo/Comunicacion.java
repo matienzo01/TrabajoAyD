@@ -18,6 +18,7 @@ public class Comunicacion implements IEmergencia{
 				Socket socket = new Socket(direccion, this.destinatarios.get(direccion));
 				PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 				out.println(notificacion);
+				System.out.println("se envia el siguiente mensaje: "+notificacion.toString());
 				out.close();
 				socket.close();	
 			} catch (Exception e) {
