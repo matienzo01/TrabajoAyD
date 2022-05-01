@@ -13,4 +13,6 @@ public interface IVistaReceptor {
 	public void muestraPuerto(String puerto);
 	public void agregarNotificacion(Notificacion n);
 	public void puertoDefinido();
+	void eliminaNotificacion(Notificacion n);
+	Notificacion getSelectedNotification();
 }

@@ -10,12 +10,10 @@ import notificacion.Notificacion;
 @SuppressWarnings("deprecation")
 public class ComunicacionR extends Observable {
 
-	private String host;
 	private int puerto;
 	public static ComunicacionR instance = null;
 
 	private ComunicacionR() {
-		this.host = "localhost";
 	}
 
 	public static ComunicacionR getInstance() {
@@ -32,6 +30,7 @@ public class ComunicacionR extends Observable {
 		new Thread() {
 			public void run() {
 				try {
+					@SuppressWarnings("resource")
 					ServerSocket s = new ServerSocket(puerto);
 
 					while (true) {
@@ -46,7 +45,7 @@ public class ComunicacionR extends Observable {
 						c.notifyObservers(notificacion);
 
 					}
-
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
