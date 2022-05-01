@@ -220,6 +220,11 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 	public void mostrarError(String error) {
 		JOptionPane.showMessageDialog(this, error, "Error", JOptionPane.ERROR_MESSAGE);
 	}
+	
+	@Override
+	public void mostrarEnvio(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje, "OK", JOptionPane.WARNING_MESSAGE);
+	}
 
 	@Override
 	public void limpiaCamposIP() {

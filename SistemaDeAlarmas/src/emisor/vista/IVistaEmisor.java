@@ -12,5 +12,6 @@ public interface IVistaEmisor {
 	public void mostrarError(String error);
 	public void limpiaCamposIP();
 	public void limpiaCampoNuevaUbicacion();
+	void mostrarEnvio(String mensaje);
 	
 }

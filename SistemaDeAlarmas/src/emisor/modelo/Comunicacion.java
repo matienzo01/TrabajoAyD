@@ -6,35 +6,30 @@ import java.util.HashMap;
 
 import notificacion.Notificacion;
 
-public class Comunicacion implements IEmergencia{
-	
-	private int puertoEscucha;
+public class Comunicacion implements IEmergencia {
+
 	private HashMap<String, Integer> destinatarios = new HashMap<String, Integer>();
-	
 
 	@Override
 	public void enviaNotificacion(Notificacion notificacion) {
-//		for(String direccion : this.destinatarios.keySet()) System.out.println(direccion + " " + this.destinatarios.get(direccion));
-		for(String direccion : this.destinatarios.keySet()) {
+		for (String direccion : this.destinatarios.keySet()) {
 			try {
 				Socket socket = new Socket(direccion, this.destinatarios.get(direccion));
-				ObjectOutputStream out = new ObjectOutputStream (socket.getOutputStream());
+				ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 				out.writeObject(notificacion);
-//				System.out.println("se envia el siguiente mensaje: "+notificacion.toString());
 				out.close();
-				socket.close();	
+				socket.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		}
-		
-	}
 
+		}
+
+	}
 
 	public void agregarDestinatario(String IP, int puerto) {
 		this.destinatarios.put(IP, puerto);
-		
+
 	}
 
 }

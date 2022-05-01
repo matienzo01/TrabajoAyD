@@ -28,12 +28,18 @@ public class ControladorEmisor implements ActionListener {
 			}catch(NumberFormatException err) {
 				this.vista.mostrarError("El puerto y la IP deben ser numeros enteros");
 			}
-		}else if(e.getActionCommand().equalsIgnoreCase("Incencio"))
+		}else if(e.getActionCommand().equalsIgnoreCase("Incencio")) {
 			emisor.enviarNotificacion("incendio");
-		else if(e.getActionCommand().equalsIgnoreCase("Ambulancia"))
+			vista.mostrarEnvio("Se envió la notificación de incendio.");
+		}
+		else if(e.getActionCommand().equalsIgnoreCase("Ambulancia")) {
 			emisor.enviarNotificacion("Ambulancia");
-		else if(e.getActionCommand().equalsIgnoreCase("Seguridad"))
+			vista.mostrarEnvio("Se envió la notificación de asistencia medica.");
+		}
+		else if(e.getActionCommand().equalsIgnoreCase("Seguridad")) {
 			emisor.enviarNotificacion("Seguridad");
+			vista.mostrarEnvio("Se envió la notificación de seguridad.");
+		}
 		else if(e.getActionCommand().equalsIgnoreCase("Cambiar Ubicacion")) {
 			String nuevaUbicacion = this.vista.getUbicacion();
 			if(nuevaUbicacion == null || nuevaUbicacion.isBlank())
