@@ -12,4 +12,5 @@ public interface IVistaReceptor {
 	public void limpiaCampoPuerto();
 	public void muestraPuerto(String puerto);
 	public void agregarNotificacion(Notificacion n);
+	public void puertoDefinido();
 }

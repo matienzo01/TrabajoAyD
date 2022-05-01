@@ -11,12 +11,7 @@ public class Ambulancia extends Notificacion {
 
 	@Override
 	public String toString() {
-		return "Asistencia Medica en " + this.getUbicacion();
-	}
-
-	@Override
-	public String getTipo() {
-		return "ambulancia";
+		return "    Asistencia Medica   | " + super.toString();
 	}
 
 	@Override
@@ -24,5 +19,5 @@ public class Ambulancia extends Notificacion {
 		// TODO Auto-generated method stub
 		return tipo.isMedica();
 	}
-	
+
 }

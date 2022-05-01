@@ -11,13 +11,9 @@ public class Incendio extends Notificacion {
 
 	@Override
 	public String toString() {
-		return "Incendio en " + this.getUbicacion();
+		return "        Incendio        | " + super.toString();
 	}
 
-	@Override
-	public String getTipo() {
-		return "incendio";
-	}
 
 	@Override
 	public boolean mostrarse(Interruptor tipo) {

@@ -14,16 +14,12 @@ import receptor.vista.IVistaReceptor;
 public class ControladorReceptor implements ActionListener, Observer {
 	private IVistaReceptor vista;
 	private Receptor receptor;
-	private ComunicacionR observado;
-	
-	
+
 	public ControladorReceptor(IVistaReceptor vista) {
 		this.vista = vista;
 		this.vista.setActionListener(this);
 		this.receptor = Receptor.getInstance();
-		this.observado = Receptor.getC();
 		Receptor.getC().addObserver(this);
-
 
 	}
 
@@ -36,6 +32,7 @@ public class ControladorReceptor implements ActionListener, Observer {
 				this.receptor.actualizarPuerto(puerto);
 				this.vista.limpiaCampoPuerto();
 				this.vista.muestraPuerto(puertoString);
+				this.vista.puertoDefinido();
 				this.receptor.comienzaEscucha();
 			} catch (NumberFormatException err) {
 				this.vista.mostrarError("El puerto debe ser un numero entero");
@@ -46,7 +43,7 @@ public class ControladorReceptor implements ActionListener, Observer {
 			receptor.toggleSeguridad();
 		} else if (e.getActionCommand().equalsIgnoreCase("medico")) {
 			receptor.toggleAmbulancia();
-		}else if (e.getActionCommand().equalsIgnoreCase("confirmar")) {
+		} else if (e.getActionCommand().equalsIgnoreCase("confirmar")) {
 		}
 	}
 
@@ -55,6 +52,6 @@ public class ControladorReceptor implements ActionListener, Observer {
 		ComunicacionR c = (ComunicacionR) o;
 		Notificacion mensaje = (Notificacion) nuevaNotificacion;
 		if (mensaje.mostrarse(receptor.getInterruptorTipos()))
-				this.vista.agregarNotificacion(mensaje);
+			this.vista.agregarNotificacion(mensaje);
 	}
 }
