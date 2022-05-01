@@ -15,4 +15,5 @@ public interface IVistaReceptor {
 	public void toggleIncendio(boolean flag);
 	public void toggleSeguridad(boolean flag);
 	public void toggleAmbulancia(boolean flag);
+	public Notificacion getSelectedValue();
 }

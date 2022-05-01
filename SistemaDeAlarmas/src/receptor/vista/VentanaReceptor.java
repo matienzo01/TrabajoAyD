@@ -3,7 +3,6 @@ package receptor.vista;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
@@ -61,10 +60,8 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.botonConfirmar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.botonConfirmar.setBounds(77, 263, 96, 23);
 		this.botonConfirmar.setBackground(new Color(144, 238, 144));
-		this.botonConfirmar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		this.botonConfirmar.setActionCommand("confirmar");
+		
 		this.frmRecepcinDeEmergencias.getContentPane().setLayout(null);
 		this.frmRecepcinDeEmergencias.getContentPane().add(botonConfirmar);
 		
@@ -172,6 +169,7 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.checkIncendio.addActionListener(actionListener);
 		this.checkMedica.addActionListener(actionListener);
 		this.checkSeguridad.addActionListener(actionListener);
+		this.botonConfirmar.addActionListener(actionListener);
 	}
 
 	@Override
@@ -200,13 +198,13 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	@Override
 	public void agregarNotificacion(Notificacion nuevaNotificacion) { //esto me suena a q no esta bien, pero no se me ocurrio otra forma
 		if(nuevaNotificacion.getTipo().equalsIgnoreCase("incendio")) {
-			System.out.println("Llego un incendio");
+//			System.out.println("Llego un incendio");
 			this.displayIncendio.addElement(nuevaNotificacion);
 		}else if(nuevaNotificacion.getTipo().equalsIgnoreCase("seguridad")) {
-			System.out.println("Llego un seguridad");
+//			System.out.println("Llego un seguridad");
 			this.displaySeguridad.addElement(nuevaNotificacion);
 		}if(nuevaNotificacion.getTipo().equalsIgnoreCase("ambulancia")) {
-			System.out.println("Llego un ambulancia");
+//			System.out.println("Llego un ambulancia");
 			this.displayAmbulancia.addElement(nuevaNotificacion);
 		}
 	}
@@ -224,5 +222,16 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	@Override
 	public void toggleAmbulancia(boolean flag) {
 		this.tabbedPaneAlertas.setEnabledAt(2, flag);
+	}
+
+	@Override
+	public Notificacion getSelectedValue() {
+//		System.out.println(this.tabbedPaneAlertas.getSelectedIndex());
+		int lista = this.tabbedPaneAlertas.getSelectedIndex();
+		Notificacion respuesta = null;
+		if(lista == 0) respuesta = this.listIncendios.getSelectedValue();
+		else if(lista == 1) respuesta = this.listSeguridad.getSelectedValue();
+		else if(lista == 2) respuesta = this.listAmbulancia.getSelectedValue();
+		return respuesta;
 	}
 }
