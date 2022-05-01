@@ -28,17 +28,6 @@ public class ControladorEmisor implements ActionListener {
 			}catch(NumberFormatException err) {
 				this.vista.mostrarError("El puerto y la IP deben ser numeros enteros");
 			}
-		}else if(e.getActionCommand().equalsIgnoreCase("Incencio")) {
-			emisor.enviarNotificacion("incendio");
-			vista.mostrarEnvio("Se envió la notificación de incendio.");
-		}
-		else if(e.getActionCommand().equalsIgnoreCase("Ambulancia")) {
-			emisor.enviarNotificacion("Ambulancia");
-			vista.mostrarEnvio("Se envió la notificación de asistencia medica.");
-		}
-		else if(e.getActionCommand().equalsIgnoreCase("Seguridad")) {
-			emisor.enviarNotificacion("Seguridad");
-			vista.mostrarEnvio("Se envió la notificación de seguridad.");
 		}
 		else if(e.getActionCommand().equalsIgnoreCase("Cambiar Ubicacion")) {
 			String nuevaUbicacion = this.vista.getUbicacion();
@@ -49,6 +38,26 @@ public class ControladorEmisor implements ActionListener {
 				this.vista.mostrarNuevaUbicacion(nuevaUbicacion);
 				this.vista.limpiaCampoNuevaUbicacion();
 			}
+		}else if(e.getActionCommand().equalsIgnoreCase("Incencio")) {
+			emisor.enviarNotificacion("incendio");
+			envioExitoso();
 		}
+		else if(e.getActionCommand().equalsIgnoreCase("Ambulancia")) {
+			emisor.enviarNotificacion("Ambulancia");
+			envioExitoso();
+		}
+		else if(e.getActionCommand().equalsIgnoreCase("Seguridad")) {
+			emisor.enviarNotificacion("Seguridad");
+			envioExitoso();
+		}
+
 	}
+	
+	private void envioExitoso() {
+		if(Emisor.getInstance().getUbicacion()!=null)
+			vista.mostrarEnvio("Se notificó de la emergencia exitosamente.");
+		else
+			vista.mostrarError("Debe especificar la ubicacion antes de solicitar ayuda.");
+	}
+	
 }

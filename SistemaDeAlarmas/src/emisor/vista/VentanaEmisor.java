@@ -138,7 +138,7 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.panelDirecciones.add(this.lblNewLabel_1);
 		
 		this.textFieldIP = new JTextField();
-		textFieldIP.setBorder(null);
+		textFieldIP.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		textFieldIP.setForeground(Color.WHITE);
 		textFieldIP.setBackground(Color.DARK_GRAY);
 		this.textFieldIP.setBounds(142, 5, 96, 19);
@@ -190,7 +190,7 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.panelUbicacion.add(this.labelUbicacion);
 		
 		this.textFieldNuevaUbicacion = new JTextField();
-		textFieldNuevaUbicacion.setBorder(null);
+		textFieldNuevaUbicacion.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		textFieldNuevaUbicacion.setForeground(Color.WHITE);
 		textFieldNuevaUbicacion.setBackground(Color.DARK_GRAY);
 		this.textFieldNuevaUbicacion.setBounds(134, 99, 96, 19);
