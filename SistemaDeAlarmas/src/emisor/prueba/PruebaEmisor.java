@@ -5,7 +5,7 @@ import emisor.modelo.Emisor;
 import emisor.vista.IVistaEmisor;
 import emisor.vista.VentanaEmisor;
 
-public class Prueba {
+public class PruebaEmisor {
 
 	public static void main(String[] args) {
 		IVistaEmisor vista = new VentanaEmisor();

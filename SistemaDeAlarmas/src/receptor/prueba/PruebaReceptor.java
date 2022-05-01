@@ -5,7 +5,7 @@ import receptor.modelo.Receptor;
 import receptor.vista.IVistaReceptor;
 import receptor.vista.VentanaReceptor;
 
-public class Prueba {
+public class PruebaReceptor {
 	public static void main(String[] args) {
 		IVistaReceptor vista = new VentanaReceptor();
 		ControladorReceptor c = new ControladorReceptor(vista);
