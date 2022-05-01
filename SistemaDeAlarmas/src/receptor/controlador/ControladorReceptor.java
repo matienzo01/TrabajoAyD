@@ -27,7 +27,6 @@ public class ControladorReceptor implements ActionListener, Observer {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Llegue al controlador");
 		if (e.getActionCommand().equalsIgnoreCase("actualizar puerto")) {
 			try {
 				String puertoString = this.vista.getNuevoPuerto();
@@ -55,9 +54,6 @@ public class ControladorReceptor implements ActionListener, Observer {
 	public void update(Observable o, Object nuevaNotificacion) {
 		ComunicacionR c = (ComunicacionR) o;
 		Notificacion mensaje = (Notificacion) nuevaNotificacion;
-//		receptor.
 		this.vista.agregarNotificacion(mensaje);
-		
-//		System.out.println("llega a update del controlador.....");
 	}
 }

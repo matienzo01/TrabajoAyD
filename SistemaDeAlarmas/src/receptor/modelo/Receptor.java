@@ -3,7 +3,7 @@ package receptor.modelo;
 public class Receptor {
 	private static Receptor instance = null;
 	private static ComunicacionR c = null;
-	public boolean incendios,ambulancia,seguridad;
+	private boolean incendios,ambulancia,seguridad;
 	
 	
 	private Receptor() {
@@ -20,6 +20,9 @@ public class Receptor {
 	}
 	
 	
+	public static ComunicacionR getC() {
+		return ComunicacionR.getInstance();
+	}
 	
 	public boolean isIncendios() {
 		return incendios;
@@ -39,17 +42,17 @@ public class Receptor {
 	
 	public void toggleIncendio() {
 		this.incendios = !this.incendios;
-		this.diceEstados();
+//		this.diceEstados();
 	}
 	
 	public void toggleSeguridad() {
 		this.seguridad = !this.seguridad;
-		this.diceEstados();
+//		this.diceEstados();
 	}
 	
 	public void toggleAmbulancia() {
 		this.ambulancia = !this.ambulancia;
-		this.diceEstados();
+//		this.diceEstados();
 	}
 	
 	private void diceEstados() {
@@ -58,12 +61,8 @@ public class Receptor {
 		System.out.println("Seguridad :" + this.seguridad);
 	}
 
-	public static ComunicacionR getC() {
-		return ComunicacionR.getInstance();
-	}
 
 	public void comienzaEscucha() {
-		// TODO Auto-generated method stub
 		c.comienzaEscucha();
 	}
 

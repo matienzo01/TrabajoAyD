@@ -16,5 +16,7 @@ public abstract class Notificacion implements Serializable{
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
+	
+	public abstract String getTipo();
 
 }

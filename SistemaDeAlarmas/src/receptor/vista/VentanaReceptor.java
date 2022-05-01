@@ -37,7 +37,6 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	private JLabel txtNumeroPuerto;
 	private JLabel txtActualizarPuerto;
 	private JButton btnActualizarPuerto;
-	private JLabel lblNewLabel;
 	private JTabbedPane tabbedPaneAlertas;
 	private JPanel panelIncendios;
 	private JPanel panelSeguridad;
@@ -45,7 +44,9 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	private JList<Notificacion> listIncendios;
 	private JList<Notificacion> listSeguridad;
 	private JList<Notificacion> listAmbulancia;
-	private DefaultListModel<Notificacion> display = new DefaultListModel<Notificacion>();
+	private DefaultListModel<Notificacion> displayIncendio = new DefaultListModel<Notificacion>();
+	private DefaultListModel<Notificacion> displaySeguridad = new DefaultListModel<Notificacion>();
+	private DefaultListModel<Notificacion> displayAmbulancia = new DefaultListModel<Notificacion>();
 
 	/**
 	 * Create the application.
@@ -135,7 +136,7 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.tabbedPaneAlertas.setEnabledAt(0, false);
 		this.panelIncendios.setLayout(new BorderLayout(0, 0));
 		
-		this.listIncendios = new JList<Notificacion>(display);
+		this.listIncendios = new JList<Notificacion>(displayIncendio);
 		this.listIncendios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.panelIncendios.add(this.listIncendios);
 		
@@ -144,7 +145,7 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.tabbedPaneAlertas.setEnabledAt(1, false);
 		this.panelSeguridad.setLayout(new BorderLayout(0, 0));
 		
-		this.listSeguridad = new JList<Notificacion>(display);;
+		this.listSeguridad = new JList<Notificacion>(displaySeguridad);;
 		this.listSeguridad.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.panelSeguridad.add(this.listSeguridad);
 		
@@ -153,7 +154,7 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.tabbedPaneAlertas.setEnabledAt(2, false);
 		this.panelAmbulancia.setLayout(new BorderLayout(0, 0));
 		
-		this.listAmbulancia = new JList<Notificacion>(display);
+		this.listAmbulancia = new JList<Notificacion>(displayAmbulancia);
 		this.listAmbulancia.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);;
 		this.panelAmbulancia.add(this.listAmbulancia);
 		
@@ -197,10 +198,17 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	}
 
 	@Override
-	public void agregarNotificacion(Notificacion nuevaNotificacion) {
-		/*lblNewLabel = new JLabel(nuevaNotificacion);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panelNotificaciones.add(lblNewLabel);*/
+	public void agregarNotificacion(Notificacion nuevaNotificacion) { //esto me suena a q no esta bien, pero no se me ocurrio otra forma
+		if(nuevaNotificacion.getTipo().equalsIgnoreCase("incendio")) {
+			System.out.println("Llego un incendio");
+			this.displayIncendio.addElement(nuevaNotificacion);
+		}else if(nuevaNotificacion.getTipo().equalsIgnoreCase("seguridad")) {
+			System.out.println("Llego un seguridad");
+			this.displaySeguridad.addElement(nuevaNotificacion);
+		}if(nuevaNotificacion.getTipo().equalsIgnoreCase("ambulancia")) {
+			System.out.println("Llego un ambulancia");
+			this.displayAmbulancia.addElement(nuevaNotificacion);
+		}
 	}
 
 	@Override

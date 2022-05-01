@@ -12,4 +12,9 @@ public class Incendio extends Notificacion {
 		return "Incendio en " + this.getUbicacion();
 	}
 
+	@Override
+	public String getTipo() {
+		return "incendio";
+	}
+
 }

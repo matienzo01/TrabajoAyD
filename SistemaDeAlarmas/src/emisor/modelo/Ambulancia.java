@@ -12,4 +12,9 @@ public class Ambulancia extends Notificacion {
 		return "Asistencia Medica en " + this.getUbicacion();
 	}
 
+	@Override
+	public String getTipo() {
+		return "ambulancia";
+	}
+
 }

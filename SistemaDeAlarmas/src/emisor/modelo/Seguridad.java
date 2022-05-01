@@ -12,4 +12,9 @@ public class Seguridad extends Notificacion {
 		return "Personal de seguridad en " + this.getUbicacion();
 	}
 
+	@Override
+	public String getTipo() {
+		return "seguridad";
+	}
+
 }
