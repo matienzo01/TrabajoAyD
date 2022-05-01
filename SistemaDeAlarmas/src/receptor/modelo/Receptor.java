@@ -2,9 +2,9 @@ package receptor.modelo;
 
 import notificacion.Interruptor;
 
-public class Receptor {
-	private static Receptor instance = null;
-	private static ComunicacionR c = null;
+public class Receptor implements IReceptor {
+	private static IReceptor instance = null;
+	private static IComunicacionR c = null;
 	private Interruptor tipos;
 
 	private Receptor() {
@@ -12,7 +12,7 @@ public class Receptor {
 		tipos = Interruptor.getInstance();
 	}
 
-	public static Receptor getInstance() {
+	public static IReceptor getInstance() {
 		if (instance == null)
 			instance = new Receptor();
 		return instance;
@@ -34,26 +34,32 @@ public class Receptor {
 		return tipos.isSeguridad();
 	}
 
+	@Override
 	public void actualizarPuerto(int puerto) {
 		Receptor.c.actualizarPuerto(puerto);
 	}
 
+	@Override
 	public void toggleIncendio() {
 		tipos.setIncendios(!tipos.isIncendios());
 	}
 
+	@Override
 	public void toggleSeguridad() {
 		tipos.setSeguridad(!tipos.isSeguridad());
 	}
 
+	@Override
 	public void toggleAmbulancia() {
 		tipos.setMedica(!tipos.isMedica());
 	}
 
+	@Override
 	public void comienzaEscucha() {
 		c.comienzaEscucha();
 	}
 
+	@Override
 	public Interruptor getInterruptorTipos() {
 		return tipos;
 	}

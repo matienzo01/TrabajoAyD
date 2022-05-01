@@ -60,7 +60,7 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_AImYcMMgEey9y-y9nWuRWA" name="Incendio" visibility="public">
     <generalization xmi:id="_E-z5cMMgEey9y-y9nWuRWA" general="_kLvE8MMfEey9y-y9nWuRWA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_xyOocMMiEey9y-y9nWuRWA" name="Solicitud" visibility="public">
+  <packagedElement xmi:type="uml:Interface" xmi:id="_xyOocMMiEey9y-y9nWuRWA" name="IEmergencia" visibility="public">
     <ownedOperation xmi:id="_-4AL4MMiEey9y-y9nWuRWA" name="enviarNotificacion">
       <ownedParameter xmi:id="_dA4VAMaGEey8cZjCgLHpkw" name="notificacion" type="_kLvE8MMfEey9y-y9nWuRWA"/>
     </ownedOperation>
@@ -174,4 +174,103 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_vLQuoMmjEey5ePa6iNCnyQ" client="_pzlfUMmjEey5ePa6iNCnyQ" supplier="_kLvE8MMfEey9y-y9nWuRWA"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_C3dMcMmkEey5ePa6iNCnyQ" client="_kLvE8MMfEey9y-y9nWuRWA" supplier="_uniL8MmiEey5ePa6iNCnyQ"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_SS2jcMmkEey5ePa6iNCnyQ" name="Receptor" visibility="public">
+    <ownedAttribute xmi:id="_zHEK8MmlEey5ePa6iNCnyQ" name="instance" visibility="private" isStatic="true" type="_SS2jcMmkEey5ePa6iNCnyQ"/>
+    <ownedAttribute xmi:id="_4akr8MmlEey5ePa6iNCnyQ" name="instance" visibility="private" isStatic="true" type="_f4pqwMmkEey5ePa6iNCnyQ"/>
+    <ownedAttribute xmi:id="_9oSG8MmlEey5ePa6iNCnyQ" name="tipos" visibility="private" type="_uniL8MmiEey5ePa6iNCnyQ"/>
+    <interfaceRealization xmi:id="_eeDDEMmmEey5ePa6iNCnyQ" client="_SS2jcMmkEey5ePa6iNCnyQ" supplier="_cIx00MmmEey5ePa6iNCnyQ" contract="_cIx00MmmEey5ePa6iNCnyQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZZcysMmkEey5ePa6iNCnyQ" name="Controlador receptor" visibility="public">
+    <interfaceRealization xmi:id="_Hc2NwMmlEey5ePa6iNCnyQ" client="_ZZcysMmkEey5ePa6iNCnyQ" supplier="_DNsFsMmlEey5ePa6iNCnyQ" contract="_DNsFsMmlEey5ePa6iNCnyQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_f4pqwMmkEey5ePa6iNCnyQ" name="ComunicacionR" visibility="public">
+    <generalization xmi:id="_EQetgMmnEey5ePa6iNCnyQ" general="_R6FosMmlEey5ePa6iNCnyQ"/>
+    <ownedAttribute xmi:id="_GrCrcMmnEey5ePa6iNCnyQ" name="puerto" visibility="private">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_JSPXMMmnEey5ePa6iNCnyQ" name="instance" visibility="private" isStatic="true" type="_f4pqwMmkEey5ePa6iNCnyQ"/>
+    <interfaceRealization xmi:id="_olU_oMmnEey5ePa6iNCnyQ" client="_f4pqwMmkEey5ePa6iNCnyQ" supplier="_aMmmkMmnEey5ePa6iNCnyQ" contract="_aMmmkMmnEey5ePa6iNCnyQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_jRcLgMmkEey5ePa6iNCnyQ" name="VistaReceptor" visibility="public">
+    <interfaceRealization xmi:id="_w3XOoMmkEey5ePa6iNCnyQ" client="_jRcLgMmkEey5ePa6iNCnyQ" supplier="_GyyRQMZ9Eey8cZjCgLHpkw" contract="_GyyRQMZ9Eey8cZjCgLHpkw"/>
+    <interfaceRealization xmi:id="_jxMFwMmoEey5ePa6iNCnyQ" client="_jRcLgMmkEey5ePa6iNCnyQ" supplier="_qyurUMmnEey5ePa6iNCnyQ" contract="_qyurUMmnEey5ePa6iNCnyQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_nvgSQMmkEey5ePa6iNCnyQ" name="vista" memberEnd="_nvg5UMmkEey5ePa6iNCnyQ _nvhgYcmkEey5ePa6iNCnyQ" navigableOwnedEnd="_nvhgYcmkEey5ePa6iNCnyQ">
+    <ownedEnd xmi:id="_nvg5UMmkEey5ePa6iNCnyQ" name="controlador receptors" type="_ZZcysMmkEey5ePa6iNCnyQ" association="_nvgSQMmkEey5ePa6iNCnyQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nvg5UcmkEey5ePa6iNCnyQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nvhgYMmkEey5ePa6iNCnyQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_nvhgYcmkEey5ePa6iNCnyQ" name="vistaReceptors" type="_jRcLgMmkEey5ePa6iNCnyQ" aggregation="composite" association="_nvgSQMmkEey5ePa6iNCnyQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nviHcMmkEey5ePa6iNCnyQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nviHccmkEey5ePa6iNCnyQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_oqvygMmkEey5ePa6iNCnyQ" name="receptor" memberEnd="_oqvygcmkEey5ePa6iNCnyQ _oqwZkcmkEey5ePa6iNCnyQ" navigableOwnedEnd="_oqwZkcmkEey5ePa6iNCnyQ">
+    <ownedEnd xmi:id="_oqvygcmkEey5ePa6iNCnyQ" name="controlador receptors" type="_ZZcysMmkEey5ePa6iNCnyQ" association="_oqvygMmkEey5ePa6iNCnyQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oqvygsmkEey5ePa6iNCnyQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oqwZkMmkEey5ePa6iNCnyQ" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_oqwZkcmkEey5ePa6iNCnyQ" name="receptors" type="_SS2jcMmkEey5ePa6iNCnyQ" aggregation="composite" association="_oqvygMmkEey5ePa6iNCnyQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oqwZksmkEey5ePa6iNCnyQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oqwZk8mkEey5ePa6iNCnyQ" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_DNsFsMmlEey5ePa6iNCnyQ" name="Observer" visibility="public">
+    <ownedOperation xmi:id="_I8UccMmlEey5ePa6iNCnyQ" name="update">
+      <ownedParameter xmi:id="_U4CAgMmlEey5ePa6iNCnyQ" name="o" type="_R6FosMmlEey5ePa6iNCnyQ"/>
+      <ownedParameter xmi:id="_Ymf2UMmlEey5ePa6iNCnyQ" name="nuevaNotificacion"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_R6FosMmlEey5ePa6iNCnyQ" name="Observable" visibility="public"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_uq2eUMmlEey5ePa6iNCnyQ" client="_SS2jcMmkEey5ePa6iNCnyQ" supplier="_uniL8MmiEey5ePa6iNCnyQ"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_cIx00MmmEey5ePa6iNCnyQ" name="IReceptor" visibility="public">
+    <ownedOperation xmi:id="_juoL4MmmEey5ePa6iNCnyQ" name="actualizaPuerto">
+      <ownedParameter xmi:id="_lr4iwMmmEey5ePa6iNCnyQ" name="puerto">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_o8TxsMmmEey5ePa6iNCnyQ" name="toggleIncendio"/>
+    <ownedOperation xmi:id="_qzofsMmmEey5ePa6iNCnyQ" name="toggleSeguridad"/>
+    <ownedOperation xmi:id="_tbZzMMmmEey5ePa6iNCnyQ" name="toggleAmbulancia"/>
+    <ownedOperation xmi:id="_vPEwQMmmEey5ePa6iNCnyQ" name="comienzaEscucha"/>
+    <ownedOperation xmi:id="_xAMIkMmmEey5ePa6iNCnyQ" name="getInterruptorTipos"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_d0aQMMmmEey5ePa6iNCnyQ" client="_ZZcysMmkEey5ePa6iNCnyQ" supplier="_cIx00MmmEey5ePa6iNCnyQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_2ISq0MmmEey5ePa6iNCnyQ" client="_cIx00MmmEey5ePa6iNCnyQ" supplier="_uniL8MmiEey5ePa6iNCnyQ"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_aMmmkMmnEey5ePa6iNCnyQ" name="IComunicacionR" visibility="public">
+    <ownedOperation xmi:id="_ezWvQMmnEey5ePa6iNCnyQ" name="actualizaPuerto">
+      <ownedParameter xmi:id="_gB60IMmnEey5ePa6iNCnyQ" name="puerto">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_lR3q0MmnEey5ePa6iNCnyQ" name="comienzaEscucha"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_n89_IMmnEey5ePa6iNCnyQ" client="_SS2jcMmkEey5ePa6iNCnyQ" supplier="_aMmmkMmnEey5ePa6iNCnyQ"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_qyurUMmnEey5ePa6iNCnyQ" name="IVistaReceptor" visibility="public">
+    <ownedOperation xmi:id="_4Zc_sMmnEey5ePa6iNCnyQ" name="setActionListener">
+      <ownedParameter xmi:id="_4Zc_scmnEey5ePa6iNCnyQ" name="actionListener" type="_GyyRQMZ9Eey8cZjCgLHpkw"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_udQcUMmnEey5ePa6iNCnyQ" name="mostrarError">
+      <ownedParameter xmi:id="_xax9YMmnEey5ePa6iNCnyQ" name="error">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_9UCqYMmnEey5ePa6iNCnyQ" name="getNuevaPuerto"/>
+    <ownedOperation xmi:id="_CXZPgMmoEey5ePa6iNCnyQ" name="limpiaCamposPuerto"/>
+    <ownedOperation xmi:id="_FZyCcMmoEey5ePa6iNCnyQ" name="muestraPuerto">
+      <ownedParameter xmi:id="_NKtBEMmoEey5ePa6iNCnyQ" name="puerto">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_H2ShIMmoEey5ePa6iNCnyQ" name="agregarNotificacion">
+      <ownedParameter xmi:id="_JD3ukMmoEey5ePa6iNCnyQ" name="notificacion" type="_kLvE8MMfEey9y-y9nWuRWA"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Q0OsgMmoEey5ePa6iNCnyQ" name="puertoDefinido"/>
+    <ownedOperation xmi:id="_aXmgMMmoEey5ePa6iNCnyQ" name="getSelectedNotification"/>
+    <ownedOperation xmi:id="_cPi5QMmoEey5ePa6iNCnyQ" name="eliminaNotificacion">
+      <ownedParameter xmi:id="_eHqRcMmoEey5ePa6iNCnyQ" name="notificacion" type="_kLvE8MMfEey9y-y9nWuRWA"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_kQEaIMmoEey5ePa6iNCnyQ" client="_ZZcysMmkEey5ePa6iNCnyQ" supplier="_qyurUMmnEey5ePa6iNCnyQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_opdcQMmoEey5ePa6iNCnyQ" client="_qyurUMmnEey5ePa6iNCnyQ" supplier="_kLvE8MMfEey9y-y9nWuRWA"/>
 </uml:Model>

@@ -6,14 +6,15 @@ import java.util.Observable;
 import java.util.Observer;
 
 import notificacion.Notificacion;
-import receptor.modelo.ComunicacionR;
+import receptor.modelo.IComunicacionR;
+import receptor.modelo.IReceptor;
 import receptor.modelo.Receptor;
 import receptor.vista.IVistaReceptor;
 
 @SuppressWarnings("deprecation")
 public class ControladorReceptor implements ActionListener, Observer {
 	private IVistaReceptor vista;
-	private Receptor receptor;
+	private IReceptor receptor;
 
 	public ControladorReceptor(IVistaReceptor vista) {
 		this.vista = vista;
@@ -51,7 +52,7 @@ public class ControladorReceptor implements ActionListener, Observer {
 
 	@Override
 	public void update(Observable o, Object nuevaNotificacion) {
-		ComunicacionR c = (ComunicacionR) o;
+		IComunicacionR c = (IComunicacionR) o;
 		Notificacion mensaje = (Notificacion) nuevaNotificacion;
 		if (mensaje.mostrarse(receptor.getInterruptorTipos()))
 			this.vista.agregarNotificacion(mensaje);

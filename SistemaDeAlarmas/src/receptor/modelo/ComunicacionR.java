@@ -8,10 +8,10 @@ import java.util.Observable;
 import notificacion.Notificacion;
 
 @SuppressWarnings("deprecation")
-public class ComunicacionR extends Observable {
+public class ComunicacionR extends Observable implements IComunicacionR {
 
 	private int puerto;
-	public static ComunicacionR instance = null;
+	private static ComunicacionR instance = null;
 
 	private ComunicacionR() {
 	}
@@ -22,10 +22,12 @@ public class ComunicacionR extends Observable {
 		return instance;
 	}
 
+	@Override
 	public void actualizarPuerto(int puerto) {
 		this.puerto = puerto;
 	}
 
+	@Override
 	public void comienzaEscucha() {
 		new Thread() {
 			public void run() {
