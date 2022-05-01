@@ -17,7 +17,7 @@ rectangle SistemaDeAlarma{
     rectangle SubsistemaReceptor{
         usecase "Confirmar emergencia" as UC6
         usecase "Configurar tipo de emergencia a recibir" as UC7
-        usecase "Configurar puerto" as UC10
+        usecase "Asignar puerto" as UC10
     }
 }
 actor "Receptor" as a2

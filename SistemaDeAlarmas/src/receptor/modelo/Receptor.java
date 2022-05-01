@@ -1,5 +1,7 @@
 package receptor.modelo;
 
+import notificacion.Interruptor;
+
 public class Receptor {
 	private static Receptor instance = null;
 	private static ComunicacionR c = null;

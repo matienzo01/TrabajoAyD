@@ -4,11 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import emisor.modelo.Emisor;
+import emisor.modelo.IEmisor;
 import emisor.vista.IVistaEmisor;
 
 public class ControladorEmisor implements ActionListener {
 	private IVistaEmisor vista;
-	private Emisor emisor = Emisor.getInstance();
+	private IEmisor emisor = Emisor.getInstance();
 
 	public ControladorEmisor(IVistaEmisor vista) {
 		this.vista = vista;

@@ -1,7 +1,5 @@
 package notificacion;
 
-import receptor.modelo.Interruptor;
-
 public class Seguridad extends Notificacion {
 
 	public Seguridad(String ubicacion) {

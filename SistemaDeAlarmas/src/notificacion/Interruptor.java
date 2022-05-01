@@ -1,4 +1,4 @@
-package receptor.modelo;
+package notificacion;
 
 public class Interruptor {
 	private boolean incendios, medica, seguridad;

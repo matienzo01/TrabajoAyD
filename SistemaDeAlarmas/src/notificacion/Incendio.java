@@ -1,7 +1,5 @@
 package notificacion;
 
-import receptor.modelo.Interruptor;
-
 public class Incendio extends Notificacion {
 
 	public Incendio(String ubicacion) {

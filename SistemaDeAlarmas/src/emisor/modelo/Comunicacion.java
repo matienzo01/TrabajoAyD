@@ -27,6 +27,7 @@ public class Comunicacion implements IEmergencia {
 
 	}
 
+	@Override
 	public void agregarDestinatario(String IP, int puerto) {
 		this.destinatarios.put(IP, puerto);
 

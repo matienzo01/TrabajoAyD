@@ -3,8 +3,6 @@ package notificacion;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import receptor.modelo.Interruptor;
-
 public abstract class Notificacion implements Serializable {
 	private String ubicacion;
 	private int hora, minutos;
