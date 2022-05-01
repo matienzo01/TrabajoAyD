@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-import emisor.modelo.Notificacion;
+import notificacion.Notificacion;
 import receptor.modelo.ComunicacionR;
 import receptor.modelo.Receptor;
 import receptor.vista.IVistaReceptor;

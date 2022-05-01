@@ -1,24 +1,23 @@
-package emisor.modelo;
+package notificacion;
 
 import receptor.modelo.Interruptor;
 
-public class Incendio extends Notificacion {
+public class Ambulancia extends Notificacion {
 
-	public Incendio(String ubicacion) {
+	public Ambulancia(String ubicacion) {
 		super(ubicacion);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "        Incendio        | " + super.toString();
+		return "    Asistencia Medica   | " + super.toString();
 	}
-
 
 	@Override
 	public boolean mostrarse(Interruptor tipo) {
 		// TODO Auto-generated method stub
-		return tipo.isIncendios();
+		return tipo.isMedica();
 	}
 
 }

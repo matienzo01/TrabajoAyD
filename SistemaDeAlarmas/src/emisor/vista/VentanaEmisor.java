@@ -84,7 +84,6 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.btnIncendio = new JButton("");
 		this.btnIncendio.setIcon(new ImageIcon(VentanaEmisor.class.getResource("/img/incendio.png")));
 		this.btnIncendio.setBounds(31, 12, 95, 76);
-		this.btnIncendio.setBorderPainted(false);
 		this.btnIncendio.setActionCommand("Incencio");
 		this.panelSolicitudes.add(this.btnIncendio);
 		
@@ -97,7 +96,6 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.botonEmergenciaMedica = new JButton("");
 		this.botonEmergenciaMedica.setIcon(new ImageIcon(VentanaEmisor.class.getResource("/img/medica.png")));
 		this.botonEmergenciaMedica.setBounds(167, 12, 95, 76);
-		this.botonEmergenciaMedica.setBorderPainted(false);
 		this.botonEmergenciaMedica.setActionCommand("Ambulancia");
 		this.panelSolicitudes.add(this.botonEmergenciaMedica);
 		
@@ -110,7 +108,6 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.btnSeguridad = new JButton("");
 		this.btnSeguridad.setIcon(new ImageIcon(VentanaEmisor.class.getResource("/img/seguridad.png")));
 		this.btnSeguridad.setBounds(316, 12, 105, 76);
-		this.btnSeguridad.setBorderPainted(false);
 		this.btnSeguridad.setActionCommand("Seguridad");
 		this.panelSolicitudes.add(this.btnSeguridad);
 		

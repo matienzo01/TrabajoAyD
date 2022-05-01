@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Observable;
 
-import emisor.modelo.Notificacion;
+import notificacion.Notificacion;
 
 @SuppressWarnings("deprecation")
 public class ComunicacionR extends Observable {

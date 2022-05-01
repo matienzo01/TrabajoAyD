@@ -1,4 +1,4 @@
-package emisor.modelo;
+package notificacion;
 
 public class NotificacionFactory {
 	

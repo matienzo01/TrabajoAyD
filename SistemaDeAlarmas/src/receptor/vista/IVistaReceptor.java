@@ -2,7 +2,7 @@ package receptor.vista;
 
 import java.awt.event.ActionListener;
 
-import emisor.modelo.Notificacion;
+import notificacion.Notificacion;
 
 public interface IVistaReceptor {
 

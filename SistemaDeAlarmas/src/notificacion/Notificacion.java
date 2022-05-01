@@ -1,4 +1,4 @@
-package emisor.modelo;
+package notificacion;
 
 import java.io.Serializable;
 import java.util.Calendar;

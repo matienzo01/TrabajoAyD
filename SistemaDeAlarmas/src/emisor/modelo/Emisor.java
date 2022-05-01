@@ -1,5 +1,8 @@
 package emisor.modelo;
 
+import notificacion.Notificacion;
+import notificacion.NotificacionFactory;
+
 public class Emisor {
 	private static Emisor instance = null;
 	private static Comunicacion c = new Comunicacion();

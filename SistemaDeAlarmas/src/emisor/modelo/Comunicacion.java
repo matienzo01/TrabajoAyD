@@ -4,6 +4,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.HashMap;
 
+import notificacion.Notificacion;
+
 public class Comunicacion implements IEmergencia{
 	
 	private int puertoEscucha;
