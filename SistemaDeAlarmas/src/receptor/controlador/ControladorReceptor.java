@@ -44,6 +44,8 @@ public class ControladorReceptor implements ActionListener, Observer {
 		} else if (e.getActionCommand().equalsIgnoreCase("medico")) {
 			receptor.toggleAmbulancia();
 		} else if (e.getActionCommand().equalsIgnoreCase("confirmar")) {
+			Notificacion n = this.vista.getSelectedNotification();
+			this.vista.eliminaNotificacion(n);
 		}
 	}
 

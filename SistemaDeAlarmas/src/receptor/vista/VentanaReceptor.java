@@ -186,4 +186,16 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor {
           System.out.println("Error al reproducir el sonido."+ex.getMessage());
         }
       }
+
+	@Override
+	public Notificacion getSelectedNotification() {
+		return this.listaNotificaciones.getSelectedValue();
+	}
+
+	@Override
+	public void eliminaNotificacion(Notificacion n) {
+		this.modelo.removeElement(n);
+	}
+	
+	
 }
