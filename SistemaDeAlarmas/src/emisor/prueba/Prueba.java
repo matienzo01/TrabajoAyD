@@ -10,7 +10,6 @@ public class Prueba {
 	public static void main(String[] args) {
 		IVistaEmisor vista = new VentanaEmisor();
 		ControladorEmisor c = new ControladorEmisor(vista);
-		Emisor.getInstance().agregarDestinatario("localhost", 1234);
 	}
 
 }

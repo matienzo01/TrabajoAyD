@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.SwingConstants;
 
 public class VentanaEmisor extends JFrame implements IVistaEmisor{
 
@@ -56,31 +57,31 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmSolicitudDeEmergencias = new JFrame();
-		frmSolicitudDeEmergencias.setTitle("Solicitud de emergencias");
-		frmSolicitudDeEmergencias.getContentPane().setForeground(Color.WHITE);
-		frmSolicitudDeEmergencias.setAlwaysOnTop(true);
-		frmSolicitudDeEmergencias.setResizable(false);
-		frmSolicitudDeEmergencias.setBackground(Color.WHITE);
-		frmSolicitudDeEmergencias.getContentPane().setBackground(Color.DARK_GRAY);
-		frmSolicitudDeEmergencias.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		frmSolicitudDeEmergencias.setBounds(100, 100, 597, 311);
-		frmSolicitudDeEmergencias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frmSolicitudDeEmergencias = new JFrame();
+		this.frmSolicitudDeEmergencias.setTitle("Solicitud de emergencias");
+		this.frmSolicitudDeEmergencias.getContentPane().setForeground(Color.WHITE);
+		this.frmSolicitudDeEmergencias.setAlwaysOnTop(true);
+		this.frmSolicitudDeEmergencias.setResizable(false);
+		this.frmSolicitudDeEmergencias.setBackground(Color.WHITE);
+		this.frmSolicitudDeEmergencias.getContentPane().setBackground(Color.DARK_GRAY);
+		this.frmSolicitudDeEmergencias.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		this.frmSolicitudDeEmergencias.setBounds(100, 100, 597, 311);
+		this.frmSolicitudDeEmergencias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frmSolicitudDeEmergencias.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		this.tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBackground(new Color(169, 169, 169));
+		this.tabbedPane.setBackground(new Color(169, 169, 169));
 		this.tabbedPane.setToolTipText("");
 		this.frmSolicitudDeEmergencias.getContentPane().add(this.tabbedPane);
 		
 		this.panelSolicitudes = new JPanel();
-		panelSolicitudes.setBackground(Color.DARK_GRAY);
+		this.panelSolicitudes.setBackground(Color.DARK_GRAY);
 		this.panelSolicitudes.setForeground(Color.BLACK);
 		this.tabbedPane.addTab("Solicitudes", null, this.panelSolicitudes, null);
 		this.panelSolicitudes.setLayout(null);
 		
 		this.txtIncendio = new JLabel("INCENDIO");
-		txtIncendio.setBackground(Color.ORANGE);
+		this.txtIncendio.setBackground(Color.ORANGE);
 		this.txtIncendio.setBounds(86, 112, 83, 24);
 		this.txtIncendio.setForeground(Color.ORANGE);
 		this.txtIncendio.setFont(new Font("Monospaced", Font.BOLD, 17));
@@ -117,48 +118,49 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.panelSolicitudes.add(this.btnSeguridad);
 		
 		this.panelConfiguracion = new JPanel();
-		panelConfiguracion.setBackground(Color.DARK_GRAY);
+		this.panelConfiguracion.setBackground(Color.DARK_GRAY);
 		this.tabbedPane.addTab("Configuracion", null, this.panelConfiguracion, null);
 		this.panelConfiguracion.setLayout(new GridLayout(1, 1, 0, 0));
 		
 		this.panelDirecciones = new JPanel();
-		panelDirecciones.setBackground(Color.DARK_GRAY);
+		this.panelDirecciones.setBackground(Color.DARK_GRAY);
 		this.panelConfiguracion.add(this.panelDirecciones);
 		this.panelDirecciones.setLayout(null);
 		
 		this.lblNewLabel = new JLabel("Direcciones receptoras");
-		lblNewLabel.setForeground(Color.WHITE);
-		this.lblNewLabel.setBounds(9, 8, 104, 13);
+		this.lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		this.lblNewLabel.setForeground(Color.WHITE);
+		this.lblNewLabel.setBounds(68, 0, 124, 26);
 		this.panelDirecciones.add(this.lblNewLabel);
 		
 		this.lblNewLabel_1 = new JLabel("IP : ");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		this.lblNewLabel_1.setBounds(118, 8, 19, 13);
+		this.lblNewLabel_1.setForeground(Color.WHITE);
+		this.lblNewLabel_1.setBounds(51, 36, 29, 13);
 		this.panelDirecciones.add(this.lblNewLabel_1);
 		
 		this.textFieldIP = new JTextField();
-		textFieldIP.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		textFieldIP.setForeground(Color.WHITE);
-		textFieldIP.setBackground(Color.DARK_GRAY);
-		this.textFieldIP.setBounds(142, 5, 96, 19);
+		this.textFieldIP.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		this.textFieldIP.setForeground(Color.WHITE);
+		this.textFieldIP.setBackground(Color.DARK_GRAY);
+		this.textFieldIP.setBounds(108, 33, 96, 19);
 		this.textFieldIP.setColumns(10);
 		this.panelDirecciones.add(this.textFieldIP);
 		
 		this.lblNewLabel_2 = new JLabel("Puerto : ");
-		lblNewLabel_2.setForeground(Color.WHITE);
-		this.lblNewLabel_2.setBounds(58, 60, 40, 13);
+		this.lblNewLabel_2.setForeground(Color.WHITE);
+		this.lblNewLabel_2.setBounds(40, 60, 58, 13);
 		this.panelDirecciones.add(this.lblNewLabel_2);
 		
 		this.textFieldPuerto = new JTextField();
-		textFieldPuerto.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		textFieldPuerto.setForeground(Color.WHITE);
-		textFieldPuerto.setBackground(Color.DARK_GRAY);
+		this.textFieldPuerto.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		this.textFieldPuerto.setForeground(Color.WHITE);
+		this.textFieldPuerto.setBackground(Color.DARK_GRAY);
 		this.textFieldPuerto.setBounds(108, 57, 96, 19);
 		this.textFieldPuerto.setColumns(10);
 		this.panelDirecciones.add(this.textFieldPuerto);
 		
 		this.btnAgregarIp = new JButton("Agregar");
-		this.btnAgregarIp.setBounds(89, 108, 69, 21);
+		this.btnAgregarIp.setBounds(89, 108, 83, 21);
 		this.btnAgregarIp.setFocusPainted(false);
 		this.btnAgregarIp.setBorderPainted(false);
 		this.btnAgregarIp.setBackground(new Color(152, 251, 152));
@@ -166,38 +168,38 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.panelDirecciones.add(this.btnAgregarIp);
 		
 		this.panelUbicacion = new JPanel();
-		panelUbicacion.setBackground(Color.DARK_GRAY);
-		panelUbicacion.setForeground(Color.WHITE);
+		this.panelUbicacion.setBackground(Color.DARK_GRAY);
+		this.panelUbicacion.setForeground(Color.WHITE);
 		this.panelConfiguracion.add(this.panelUbicacion);
 		this.panelUbicacion.setLayout(null);
 		
 		this.labelTextoUbicacionActual = new JLabel("Ubicacion actual: ");
-		labelTextoUbicacionActual.setForeground(Color.WHITE);
-		this.labelTextoUbicacionActual.setBounds(25, 20, 81, 13);
+		this.labelTextoUbicacionActual.setForeground(Color.WHITE);
+		this.labelTextoUbicacionActual.setBounds(25, 20, 110, 13);
 		this.panelUbicacion.add(this.labelTextoUbicacionActual);
 		
 		this.labelUbicacionActual = new JLabel("-");
-		labelUbicacionActual.setBorder(null);
-		labelUbicacionActual.setBackground(Color.DARK_GRAY);
-		labelUbicacionActual.setForeground(Color.WHITE);
-		this.labelUbicacionActual.setBounds(134, 21, 96, 13);
+		this.labelUbicacionActual.setBorder(null);
+		this.labelUbicacionActual.setBackground(Color.DARK_GRAY);
+		this.labelUbicacionActual.setForeground(Color.WHITE);
+		this.labelUbicacionActual.setBounds(160, 20, 96, 13);
 		this.panelUbicacion.add(this.labelUbicacionActual);
 		
 		this.labelUbicacion = new JLabel("Nueva ubicacion : ");
-		labelUbicacion.setForeground(Color.WHITE);
-		this.labelUbicacion.setBounds(25, 99, 84, 13);
+		this.labelUbicacion.setForeground(Color.WHITE);
+		this.labelUbicacion.setBounds(25, 99, 99, 13);
 		this.panelUbicacion.add(this.labelUbicacion);
 		
 		this.textFieldNuevaUbicacion = new JTextField();
-		textFieldNuevaUbicacion.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		textFieldNuevaUbicacion.setForeground(Color.WHITE);
-		textFieldNuevaUbicacion.setBackground(Color.DARK_GRAY);
+		this.textFieldNuevaUbicacion.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		this.textFieldNuevaUbicacion.setForeground(Color.WHITE);
+		this.textFieldNuevaUbicacion.setBackground(Color.DARK_GRAY);
 		this.textFieldNuevaUbicacion.setBounds(134, 99, 96, 19);
 		this.textFieldNuevaUbicacion.setColumns(10);
 		this.panelUbicacion.add(this.textFieldNuevaUbicacion);
 		
 		this.btnUbicacion = new JButton("Guardar");
-		this.btnUbicacion.setBounds(102, 133, 69, 21);
+		this.btnUbicacion.setBounds(114, 136, 75, 27);
 		this.btnUbicacion.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		this.btnUbicacion.setFocusPainted(false);
 		this.btnUbicacion.setBorderPainted(false);
@@ -206,8 +208,8 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.panelUbicacion.add(this.btnUbicacion);
 		
 		this.lblNewLabel_3 = new JLabel("Cambio de ubicaci\u00F3n");
-		lblNewLabel_3.setForeground(Color.WHITE);
-		this.lblNewLabel_3.setBounds(77, 56, 94, 13);
+		this.lblNewLabel_3.setForeground(Color.WHITE);
+		this.lblNewLabel_3.setBounds(77, 56, 128, 13);
 		this.panelUbicacion.add(this.lblNewLabel_3);
 		this.frmSolicitudDeEmergencias.setVisible(true);
 		
