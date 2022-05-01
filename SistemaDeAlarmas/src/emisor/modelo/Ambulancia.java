@@ -1,5 +1,7 @@
 package emisor.modelo;
 
+import receptor.modelo.Interruptor;
+
 public class Ambulancia extends Notificacion {
 
 	public Ambulancia(String ubicacion) {
@@ -17,4 +19,10 @@ public class Ambulancia extends Notificacion {
 		return "ambulancia";
 	}
 
+	@Override
+	public boolean mostrarse(Interruptor tipo) {
+		// TODO Auto-generated method stub
+		return tipo.isMedica();
+	}
+	
 }

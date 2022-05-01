@@ -15,7 +15,7 @@ public class ControladorReceptor implements ActionListener, Observer {
 	private IVistaReceptor vista;
 	private Receptor receptor;
 	private ComunicacionR observado;
-
+	
 	
 	public ControladorReceptor(IVistaReceptor vista) {
 		this.vista = vista;
@@ -23,6 +23,8 @@ public class ControladorReceptor implements ActionListener, Observer {
 		this.receptor = Receptor.getInstance();
 		this.observado = Receptor.getC();
 		Receptor.getC().addObserver(this);
+
+
 	}
 
 	@Override
@@ -40,16 +42,11 @@ public class ControladorReceptor implements ActionListener, Observer {
 			}
 		} else if (e.getActionCommand().equalsIgnoreCase("incendio")) {
 			receptor.toggleIncendio();
-			this.vista.toggleIncendio(receptor.isIncendios());
 		} else if (e.getActionCommand().equalsIgnoreCase("seguridad")) {
 			receptor.toggleSeguridad();
-			this.vista.toggleSeguridad(receptor.isSeguridad());
 		} else if (e.getActionCommand().equalsIgnoreCase("medico")) {
 			receptor.toggleAmbulancia();
-			this.vista.toggleAmbulancia(receptor.isAmbulancia());
 		}else if (e.getActionCommand().equalsIgnoreCase("confirmar")) {
-			Notificacion selected = this.vista.getSelectedValue();
-			System.out.println(selected);
 		}
 	}
 
@@ -57,6 +54,7 @@ public class ControladorReceptor implements ActionListener, Observer {
 	public void update(Observable o, Object nuevaNotificacion) {
 		ComunicacionR c = (ComunicacionR) o;
 		Notificacion mensaje = (Notificacion) nuevaNotificacion;
-		this.vista.agregarNotificacion(mensaje);
+		if (mensaje.mostrarse(receptor.getInterruptorTipos()))
+				this.vista.agregarNotificacion(mensaje);
 	}
 }

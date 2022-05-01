@@ -1,5 +1,7 @@
 package emisor.modelo;
 
+import receptor.modelo.Interruptor;
+
 public class Incendio extends Notificacion {
 
 	public Incendio(String ubicacion) {
@@ -15,6 +17,12 @@ public class Incendio extends Notificacion {
 	@Override
 	public String getTipo() {
 		return "incendio";
+	}
+
+	@Override
+	public boolean mostrarse(Interruptor tipo) {
+		// TODO Auto-generated method stub
+		return tipo.isIncendios();
 	}
 
 }

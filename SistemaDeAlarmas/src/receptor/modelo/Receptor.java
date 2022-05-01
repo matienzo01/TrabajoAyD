@@ -3,14 +3,12 @@ package receptor.modelo;
 public class Receptor {
 	private static Receptor instance = null;
 	private static ComunicacionR c = null;
-	private boolean incendios,ambulancia,seguridad;
+	private Interruptor tipos;
 	
 	
 	private Receptor() {
 		c = ComunicacionR.getInstance();
-		this.incendios=false;
-		this.ambulancia=false;
-		this.seguridad=false;
+		tipos = Interruptor.getInstance();
 	}
 	
 	public static Receptor getInstance() {
@@ -25,15 +23,15 @@ public class Receptor {
 	}
 	
 	public boolean isIncendios() {
-		return incendios;
+		return tipos.isIncendios();
 	}
 
 	public boolean isAmbulancia() {
-		return ambulancia;
+		return tipos.isMedica();
 	}
 
 	public boolean isSeguridad() {
-		return seguridad;
+		return tipos.isSeguridad();
 	}
 
 	public void actualizarPuerto(int puerto) {
@@ -41,29 +39,36 @@ public class Receptor {
 	}
 	
 	public void toggleIncendio() {
-		this.incendios = !this.incendios;
+		//this.incendios = !this.incendios;
 //		this.diceEstados();
+		tipos.setIncendios(!tipos.isIncendios());
 	}
 	
 	public void toggleSeguridad() {
-		this.seguridad = !this.seguridad;
+		//this.seguridad = !this.seguridad;
 //		this.diceEstados();
+		tipos.setSeguridad(!tipos.isSeguridad());
 	}
 	
 	public void toggleAmbulancia() {
-		this.ambulancia = !this.ambulancia;
+		//this.ambulancia = !this.ambulancia;
 //		this.diceEstados();
+		tipos.setMedica(!tipos.isMedica());
 	}
 	
 	private void diceEstados() {
-		System.out.println("Incendio :" + this.incendios);
-		System.out.println("Ambulancia :" + this.ambulancia);
-		System.out.println("Seguridad :" + this.seguridad);
+		System.out.println("Incendio :" + tipos.isIncendios());
+		System.out.println("Ambulancia :" + tipos.isMedica());
+		System.out.println("Seguridad :" + tipos.isSeguridad());
 	}
 
 
 	public void comienzaEscucha() {
 		c.comienzaEscucha();
+	}
+
+	public Interruptor getInterruptorTipos() {
+		return tipos;
 	}
 
 	

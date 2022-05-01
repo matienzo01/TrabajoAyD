@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import emisor.modelo.Notificacion;
+import javax.swing.BoxLayout;
 
 public class VentanaReceptor extends JFrame implements IVistaReceptor{
 
@@ -36,16 +37,8 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	private JLabel txtNumeroPuerto;
 	private JLabel txtActualizarPuerto;
 	private JButton btnActualizarPuerto;
-	private JTabbedPane tabbedPaneAlertas;
-	private JPanel panelIncendios;
-	private JPanel panelSeguridad;
-	private JPanel panelAmbulancia;
-	private JList<Notificacion> listIncendios;
-	private JList<Notificacion> listSeguridad;
-	private JList<Notificacion> listAmbulancia;
-	private DefaultListModel<Notificacion> displayIncendio = new DefaultListModel<Notificacion>();
-	private DefaultListModel<Notificacion> displaySeguridad = new DefaultListModel<Notificacion>();
-	private DefaultListModel<Notificacion> displayAmbulancia = new DefaultListModel<Notificacion>();
+	private JList listaNotificaciones;
+	private DefaultListModel modelo = new DefaultListModel();
 
 	/**
 	 * Create the application.
@@ -124,36 +117,11 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 		this.btnActualizarPuerto.setActionCommand("actualizar puerto");
 		this.panelPuerto.add(btnActualizarPuerto);
 		
-		this.tabbedPaneAlertas = new JTabbedPane(JTabbedPane.TOP);
-		this.tabbedPaneAlertas.setBounds(10, 34, 232, 219);
-		this.frmRecepcinDeEmergencias.getContentPane().add(this.tabbedPaneAlertas);
+		this.listaNotificaciones = new JList();
+		this.listaNotificaciones.setBounds(10, 35, 244, 217);
+		this.frmRecepcinDeEmergencias.getContentPane().add(listaNotificaciones);
+		this.listaNotificaciones.setModel(modelo);
 		
-		this.panelIncendios = new JPanel();
-		this.tabbedPaneAlertas.addTab("Incendio", null, this.panelIncendios, null);
-		this.tabbedPaneAlertas.setEnabledAt(0, false);
-		this.panelIncendios.setLayout(new BorderLayout(0, 0));
-		
-		this.listIncendios = new JList<Notificacion>(displayIncendio);
-		this.listIncendios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.panelIncendios.add(this.listIncendios);
-		
-		this.panelSeguridad = new JPanel();
-		this.tabbedPaneAlertas.addTab("Seguridad", null, this.panelSeguridad, null);
-		this.tabbedPaneAlertas.setEnabledAt(1, false);
-		this.panelSeguridad.setLayout(new BorderLayout(0, 0));
-		
-		this.listSeguridad = new JList<Notificacion>(displaySeguridad);;
-		this.listSeguridad.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		this.panelSeguridad.add(this.listSeguridad);
-		
-		this.panelAmbulancia = new JPanel();
-		this.tabbedPaneAlertas.addTab("Ambulancia", null, this.panelAmbulancia, null);
-		this.tabbedPaneAlertas.setEnabledAt(2, false);
-		this.panelAmbulancia.setLayout(new BorderLayout(0, 0));
-		
-		this.listAmbulancia = new JList<Notificacion>(displayAmbulancia);
-		this.listAmbulancia.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);;
-		this.panelAmbulancia.add(this.listAmbulancia);
 		
 		this.frmRecepcinDeEmergencias.setBackground(Color.DARK_GRAY);
 		this.frmRecepcinDeEmergencias.setAlwaysOnTop(true);
@@ -196,42 +164,9 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor{
 	}
 
 	@Override
-	public void agregarNotificacion(Notificacion nuevaNotificacion) { //esto me suena a q no esta bien, pero no se me ocurrio otra forma
-		if(nuevaNotificacion.getTipo().equalsIgnoreCase("incendio")) {
-//			System.out.println("Llego un incendio");
-			this.displayIncendio.addElement(nuevaNotificacion);
-		}else if(nuevaNotificacion.getTipo().equalsIgnoreCase("seguridad")) {
-//			System.out.println("Llego un seguridad");
-			this.displaySeguridad.addElement(nuevaNotificacion);
-		}if(nuevaNotificacion.getTipo().equalsIgnoreCase("ambulancia")) {
-//			System.out.println("Llego un ambulancia");
-			this.displayAmbulancia.addElement(nuevaNotificacion);
-		}
-	}
-
-	@Override
-	public void toggleIncendio(boolean flag) {
-		this.tabbedPaneAlertas.setEnabledAt(0, flag);
-	}
-
-	@Override
-	public void toggleSeguridad(boolean flag) {
-		this.tabbedPaneAlertas.setEnabledAt(1, flag);
-	}
-
-	@Override
-	public void toggleAmbulancia(boolean flag) {
-		this.tabbedPaneAlertas.setEnabledAt(2, flag);
-	}
-
-	@Override
-	public Notificacion getSelectedValue() {
-//		System.out.println(this.tabbedPaneAlertas.getSelectedIndex());
-		int lista = this.tabbedPaneAlertas.getSelectedIndex();
-		Notificacion respuesta = null;
-		if(lista == 0) respuesta = this.listIncendios.getSelectedValue();
-		else if(lista == 1) respuesta = this.listSeguridad.getSelectedValue();
-		else if(lista == 2) respuesta = this.listAmbulancia.getSelectedValue();
-		return respuesta;
+	public void agregarNotificacion(Notificacion nuevaNotificacion) {
+		//this.panelNotificaciones.addElement(nuevaNotificacion);
+		System.out.println("amda");
+		modelo.addElement(nuevaNotificacion);
 	}
 }

@@ -12,8 +12,4 @@ public interface IVistaReceptor {
 	public void limpiaCampoPuerto();
 	public void muestraPuerto(String puerto);
 	public void agregarNotificacion(Notificacion n);
-	public void toggleIncendio(boolean flag);
-	public void toggleSeguridad(boolean flag);
-	public void toggleAmbulancia(boolean flag);
-	public Notificacion getSelectedValue();
 }
