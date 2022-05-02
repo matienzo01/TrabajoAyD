@@ -47,7 +47,7 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 						c.notifyObservers(notificacion);
 
 					}
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
