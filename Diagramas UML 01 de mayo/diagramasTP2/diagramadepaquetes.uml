@@ -3,23 +3,54 @@
   <packagedElement xmi:type="uml:Package" xmi:id="_6Vzd8MMgEey9y-y9nWuRWA" name="Sistema de Alarmas">
     <packagedElement xmi:type="uml:Package" xmi:id="_925HoMWoEeytDqYtbYQDxQ" name="Emisor">
       <packagedElement xmi:type="uml:Package" xmi:id="_aziAoMWqEeytDqYtbYQDxQ" name="Vista">
-        <packagedElement xmi:type="uml:Usage" xmi:id="_p7wukMWrEeytDqYtbYQDxQ" client="_aziAoMWqEeytDqYtbYQDxQ" supplier="_oRMDIMWrEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_8pJBUMmpEey5ePa6iNCnyQ" importedPackage="_6gocsMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_-Jk5UMmpEey5ePa6iNCnyQ" importedPackage="_oRMDIMWrEeytDqYtbYQDxQ"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_BvYUwMWsEeytDqYtbYQDxQ" name="Modelo">
-        <packagedElement xmi:type="uml:Usage" xmi:id="_f5ZwYMZ9Eey8cZjCgLHpkw" client="_BvYUwMWsEeytDqYtbYQDxQ" supplier="_5piPAMWrEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_tuXrIMmpEey5ePa6iNCnyQ" importedPackage="_C-ZvsMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_xXPPQMmpEey5ePa6iNCnyQ" importedPackage="_5piPAMWrEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_x6wMAMmpEey5ePa6iNCnyQ" importedPackage="_aoJoMMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_y1umgMmpEey5ePa6iNCnyQ" importedPackage="_OUMjQMmpEey5ePa6iNCnyQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_h06a0MZ9Eey8cZjCgLHpkw" name="Controlador"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_h06a0MZ9Eey8cZjCgLHpkw" name="Controlador">
+        <packageImport xmi:id="_kd-d0MmpEey5ePa6iNCnyQ" importedPackage="_hzRLEMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_lyI0YMmpEey5ePa6iNCnyQ" importedPackage="_BvYUwMWsEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_m0iskMmpEey5ePa6iNCnyQ" importedPackage="_aziAoMWqEeytDqYtbYQDxQ"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_JxeN0MWqEeytDqYtbYQDxQ" name="Receptor">
       <packagedElement xmi:type="uml:Package" xmi:id="_coWNMMWqEeytDqYtbYQDxQ" name="Vista">
-        <packagedElement xmi:type="uml:Usage" xmi:id="_qoGQIMWrEeytDqYtbYQDxQ" client="_coWNMMWqEeytDqYtbYQDxQ" supplier="_oRMDIMWrEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_a9xdcMmqEey5ePa6iNCnyQ" importedPackage="_OUMjQMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_dWQXwMmqEey5ePa6iNCnyQ" importedPackage="_6gocsMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_iM3hYMmqEey5ePa6iNCnyQ" importedPackage="_gWo_kMmqEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_kxmvAMmqEey5ePa6iNCnyQ" importedPackage="_oRMDIMWrEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_nKeD0MmqEey5ePa6iNCnyQ" importedPackage="_C-ZvsMmpEey5ePa6iNCnyQ"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_LIsC8MWrEeytDqYtbYQDxQ" name="Modelo">
-        <packagedElement xmi:type="uml:Usage" xmi:id="_7-XYYMWrEeytDqYtbYQDxQ" client="_LIsC8MWrEeytDqYtbYQDxQ" supplier="_5piPAMWrEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_VJPTAMmqEey5ePa6iNCnyQ" importedPackage="_C-ZvsMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_WCfPMMmqEey5ePa6iNCnyQ" importedPackage="_OUMjQMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_XMHwwMmqEey5ePa6iNCnyQ" importedPackage="_aoJoMMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_X5GykMmqEey5ePa6iNCnyQ" importedPackage="_5piPAMWrEeytDqYtbYQDxQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_qE2QsMZ9Eey8cZjCgLHpkw" name="Controlador"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_qE2QsMZ9Eey8cZjCgLHpkw" name="Controlador">
+        <packageImport xmi:id="_Ji2esMmqEey5ePa6iNCnyQ" importedPackage="_aoJoMMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_NWGG0MmqEey5ePa6iNCnyQ" importedPackage="_hzRLEMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_PybmYMmqEey5ePa6iNCnyQ" importedPackage="_LIsC8MWrEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_QNDs4MmqEey5ePa6iNCnyQ" importedPackage="_coWNMMWqEeytDqYtbYQDxQ"/>
+      </packagedElement>
     </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_C-ZvsMmpEey5ePa6iNCnyQ" name="notificacion">
+      <packageImport xmi:id="_ZGRlwMmpEey5ePa6iNCnyQ" importedPackage="_OUMjQMmpEey5ePa6iNCnyQ"/>
+      <packageImport xmi:id="_cIR-MMmpEey5ePa6iNCnyQ" importedPackage="_aoJoMMmpEey5ePa6iNCnyQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_FSXWYMmpEey5ePa6iNCnyQ" name="img"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_oRMDIMWrEeytDqYtbYQDxQ" name="javax.swing"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_5piPAMWrEeytDqYtbYQDxQ" name="java.net"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_OUMjQMmpEey5ePa6iNCnyQ" name="java.io"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_aoJoMMmpEey5ePa6iNCnyQ" name="java.util"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_6gocsMmpEey5ePa6iNCnyQ" name="java.awt">
+    <packagedElement xmi:type="uml:Package" xmi:id="_hzRLEMmpEey5ePa6iNCnyQ" name="java.awt.event"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_gWo_kMmqEey5ePa6iNCnyQ" name="javax.sound"/>
 </uml:Model>
