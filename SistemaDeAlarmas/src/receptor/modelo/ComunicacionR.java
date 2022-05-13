@@ -1,6 +1,7 @@
 package receptor.modelo;
 
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Observable;
@@ -39,13 +40,14 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 
 						Socket soc = s.accept();
 						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
+						ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
 
 						Notificacion notificacion = (Notificacion) in.readObject();
 
 						ComunicacionR c = ComunicacionR.getInstance();
 						setChanged();
 						c.notifyObservers(notificacion);
-
+						
 					}
 
 				} catch (Exception e) {
