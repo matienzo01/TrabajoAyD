@@ -18,12 +18,6 @@ public class Emisor implements IEmisor {
 	}
 
 	@Override
-	public void agregarDestinatario(String IP, int puerto) {
-		c.agregarDestinatario(IP, puerto);
-
-	}
-
-	@Override
 	public void cambiarUbicacion(String nuevaUbicacion) {
 		this.ubicacion = nuevaUbicacion;
 	}

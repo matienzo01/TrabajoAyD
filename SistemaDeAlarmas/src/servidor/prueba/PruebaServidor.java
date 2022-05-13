@@ -2,7 +2,7 @@ package servidor.prueba;
 
 import servidor.modelo.Servidor;
 
-public class Prueba {
+public class PruebaServidor {
 
 	public static void main(String[] args) {
 		Servidor s = Servidor.getInstance();

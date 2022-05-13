@@ -6,11 +6,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import notificacion.Notificacion;
+
 public class Servidor{
 	private static int puertoEmisor;
 	private static int puertoReceptor;
 	private static Servidor instance = null;
 	private ArrayList<Receptor> receptores = new ArrayList<Receptor>();
+	private ArrayList<Notificacion> historial = new ArrayList<Notificacion>(); //podriamos extender la clase notificacion para que tenga unos datos mas y usarla para historial
 	
 	private Servidor() {}
 	
@@ -44,7 +47,9 @@ public class Servidor{
 						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
 						ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
 
-						//TODO implementacion del filtrado y envio
+						Notificacion n = (Notificacion) in.readObject();
+						
+						System.out.println(n.toString());
 
 						
 					}

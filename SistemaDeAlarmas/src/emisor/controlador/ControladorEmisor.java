@@ -18,19 +18,7 @@ public class ControladorEmisor implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equalsIgnoreCase("Agregar IP")) {
-			String IP = this.vista.getNuevaIp();
-			int puerto;
-			try {
-				puerto = Integer.parseInt( this.vista.getNuevaPuerto());
-				System.out.println("Agregar IP " + IP +" " + puerto);
-				emisor.agregarDestinatario(IP, puerto);
-				this.vista.limpiaCamposIP();
-			}catch(NumberFormatException err) {
-				this.vista.mostrarError("El puerto y la IP deben ser numeros enteros");
-			}
-		}
-		else if(e.getActionCommand().equalsIgnoreCase("Cambiar Ubicacion")) {
+		if(e.getActionCommand().equalsIgnoreCase("Cambiar Ubicacion")) {
 			String nuevaUbicacion = this.vista.getUbicacion();
 			if(nuevaUbicacion == null || nuevaUbicacion.isBlank())
 				this.vista.mostrarError("Ingrese una nueva ubicacion valida");
@@ -41,15 +29,15 @@ public class ControladorEmisor implements ActionListener {
 			}
 		}else if(e.getActionCommand().equalsIgnoreCase("Incencio")) {
 			emisor.enviarNotificacion("incendio");
-			envioExitoso();
+			this.envioExitoso();
 		}
 		else if(e.getActionCommand().equalsIgnoreCase("Ambulancia")) {
 			emisor.enviarNotificacion("Ambulancia");
-			envioExitoso();
+			this.envioExitoso();
 		}
 		else if(e.getActionCommand().equalsIgnoreCase("Seguridad")) {
 			emisor.enviarNotificacion("Seguridad");
-			envioExitoso();
+			this.envioExitoso();
 		}
 
 	}
