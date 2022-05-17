@@ -1,12 +1,11 @@
 package servidor.modelo;
 
-public class Receptor {
+public class ReceptorServer {
 	private String direccion;
 	private int puerto;
 	private boolean incendio, seguridad, ambulancia;
 	
-	public Receptor(String direccion, int puerto, boolean incendio, boolean seguridad, boolean ambulancia) {
-		super();
+	public ReceptorServer(String direccion, int puerto, boolean incendio, boolean seguridad, boolean ambulancia) {
 		this.direccion = direccion;
 		this.puerto = puerto;
 		this.incendio = incendio;

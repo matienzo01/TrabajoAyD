@@ -7,10 +7,13 @@ import java.net.Socket;
 import java.util.Observable;
 
 import notificacion.Notificacion;
+import notificacion.Registro;
+import notificacion.RegistroFactory;
 
 @SuppressWarnings("deprecation")
 public class ComunicacionR extends Observable implements IComunicacionR {
 
+	private static int puertoServidor = 1234;
 	private int puerto;
 	private static ComunicacionR instance = null;
 
@@ -28,8 +31,7 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 		this.puerto = puerto;
 	}
 
-	@Override
-	public void comienzaEscucha() {
+	private void comienzaEscucha() {
 		new Thread() {
 			public void run() {
 				try {
@@ -47,7 +49,7 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 						ComunicacionR c = ComunicacionR.getInstance();
 						setChanged();
 						c.notifyObservers(notificacion);
-						
+
 					}
 
 				} catch (Exception e) {
@@ -57,4 +59,27 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 		}.start();
 	}
 
+	@Override
+	public void registraEnServidor(boolean ambulancia, boolean seguridad, boolean incencio) {
+		try {
+			Socket socket = new Socket("localhost", ComunicacionR.puertoServidor);
+			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+			ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+
+			Registro r = RegistroFactory.getRegistro(ambulancia, incencio, seguridad, "localhost", puerto);
+
+			System.out.println(r.toString());
+
+			out.writeObject(r);
+
+			out.close();
+			socket.close();
+
+			this.comienzaEscucha();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 }

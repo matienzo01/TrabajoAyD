@@ -54,14 +54,19 @@ public class Receptor implements IReceptor {
 		tipos.setMedica(!tipos.isMedica());
 	}
 
-	@Override
-	public void comienzaEscucha() {
-		c.comienzaEscucha();
-	}
+//	@Override
+//	public void comienzaEscucha() {
+//		c.comienzaEscucha();
+//	}
 
 	@Override
 	public Interruptor getInterruptorTipos() {
 		return tipos;
+	}
+
+	@Override
+	public void registraEnServidor() {
+		c.registraEnServidor(isAmbulancia(), isSeguridad(), isIncendios());
 	}
 
 }

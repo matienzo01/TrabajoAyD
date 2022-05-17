@@ -9,6 +9,8 @@ public class PruebaReceptor {
 	public static void main(String[] args) {
 		IVistaReceptor vista = new VentanaReceptor();
 		ControladorReceptor c = new ControladorReceptor(vista);
-		Receptor.getInstance().comienzaEscucha();
+		Receptor.getInstance().toggleIncendio();
+		Receptor.getInstance().actualizarPuerto(2222);
+		Receptor.getInstance().registraEnServidor();
 	}
 }
