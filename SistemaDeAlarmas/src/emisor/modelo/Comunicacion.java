@@ -8,7 +8,7 @@ import notificacion.Notificacion;
 
 public class Comunicacion implements IEmergencia {
 
-	private static int puertoEmisor = 1234;
+	private static int puertoEmisor = 1111;
 	// private HashMap<String, Integer> destinatarios = new HashMap<String,
 	// Integer>();
 

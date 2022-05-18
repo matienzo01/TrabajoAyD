@@ -5,11 +5,10 @@ import notificacion.Interruptor;
 public class Receptor implements IReceptor {
 	private static IReceptor instance = null;
 	private static IComunicacionR c = null;
-	private Interruptor tipos;
+	private Interruptor tipos = new Interruptor(false, false, false);
 
 	private Receptor() {
 		c = ComunicacionR.getInstance();
-		tipos = Interruptor.getInstance();
 	}
 
 	public static IReceptor getInstance() {
@@ -66,7 +65,7 @@ public class Receptor implements IReceptor {
 
 	@Override
 	public void registraEnServidor() {
-		c.registraEnServidor(isAmbulancia(), isSeguridad(), isIncendios());
+		c.registraEnServidor(tipos);
 	}
 
 }

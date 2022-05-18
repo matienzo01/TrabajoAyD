@@ -4,28 +4,26 @@ import java.io.Serializable;
 
 public class Registro implements Serializable{
 	
-	private boolean ambulancia, incendio, seguridad;
+	private Interruptor tipos;
 	private String ubicacion;
 	private int puerto;
 	
-	public Registro(boolean ambulancia, boolean incendio, boolean seguridad, String ubicacion, int puerto) {
-		this.ambulancia = ambulancia;
-		this.incendio = incendio;
-		this.seguridad = seguridad;
+	public Registro(Interruptor tipos, String ubicacion, int puerto) {
 		this.ubicacion = ubicacion;
 		this.puerto = puerto;
+		this.tipos = tipos;
 	}
 
 	public boolean isAmbulancia() {
-		return ambulancia;
+		return tipos.isMedica();
 	}
 
 	public boolean isIncendio() {
-		return incendio;
+		return tipos.isIncendios();
 	}
 
 	public boolean isSeguridad() {
-		return seguridad;
+		return tipos.isMedica();
 	}
 
 	public String getUbicacion() {
@@ -36,11 +34,11 @@ public class Registro implements Serializable{
 		return puerto;
 	}
 
-	@Override
-	public String toString() {
-		return "Registro [ambulancia=" + ambulancia + ", incendio=" + incendio + ", seguridad=" + seguridad
-				+ ", ubicacion=" + ubicacion + ", puerto=" + puerto + "]";
+	public Interruptor getTipos() {
+		return tipos;
 	}
+
+	
 	
 	
 

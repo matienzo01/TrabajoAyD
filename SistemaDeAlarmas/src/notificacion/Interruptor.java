@@ -1,19 +1,14 @@
 package notificacion;
 
-public class Interruptor {
+import java.io.Serializable;
+
+public class Interruptor implements Serializable{
 	private boolean incendios, medica, seguridad;
-	private static Interruptor instance = null;
 
-	private Interruptor() {
-		this.incendios = false;
-		this.medica = false;
-		this.seguridad = false;
-	}
-
-	public static Interruptor getInstance() {
-		if (instance == null)
-			instance = new Interruptor();
-		return instance;
+	public Interruptor(boolean incendios, boolean medica, boolean seguridad) {
+		this.incendios = incendios;
+		this.medica = medica;
+		this.seguridad = seguridad;
 	}
 
 	public boolean isIncendios() {

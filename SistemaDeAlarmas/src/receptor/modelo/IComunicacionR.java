@@ -1,9 +1,11 @@
 package receptor.modelo;
 
+import notificacion.Interruptor;
+
 public interface IComunicacionR {
 
 	public void actualizarPuerto(int puerto);
 
-	public void registraEnServidor(boolean ambulancia, boolean seguridad, boolean incencio);
+	public void registraEnServidor(Interruptor tipos);
 
 }

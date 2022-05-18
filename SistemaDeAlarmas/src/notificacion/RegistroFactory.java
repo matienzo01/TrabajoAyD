@@ -2,10 +2,10 @@ package notificacion;
 
 public class RegistroFactory {
 	
-	public static Registro getRegistro(boolean ambulancia, boolean incendio, boolean seguridad, String ubicacion, int puerto){
+	public static Registro getRegistro(Interruptor tipos, String ubicacion, int puerto){
 		Registro respuesta = null;
 		
-		respuesta = new Registro(ambulancia, incendio, seguridad, "localhost", puerto);
+		respuesta = new Registro(tipos, "localhost", puerto);
 		
 		return respuesta;
 	}

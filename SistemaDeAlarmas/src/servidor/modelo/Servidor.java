@@ -5,7 +5,9 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import emisor.modelo.Comunicacion;
 import notificacion.Notificacion;
 import notificacion.Registro;
 
@@ -47,10 +49,13 @@ public class Servidor implements IServidor {
 						ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
 
 						Notificacion n = (Notificacion) in.readObject();
+						
+						System.out.println(n.toString());
 
 						// TODO que se mande solamente a los receptores que tienen el tipo, si se envio
 						// a al menos 1, confirma el envio
 
+						Servidor.getInstance().reparteNotificacion(n);
 					}
 
 				} catch (Exception e) {
@@ -81,7 +86,7 @@ public class Servidor implements IServidor {
 						System.out.println("Los ambulancia los escucha: " + r.isAmbulancia());
 
 						ReceptorServer rs = ReceptorServerFactory.getReceptorServer(r.getUbicacion(), r.getPuerto(),
-								r.isIncendio(), r.isSeguridad(), r.isAmbulancia());
+								r.getTipos());
 						Servidor.getInstance().agregarReceptor(rs);
 					}
 
@@ -96,6 +101,27 @@ public class Servidor implements IServidor {
 	public void agregarReceptor(ReceptorServer rs) {
 		this.receptores.add(rs);
 
+	}
+
+	@Override
+	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound {
+		Iterator<ReceptorServer> it = this.receptores.iterator();
+		while(it.hasNext()) {
+			ReceptorServer rs = it.next();
+			if(n.mostrarse(rs.getInterruptor())) {
+				try {
+					Socket socket = new Socket(rs.getDireccion(), rs.getPuerto());
+					ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+
+					out.writeObject(n);
+
+					out.close();
+					socket.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 }

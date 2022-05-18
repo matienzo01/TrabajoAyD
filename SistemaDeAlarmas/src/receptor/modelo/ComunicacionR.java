@@ -6,6 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Observable;
 
+import notificacion.Interruptor;
 import notificacion.Notificacion;
 import notificacion.Registro;
 import notificacion.RegistroFactory;
@@ -43,12 +44,16 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 						Socket soc = s.accept();
 						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
 						ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
+						
+						System.out.println(s.getSoTimeout());
 
 						Notificacion notificacion = (Notificacion) in.readObject();
+						
+						System.out.println(notificacion.toString());
 
 						ComunicacionR c = ComunicacionR.getInstance();
-						setChanged();
-						c.notifyObservers(notificacion);
+						/*setChanged();
+						c.notifyObservers(notificacion);*/
 
 					}
 
@@ -60,13 +65,13 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 	}
 
 	@Override
-	public void registraEnServidor(boolean ambulancia, boolean seguridad, boolean incencio) {
+	public void registraEnServidor(Interruptor tipos) {
 		try {
 			Socket socket = new Socket("localhost", ComunicacionR.puertoServidor);
 			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 			ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
-			Registro r = RegistroFactory.getRegistro(ambulancia, incencio, seguridad, "localhost", puerto);
+			Registro r = RegistroFactory.getRegistro(tipos, "localhost", puerto);
 
 			System.out.println(r.toString());
 

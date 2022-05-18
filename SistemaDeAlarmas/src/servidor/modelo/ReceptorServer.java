@@ -1,16 +1,17 @@
 package servidor.modelo;
 
+import notificacion.Interruptor;
+
 public class ReceptorServer {
+
 	private String direccion;
 	private int puerto;
-	private boolean incendio, seguridad, ambulancia;
-	
-	public ReceptorServer(String direccion, int puerto, boolean incendio, boolean seguridad, boolean ambulancia) {
+	private Interruptor interruptor;
+
+	public ReceptorServer(String direccion, int puerto, Interruptor tipos) {
 		this.direccion = direccion;
 		this.puerto = puerto;
-		this.incendio = incendio;
-		this.seguridad = seguridad;
-		this.ambulancia = ambulancia;
+		this.interruptor = tipos;
 	}
 
 	public String getDireccion() {
@@ -22,15 +23,19 @@ public class ReceptorServer {
 	}
 
 	public boolean isIncendio() {
-		return incendio;
+		return interruptor.isIncendios();
 	}
 
 	public boolean isSeguridad() {
-		return seguridad;
+		return interruptor.isSeguridad();
 	}
 
 	public boolean isAmbulancia() {
-		return ambulancia;
+		return interruptor.isMedica();
+	}
+
+	public Interruptor getInterruptor() {
+		return interruptor;
 	}
 	
 	
