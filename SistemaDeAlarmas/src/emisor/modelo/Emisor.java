@@ -23,11 +23,13 @@ public class Emisor implements IEmisor {
 	}
 
 	@Override
-	public void enviarNotificacion(String tipo) {
+	public String enviarNotificacion(String tipo) {
 		if(this.ubicacion!=null) {
 			Notificacion n = NotificacionFactory.getNotificacion(tipo, this.ubicacion);
-			c.enviaNotificacion(n);
+			return c.enviaNotificacion(n);
 		}
+		else
+			return "Debe especificar la ubicacion antes de solicitar emergencia";
 	}
 
 	@Override

@@ -28,25 +28,22 @@ public class ControladorEmisor implements ActionListener {
 				this.vista.limpiaCampoNuevaUbicacion();
 			}
 		}else if(e.getActionCommand().equalsIgnoreCase("Incencio")) {
-			emisor.enviarNotificacion("incendio");
-			this.envioExitoso();
+			
+			this.envioExitoso(emisor.enviarNotificacion("incendio"));
 		}
 		else if(e.getActionCommand().equalsIgnoreCase("Ambulancia")) {
-			emisor.enviarNotificacion("Ambulancia");
-			this.envioExitoso();
+			
+			this.envioExitoso(emisor.enviarNotificacion("Ambulancia"));
 		}
 		else if(e.getActionCommand().equalsIgnoreCase("Seguridad")) {
-			emisor.enviarNotificacion("Seguridad");
-			this.envioExitoso();
+			
+			this.envioExitoso(emisor.enviarNotificacion("Seguridad"));
 		}
 
 	}
-	
-	private void envioExitoso() {
-		if(Emisor.getInstance().getUbicacion()!=null)
-			vista.mostrarEnvio("Se notificó de la emergencia exitosamente.");
-		else
-			vista.mostrarError("Debe especificar la ubicacion antes de solicitar ayuda.");
+
+	private void envioExitoso(String resultado) {
+		vista.mostrarEnvio(resultado);
 	}
-	
+
 }

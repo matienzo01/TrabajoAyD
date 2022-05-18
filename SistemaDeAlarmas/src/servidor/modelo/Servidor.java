@@ -16,7 +16,7 @@ public class Servidor implements IServidor {
 	private static int puertoNuevosReceptores = 1234;
 	private static Servidor instance = null;
 	private ArrayList<ReceptorServer> receptores = new ArrayList<ReceptorServer>();
-	private ArrayList<Notificacion> historial = new ArrayList<Notificacion>(); // podriamos extender la clase
+	private ArrayList<Notificacion> historial = new ArrayList<Notificacion>();  // podriamos extender la clase
 																				// notificacion para que tenga unos
 																				// datos mas y usarla para historial
 
@@ -55,7 +55,14 @@ public class Servidor implements IServidor {
 						// TODO que se mande solamente a los receptores que tienen el tipo, si se envio
 						// a al menos 1, confirma el envio
 
-						Servidor.getInstance().reparteNotificacion(n);
+						try {
+							Servidor.getInstance().reparteNotificacion(n);
+							out.writeObject("Se envio con exito su emergencia.");
+						}
+						catch (Exception e) {
+							out.writeObject(e.getMessage());
+						}
+
 					}
 
 				} catch (Exception e) {
@@ -105,10 +112,13 @@ public class Servidor implements IServidor {
 
 	@Override
 	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound {
+		int bandera = 0 ;
 		Iterator<ReceptorServer> it = this.receptores.iterator();
 		while(it.hasNext()) {
+			bandera = 1;
 			ReceptorServer rs = it.next();
 			if(n.mostrarse(rs.getInterruptor())) {
+				bandera = 2;
 				try {
 					Socket socket = new Socket(rs.getDireccion(), rs.getPuerto());
 					ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
@@ -122,6 +132,10 @@ public class Servidor implements IServidor {
 				}
 			}
 		}
+		if(bandera == 0)
+			throw new NoReceptoresFound("No hay receptores registrados.");
+		else if(bandera ==1)
+			throw new NoReceptoresFound("No hay receptores que atiendan su emergencia.");
 	}
 
 }

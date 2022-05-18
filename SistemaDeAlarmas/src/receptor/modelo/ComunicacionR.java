@@ -43,7 +43,7 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 
 						Socket soc = s.accept();
 						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
-						ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
+						//ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
 						
 						System.out.println(s.getSoTimeout());
 
@@ -52,8 +52,8 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 						System.out.println(notificacion.toString());
 
 						ComunicacionR c = ComunicacionR.getInstance();
-						/*setChanged();
-						c.notifyObservers(notificacion);*/
+						setChanged();
+						c.notifyObservers(notificacion);
 
 					}
 

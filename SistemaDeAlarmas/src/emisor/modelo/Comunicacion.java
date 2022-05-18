@@ -9,24 +9,25 @@ import notificacion.Notificacion;
 public class Comunicacion implements IEmergencia {
 
 	private static int puertoEmisor = 1111;
-	// private HashMap<String, Integer> destinatarios = new HashMap<String,
-	// Integer>();
 
 	@Override
-	public void enviaNotificacion(Notificacion notificacion) {
+	public String enviaNotificacion(Notificacion notificacion) {
+		String resultado = null ;
 		try {
 			Socket socket = new Socket("localhost", Comunicacion.puertoEmisor);
 			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 			ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
 			out.writeObject(notificacion);
+			resultado = (String) in.readObject();
 
 			out.close();
+			
 			socket.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		return resultado;
 	}
 
 }
