@@ -17,5 +17,9 @@ public interface IReceptor {
 	public Interruptor getInterruptorTipos();
 	
 	public void registraEnServidor();
+	
+	public boolean isIncendios();
+	public boolean isAmbulancia();
+	public boolean isSeguridad();
 
 }

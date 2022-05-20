@@ -29,20 +29,25 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor {
 	private JFrame frmRecepcinDeEmergencias;
 	private JTextField textFieldNuevoPuerto;
 	private JButton botonConfirmar;
-	private JLabel labelTitulo;
 	private JTabbedPane panelConfiguracion;
-	private JPanel panelTipos;
-	private JLabel titlePanelTipos;
-	private JCheckBox checkIncendio;
-	private JCheckBox checkMedica;
-	private JCheckBox checkSeguridad;
 	private JPanel panelPuerto;
 	private JLabel txtPuerto;
 	private JLabel txtNumeroPuerto;
-	private JButton btnActualizarPuerto;
+	private JButton btnRegistrar;
 	private JList<Notificacion> listaNotificaciones;
 	private DefaultListModel<Notificacion> modelo = new DefaultListModel<Notificacion>();
-
+	//private JPanel panel;
+	private JList<Notificacion> listaConfirmadas;
+	private DefaultListModel<Notificacion> modeloConfirmadas = new DefaultListModel<Notificacion>();
+	private JTabbedPane panelNotificaciones;
+	private JLabel titlePanelTipos ;
+	private JCheckBox checkIncendio;
+	private JCheckBox checkMedica;
+	private JCheckBox checkSeguridad;
+	private JLabel lblInformacion;
+	private JLabel lblIncendios;
+	private JLabel lblMedica;
+	private JLabel lblSeguridad;
 	/**
 	 * Create the application.
 	 */
@@ -52,85 +57,108 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor {
 		this.frmRecepcinDeEmergencias.setTitle("Emergencias");
 		this.frmRecepcinDeEmergencias.getContentPane().setBackground(Color.DARK_GRAY);
 
-		this.botonConfirmar = new JButton("Confirmar");
-		this.botonConfirmar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		this.botonConfirmar.setBounds(77, 263, 96, 23);
-		this.botonConfirmar.setBackground(new Color(144, 238, 144));
-		this.botonConfirmar.setActionCommand("confirmar");
-
 		this.frmRecepcinDeEmergencias.getContentPane().setLayout(null);
-		this.frmRecepcinDeEmergencias.getContentPane().add(botonConfirmar);
-
-		this.labelTitulo = new JLabel("Ultimas notificaciones : ");
-		this.labelTitulo.setForeground(new Color(240, 255, 255));
-		this.labelTitulo.setBounds(10, 10, 145, 14);
-		this.frmRecepcinDeEmergencias.getContentPane().add(labelTitulo);
 
 		this.panelConfiguracion = new JTabbedPane(JTabbedPane.TOP);
-		this.panelConfiguracion.setBounds(10, 289, 232, 131);
+		this.panelConfiguracion.setBounds(10, 11, 244, 293);
 		this.frmRecepcinDeEmergencias.getContentPane().add(panelConfiguracion);
 
-		this.panelTipos = new JPanel();
-		this.panelConfiguracion.addTab("Tipos", null, panelTipos, null);
-		this.panelTipos.setLayout(null);
-
-		this.titlePanelTipos = new JLabel("Seleccione tipos de notificacion");
-		this.titlePanelTipos.setBounds(0, 0, 227, 14);
-		this.panelTipos.add(titlePanelTipos);
-
-		this.checkIncendio = new JCheckBox("Incendios");
-		this.checkIncendio.setBounds(20, 21, 97, 23);
-		this.checkIncendio.setActionCommand("incendio");
-		this.panelTipos.add(checkIncendio);
-
-		this.checkMedica = new JCheckBox("Asistencias medica");
-		this.checkMedica.setBounds(20, 47, 167, 23);
-		this.checkMedica.setActionCommand("medico");
-		this.panelTipos.add(checkMedica);
-
-		this.checkSeguridad = new JCheckBox("Personal de seguridad");
-		this.checkSeguridad.setBounds(20, 73, 185, 23);
-		this.checkSeguridad.setActionCommand("seguridad");
-		this.panelTipos.add(checkSeguridad);
-
 		this.panelPuerto = new JPanel();
-		this.panelConfiguracion.addTab("Puerto", null, panelPuerto, null);
+		this.panelConfiguracion.addTab("Configuracion", null, panelPuerto, null);
 		this.panelPuerto.setLayout(null);
+		
+				this.textFieldNuevoPuerto = new JTextField();
+				this.textFieldNuevoPuerto.setBounds(79, 44, 86, 20);
+				this.panelPuerto.add(textFieldNuevoPuerto);
+				this.textFieldNuevoPuerto.setColumns(10);
 
-		this.txtPuerto = new JLabel("Puerto asignado: ");
-		this.txtPuerto.setBounds(10, 5, 126, 14);
+		this.txtPuerto = new JLabel("Puerto : ");
+		this.txtPuerto.setBounds(10, 47, 126, 14);
 		this.panelPuerto.add(txtPuerto);
 
 		this.txtNumeroPuerto = new JLabel("-");
-		this.txtNumeroPuerto.setBounds(119, 5, 46, 14);
+		this.txtNumeroPuerto.setBounds(114, 47, 46, 14);
 		this.panelPuerto.add(txtNumeroPuerto);
 
-		this.textFieldNuevoPuerto = new JTextField();
-		this.textFieldNuevoPuerto.setBounds(10, 72, 86, 20);
-		this.panelPuerto.add(textFieldNuevoPuerto);
-		this.textFieldNuevoPuerto.setColumns(10);
-
-		this.btnActualizarPuerto = new JButton("Asignar");
-		this.btnActualizarPuerto.setBounds(128, 71, 89, 23);
-		this.btnActualizarPuerto.setActionCommand("actualizar puerto");
-		this.panelPuerto.add(btnActualizarPuerto);
-
-		this.listaNotificaciones = new JList<Notificacion>();
-		this.listaNotificaciones.setBounds(10, 35, 244, 217);
-		this.frmRecepcinDeEmergencias.getContentPane().add(listaNotificaciones);
-		this.listaNotificaciones.setModel(modelo);
+		this.btnRegistrar = new JButton("Registrarse");
+		this.btnRegistrar.setBounds(76, 208, 89, 23);
+		this.btnRegistrar.setActionCommand("registro");
+		this.panelPuerto.add(btnRegistrar);
+		
+		this.titlePanelTipos = new JLabel("Seleccione tipos de notificacion");
+		this.titlePanelTipos.setBounds(10, 97, 227, 14);
+		this.panelPuerto.add(titlePanelTipos);
+		
+		this.checkIncendio = new JCheckBox("Incendios");
+		this.checkIncendio.setActionCommand("incendio");
+		this.checkIncendio.setBounds(10, 118, 97, 23);
+		this.panelPuerto.add(checkIncendio);
+		
+		this.checkMedica = new JCheckBox("Asistencias medica");
+		this.checkMedica.setActionCommand("medico");
+		this.checkMedica.setBounds(10, 144, 167, 23);
+		this.panelPuerto.add(checkMedica);
+		
+		this.checkSeguridad = new JCheckBox("Personal de seguridad");
+		this.checkSeguridad.setActionCommand("seguridad");
+		this.checkSeguridad.setBounds(10, 170, 185, 23);
+		this.panelPuerto.add(checkSeguridad);
+		
+		this.panelNotificaciones = new JTabbedPane(JTabbedPane.TOP);
+		this.panelNotificaciones.setVisible(false);
+		panelNotificaciones.setBounds(10, 11, 244, 246);
+		frmRecepcinDeEmergencias.getContentPane().add(panelNotificaciones);
+				
+						this.listaNotificaciones = new JList<Notificacion>();
+						panelNotificaciones.addTab("Nuevas", null, listaNotificaciones, null);
+						this.listaNotificaciones.setModel(modelo);
+						
+						this.listaConfirmadas = new JList<Notificacion>();
+						panelNotificaciones.addTab("Confirmadas", null, listaConfirmadas, null);
+						this.listaConfirmadas.setModel(modeloConfirmadas);
+						
+								this.botonConfirmar = new JButton("Confirmar");
+								this.botonConfirmar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+								this.botonConfirmar.setBounds(88, 268, 96, 23);
+								this.botonConfirmar.setBackground(new Color(144, 238, 144));
+								this.botonConfirmar.setActionCommand("confirmar");
+								this.frmRecepcinDeEmergencias.getContentPane().add(botonConfirmar);
+								
+								this.lblInformacion = new JLabel("");
+								this.lblInformacion.setForeground(Color.WHITE);
+								this.lblInformacion.setBounds(10, 315, 244, 30);
+								this.frmRecepcinDeEmergencias.getContentPane().add(this.lblInformacion);
+								
+								this.lblIncendios = new JLabel("Incendios");
+								this.lblIncendios.setForeground(new Color(240, 230, 140));
+								this.lblIncendios.setBounds(10, 353, 174, 14);
+								this.frmRecepcinDeEmergencias.getContentPane().add(this.lblIncendios);
+								this.lblIncendios.setVisible(false);
+								
+								this.lblMedica = new JLabel("Asistencias medicas");
+								this.lblMedica.setForeground(new Color(250, 128, 114));
+								this.lblMedica.setBounds(10, 381, 190, 14);
+								this.frmRecepcinDeEmergencias.getContentPane().add(this.lblMedica);
+								this.lblMedica.setVisible(false);
+								
+								this.lblSeguridad = new JLabel("Personal de seguridad");
+								this.lblSeguridad.setForeground(new Color(100, 149, 237));
+								this.lblSeguridad.setBounds(10, 406, 190, 14);
+								this.frmRecepcinDeEmergencias.getContentPane().add(this.lblSeguridad);
+								this.lblSeguridad.setVisible(false);
+				
 
 		this.frmRecepcinDeEmergencias.setBackground(Color.DARK_GRAY);
 		this.frmRecepcinDeEmergencias.setAlwaysOnTop(true);
 		this.frmRecepcinDeEmergencias.setResizable(false);
-		this.frmRecepcinDeEmergencias.setBounds(100, 100, 270, 460);
+		this.frmRecepcinDeEmergencias.setBounds(100, 100, 283, 466);
 		this.frmRecepcinDeEmergencias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frmRecepcinDeEmergencias.setVisible(true);
 	}
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-		this.btnActualizarPuerto.addActionListener(actionListener);
+		this.btnRegistrar.addActionListener(actionListener);
 		this.checkIncendio.addActionListener(actionListener);
 		this.checkMedica.addActionListener(actionListener);
 		this.checkSeguridad.addActionListener(actionListener);
@@ -163,7 +191,7 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor {
 	@SuppressWarnings("deprecation")
 	public void puertoDefinido() {
 		this.textFieldNuevoPuerto.hide();
-		this.btnActualizarPuerto.hide();
+		this.btnRegistrar.hide();
 	}
 	
 	@Override
@@ -191,6 +219,25 @@ public class VentanaReceptor extends JFrame implements IVistaReceptor {
 	@Override
 	public void eliminaNotificacion(Notificacion n) {
 		this.modelo.removeElement(n);
+	}
+
+	@Override
+	public void agregaConfirmada(Notificacion n) {
+		this.modeloConfirmadas.addElement(n);
+	}
+
+	@Override
+	public void cambioDePantalla(boolean incendio,boolean medica, boolean seguridad) {
+		this.panelConfiguracion.setVisible(false);
+		this.panelNotificaciones.setVisible(true);
+		String info = "Receptor en puerto = "+ this.txtNumeroPuerto.getText();
+		this.lblInformacion.setText(info);
+		if(incendio)
+			this.lblIncendios.setVisible(true);
+		if(medica)
+			this.lblMedica.setVisible(true);
+		if(seguridad)
+			this.lblSeguridad.setVisible(true);
 	}
 }
 	

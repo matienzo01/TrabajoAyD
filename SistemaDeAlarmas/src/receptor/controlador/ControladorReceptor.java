@@ -21,12 +21,11 @@ public class ControladorReceptor implements ActionListener, Observer {
 		this.vista.setActionListener(this);
 		this.receptor = Receptor.getInstance();
 		Receptor.getC().addObserver(this);
-
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equalsIgnoreCase("actualizar puerto")) {
+		if (e.getActionCommand().equalsIgnoreCase("registro")) {
 			try {
 				String puertoString = this.vista.getNuevoPuerto();
 				int puerto = Integer.parseInt(puertoString);
@@ -34,7 +33,8 @@ public class ControladorReceptor implements ActionListener, Observer {
 				this.vista.limpiaCampoPuerto();
 				this.vista.muestraPuerto(puertoString);
 				this.vista.puertoDefinido();
-				//this.receptor.comienzaEscucha();
+				this.vista.cambioDePantalla(this.receptor.isIncendios(),this.receptor.isAmbulancia(),this.receptor.isSeguridad());
+				this.receptor.registraEnServidor();
 			} catch (NumberFormatException err) {
 				this.vista.mostrarError("El puerto debe ser un numero entero");
 			}
@@ -47,6 +47,7 @@ public class ControladorReceptor implements ActionListener, Observer {
 		} else if (e.getActionCommand().equalsIgnoreCase("confirmar")) {
 			Notificacion n = this.vista.getSelectedNotification();
 			this.vista.eliminaNotificacion(n);
+			this.vista.agregaConfirmada(n);
 		}
 	}
 

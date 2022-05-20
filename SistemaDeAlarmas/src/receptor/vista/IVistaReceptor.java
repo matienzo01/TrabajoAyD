@@ -15,4 +15,6 @@ public interface IVistaReceptor {
 	public void puertoDefinido();
 	public Notificacion getSelectedNotification();
 	public void eliminaNotificacion(Notificacion n);
+	void agregaConfirmada(Notificacion n);
+	void cambioDePantalla(boolean i,boolean m,boolean s);
 }
