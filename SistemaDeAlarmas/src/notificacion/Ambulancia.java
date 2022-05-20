@@ -18,4 +18,9 @@ public class Ambulancia extends Notificacion {
 		return tipo.isMedica();
 	}
 
+	@Override
+	public String toStringAdmin() {
+		return "Notificacion Medica " + super.toStringAdmin();
+	}
+
 }

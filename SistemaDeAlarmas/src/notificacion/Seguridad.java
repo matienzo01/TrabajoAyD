@@ -15,5 +15,10 @@ public class Seguridad extends Notificacion {
 	public boolean mostrarse(Interruptor tipo) {
 		return tipo.isSeguridad();
 	}
+	
+	@Override
+	public String toStringAdmin() {
+		return "Notificacion de seguridad " + super.toStringAdmin();
+	}
 
 }

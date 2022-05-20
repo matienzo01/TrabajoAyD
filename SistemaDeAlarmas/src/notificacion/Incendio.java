@@ -19,4 +19,8 @@ public class Incendio extends Notificacion {
 		return tipo.isIncendios();
 	}
 
+	@Override
+	public String toStringAdmin() {
+		return "Notificacion de Incendio " + super.toStringAdmin();
+	}
 }

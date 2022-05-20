@@ -2,23 +2,25 @@ package servidor.modelo;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.ConnectException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import emisor.modelo.Comunicacion;
 import notificacion.Notificacion;
 import notificacion.Registro;
+import servidor.vista.IVistaServidor;
+import servidor.vista.VistaServidor;
 
 public class Servidor implements IServidor {
 	private static int puertoEmisores = 1111;
 	private static int puertoNuevosReceptores = 1234;
 	private static Servidor instance = null;
 	private ArrayList<ReceptorServer> receptores = new ArrayList<ReceptorServer>();
-	private ArrayList<Notificacion> historial = new ArrayList<Notificacion>();  // podriamos extender la clase
-																				// notificacion para que tenga unos
-																				// datos mas y usarla para historial
+	private ArrayList<Notificacion> historial = new ArrayList<Notificacion>(); 
+
+	private IVistaServidor vista = new VistaServidor();
 
 	private Servidor() {
 	}
@@ -33,6 +35,8 @@ public class Servidor implements IServidor {
 	public void initialize() {
 		this.comienzaEscuchaEmisores();
 		this.comienzaEscuchaNuevosReceptor();
+		this.vista.setPuertoEmisores(puertoEmisores);
+		this.vista.setPuertoReceptores(puertoNuevosReceptores);
 	}
 
 	private void comienzaEscuchaEmisores() {
@@ -49,20 +53,19 @@ public class Servidor implements IServidor {
 						ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
 
 						Notificacion n = (Notificacion) in.readObject();
-						
-						System.out.println(n.toString());
-
-						// TODO que se mande solamente a los receptores que tienen el tipo, si se envio
-						// a al menos 1, confirma el envio
 
 						try {
 							Servidor.getInstance().reparteNotificacion(n);
+			
 							out.writeObject("Se envio con exito su emergencia.");
-						}
-						catch (Exception e) {
+						} catch (NoReceptoresFound e) {
+							out.writeObject(e.getMessage());
+						}catch(ServidorDesconectadoException e) {
+							Servidor.getInstance().eliminaReceptor(e.getDireccion(), e.getPuerto());
 							out.writeObject(e.getMessage());
 						}
-
+						Servidor.getInstance().agregaAlHistorial(n);
+						Servidor.getInstance().logEnvioExitoso(n);
 					}
 
 				} catch (Exception e) {
@@ -70,6 +73,11 @@ public class Servidor implements IServidor {
 				}
 			}
 		}.start();
+	}
+
+	protected void agregaAlHistorial(Notificacion n) {
+		this.historial.add(n);
+		
 	}
 
 	private void comienzaEscuchaNuevosReceptor() {
@@ -87,14 +95,11 @@ public class Servidor implements IServidor {
 						ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
 
 						Registro r = (Registro) in.readObject();
-						System.out.println("Se ha registrado un nuevo receptor que escucha en puerto " + r.getPuerto());
-						System.out.println("Los incendios los escucha: " + r.isIncendio());
-						System.out.println("Los seguridad los escucha: " + r.isSeguridad());
-						System.out.println("Los ambulancia los escucha: " + r.isAmbulancia());
-
+						
 						ReceptorServer rs = ReceptorServerFactory.getReceptorServer(r.getUbicacion(), r.getPuerto(),
 								r.getTipos());
 						Servidor.getInstance().agregarReceptor(rs);
+						Servidor.getInstance().logNuevoRegistroReceptor(r.getUbicacion(), r.getPuerto(), r.isIncendio(), r.isSeguridad(), r.isAmbulancia());
 					}
 
 				} catch (Exception e) {
@@ -111,13 +116,13 @@ public class Servidor implements IServidor {
 	}
 
 	@Override
-	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound {
-		int bandera = 0 ;
+	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound, ServidorDesconectadoException {
+		int bandera = 0;
 		Iterator<ReceptorServer> it = this.receptores.iterator();
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			bandera = 1;
 			ReceptorServer rs = it.next();
-			if(n.mostrarse(rs.getInterruptor())) {
+			if (n.mostrarse(rs.getInterruptor())) {
 				bandera = 2;
 				try {
 					Socket socket = new Socket(rs.getDireccion(), rs.getPuerto());
@@ -127,15 +132,44 @@ public class Servidor implements IServidor {
 
 					out.close();
 					socket.close();
-				} catch (Exception e) {
+				}catch(ConnectException e) {
+					throw new ServidorDesconectadoException(e.getMessage(), rs.getDireccion(), rs.getPuerto());
+				}catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		}
-		if(bandera == 0)
+		if (bandera == 0)
 			throw new NoReceptoresFound("No hay receptores registrados.");
-		else if(bandera ==1)
+		else if (bandera == 1)
 			throw new NoReceptoresFound("No hay receptores que atiendan su emergencia.");
+	}
+
+	public void logNuevoRegistroReceptor(String direccion, int puerto, boolean incendio, boolean seguridad,
+			boolean amblancia) {
+		this.vista.agregaLogRegistro(direccion, puerto, incendio, seguridad, amblancia);
+	}
+	
+	public void logEnvioExitoso(Notificacion n) {
+		this.vista.agregaLogEmisor(n.toStringAdmin());
+		
+	}
+	
+	public void logErrorAlEnvio(String error) {
+		this.vista.agregaLogError(error);
+	}
+	
+	protected void eliminaReceptor(String direccion, int puerto) {
+		Iterator<ReceptorServer> it = this.receptores.iterator();
+		
+		while(it.hasNext()) {
+			ReceptorServer rs = it.next();
+			if(rs.getDireccion() == direccion && rs.getPuerto() == puerto) {
+				this.receptores.remove(rs);
+				break;
+			}
+		}
+		
 	}
 
 }
