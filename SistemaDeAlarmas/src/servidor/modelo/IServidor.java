@@ -7,5 +7,5 @@ public interface IServidor {
 	
 	public void initialize();
 	
-	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound, ServidorDesconectadoException;
+	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound;
 }

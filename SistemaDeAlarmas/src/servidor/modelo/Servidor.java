@@ -60,9 +60,6 @@ public class Servidor implements IServidor {
 							out.writeObject("Se envio con exito su emergencia.");
 						} catch (NoReceptoresFound e) {
 							out.writeObject(e.getMessage());
-						}catch(ServidorDesconectadoException e) {
-							Servidor.getInstance().eliminaReceptor(e.getDireccion(), e.getPuerto());
-							out.writeObject(e.getMessage());
 						}
 						Servidor.getInstance().agregaAlHistorial(n);
 						Servidor.getInstance().logEnvioExitoso(n);
@@ -116,7 +113,7 @@ public class Servidor implements IServidor {
 	}
 
 	@Override
-	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound, ServidorDesconectadoException {
+	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound {
 		int bandera = 0;
 		Iterator<ReceptorServer> it = this.receptores.iterator();
 		while (it.hasNext()) {
@@ -133,7 +130,7 @@ public class Servidor implements IServidor {
 					out.close();
 					socket.close();
 				}catch(ConnectException e) {
-					throw new ServidorDesconectadoException(e.getMessage(), rs.getDireccion(), rs.getPuerto());
+					
 				}catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -159,17 +156,5 @@ public class Servidor implements IServidor {
 		this.vista.agregaLogError(error);
 	}
 	
-	protected void eliminaReceptor(String direccion, int puerto) {
-		Iterator<ReceptorServer> it = this.receptores.iterator();
-		
-		while(it.hasNext()) {
-			ReceptorServer rs = it.next();
-			if(rs.getDireccion() == direccion && rs.getPuerto() == puerto) {
-				this.receptores.remove(rs);
-				break;
-			}
-		}
-		
-	}
 
 }

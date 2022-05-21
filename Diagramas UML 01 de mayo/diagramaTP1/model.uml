@@ -7,7 +7,8 @@
       <end xmi:id="_RsoYUcmhEeyLF_MlDiN-xQ" role="_RsoYUMmhEeyLF_MlDiN-xQ"/>
     </ownedConnector>
     <interfaceRealization xmi:id="_udpUcMMxEey9y-y9nWuRWA" client="_SIgVwMMvEey9y-y9nWuRWA"/>
-    <interfaceRealization xmi:id="_NqRWIMmhEeyLF_MlDiN-xQ" client="_SIgVwMMvEey9y-y9nWuRWA _KDJ34MMyEey9y-y9nWuRWA _RsLsYMmhEeyLF_MlDiN-xQ" supplier="_I75igMmhEeyLF_MlDiN-xQ" contract="_I75igMmhEeyLF_MlDiN-xQ"/>
+    <interfaceRealization xmi:id="_NqRWIMmhEeyLF_MlDiN-xQ" client="_SIgVwMMvEey9y-y9nWuRWA _KDJ34MMyEey9y-y9nWuRWA _RsLsYMmhEeyLF_MlDiN-xQ"/>
+    <interfaceRealization xmi:id="_kZO6YNiUEeyZOdxGCuti8w" client="_SIgVwMMvEey9y-y9nWuRWA _KDJ34MMyEey9y-y9nWuRWA" supplier="_I75igMmhEeyLF_MlDiN-xQ" contract="_I75igMmhEeyLF_MlDiN-xQ"/>
     <packagedElement xmi:type="uml:Component" xmi:id="_WEC-QMMvEey9y-y9nWuRWA" name="UI Botonera">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_Iqo3scMwEey9y-y9nWuRWA" name="UI BotoneraPort" type="_WEC-QMMvEey9y-y9nWuRWA"/>
       <ownedConnector xmi:id="_Iqo3sMMwEey9y-y9nWuRWA" name="Notificacion_Notificacion_connector">
@@ -55,8 +56,10 @@
     <packagedElement xmi:type="uml:Interface" xmi:id="_g6sv4MmfEeyLF_MlDiN-xQ" name="ActionListener"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_T4Om8MMvEey9y-y9nWuRWA" name="Receptor">
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_7c_KoMMvEey9y-y9nWuRWA" name="puerto" aggregation="composite" isConjugated="true"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_RsoYUMmhEeyLF_MlDiN-xQ" name="ReceptorPort" type="_T4Om8MMvEey9y-y9nWuRWA"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_pWjI8NiUEeyZOdxGCuti8w" name="port2" aggregation="composite" isConjugated="true"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_4kR3YNiUEeyZOdxGCuti8w" name="port3" aggregation="composite" isConjugated="true"/>
+    <interfaceRealization xmi:id="_6Km8ANiUEeyZOdxGCuti8w" client="_T4Om8MMvEey9y-y9nWuRWA _4kR3YNiUEeyZOdxGCuti8w" supplier="_sJRIMNiUEeyZOdxGCuti8w" contract="_sJRIMNiUEeyZOdxGCuti8w"/>
     <nestedClassifier xmi:type="uml:Component" xmi:id="_oz3TYMMvEey9y-y9nWuRWA" name="Gestor de notificaciones">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_uAGK48MzEey9y-y9nWuRWA" name="Gestor de notificacionesPort" type="_oz3TYMMvEey9y-y9nWuRWA"/>
       <ownedConnector xmi:id="_uAGK4MMzEey9y-y9nWuRWA" name="Sonido_Sonido_connector">
@@ -133,7 +136,7 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZG-fkMWnEeytDqYtbYQDxQ"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZG_GoMWnEeytDqYtbYQDxQ" value="*"/>
     </ownedEnd>
-    <ownedEnd xmi:id="_ZG_GocWnEeytDqYtbYQDxQ" name="computadora del receptors" type="_BfR1gMWnEeytDqYtbYQDxQ" association="_ZG8DUMWnEeytDqYtbYQDxQ">
+    <ownedEnd xmi:id="_ZG_GocWnEeytDqYtbYQDxQ" name="computadora del receptors" type="_rMb3ENiVEeyZOdxGCuti8w" association="_ZG8DUMWnEeytDqYtbYQDxQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZG_tsMWnEeytDqYtbYQDxQ"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZG_tscWnEeytDqYtbYQDxQ" value="*"/>
     </ownedEnd>
@@ -146,5 +149,49 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_w1yeIMmgEeyLF_MlDiN-xQ" client="_m8x18MMvEey9y-y9nWuRWA _7CosoMmgEeyLF_MlDiN-xQ" supplier="_ZfkloMmgEeyLF_MlDiN-xQ"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_929OYMmgEeyLF_MlDiN-xQ" client="_-wb7kMMzEey9y-y9nWuRWA _-L7Y0MmgEeyLF_MlDiN-xQ" supplier="_WyLyUMmgEeyLF_MlDiN-xQ"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_I75igMmhEeyLF_MlDiN-xQ" name="Notificacion"/>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_Q_mTMMmhEeyLF_MlDiN-xQ" client="_RsLsYMmhEeyLF_MlDiN-xQ _7c_KoMMvEey9y-y9nWuRWA" supplier="_I75igMmhEeyLF_MlDiN-xQ"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_Q_mTMMmhEeyLF_MlDiN-xQ" client="_RsLsYMmhEeyLF_MlDiN-xQ"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_GyVG8NiUEeyZOdxGCuti8w" name="Servidor">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_iuqkENiWEeyZOdxGCuti8w" name="port1" aggregation="composite" isConjugated="true"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_ja6mENiWEeyZOdxGCuti8w" name="port2" aggregation="composite" isConjugated="true"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_kQGhoNiWEeyZOdxGCuti8w" name="port3" aggregation="composite" isConjugated="true"/>
+    <interfaceRealization xmi:id="_A71tUNiXEeyZOdxGCuti8w" client="_GyVG8NiUEeyZOdxGCuti8w _ja6mENiWEeyZOdxGCuti8w" supplier="_5kSQ8NiWEeyZOdxGCuti8w" contract="_5kSQ8NiWEeyZOdxGCuti8w"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_Iy40ANiVEeyZOdxGCuti8w" name="UI">
+      <interfaceRealization xmi:id="_R9x2QNiVEeyZOdxGCuti8w" client="_Iy40ANiVEeyZOdxGCuti8w" supplier="_P1kMkNiVEeyZOdxGCuti8w" contract="_P1kMkNiVEeyZOdxGCuti8w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_KX3NwNiVEeyZOdxGCuti8w" name="Servidor"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_P1kMkNiVEeyZOdxGCuti8w" name="IVista"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_Rpqc4NiUEeyZOdxGCuti8w" client="_pWjI8NiUEeyZOdxGCuti8w"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_ZX-zcNiUEeyZOdxGCuti8w" client="_iuqkENiWEeyZOdxGCuti8w" supplier="_I75igMmhEeyLF_MlDiN-xQ"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_sJRIMNiUEeyZOdxGCuti8w" name="Notificacion"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_tzi4sNiUEeyZOdxGCuti8w" client="_kQGhoNiWEeyZOdxGCuti8w" supplier="_sJRIMNiUEeyZOdxGCuti8w"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_RW6qkNiVEeyZOdxGCuti8w" client="_KX3NwNiVEeyZOdxGCuti8w" supplier="_P1kMkNiVEeyZOdxGCuti8w"/>
+  <packagedElement xmi:type="uml:Device" xmi:id="_rMb3ENiVEeyZOdxGCuti8w" name="Servidor">
+    <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_rMb3EdiVEeyZOdxGCuti8w" name="Windows 10">
+      <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_rMb3EtiVEeyZOdxGCuti8w" name="JVM">
+        <nestedClassifier xmi:type="uml:Artifact" xmi:id="_rMb3E9iVEeyZOdxGCuti8w" name="Receptor.jar">
+          <manifestation xmi:id="_rMb3FNiVEeyZOdxGCuti8w" client="_rMb3E9iVEeyZOdxGCuti8w" supplier="_T4Om8MMvEey9y-y9nWuRWA" utilizedElement="_T4Om8MMvEey9y-y9nWuRWA"/>
+        </nestedClassifier>
+      </nestedNode>
+    </nestedNode>
+    <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_uCjIkNiVEeyZOdxGCuti8w" name="Windows Server">
+      <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_xMfVANiVEeyZOdxGCuti8w" name="JVM">
+        <nestedClassifier xmi:type="uml:Artifact" xmi:id="_2nPtgNiVEeyZOdxGCuti8w" name="Servidor.jar">
+          <manifestation xmi:id="_7RjggNiVEeyZOdxGCuti8w" client="_2nPtgNiVEeyZOdxGCuti8w" supplier="_GyVG8NiUEeyZOdxGCuti8w" utilizedElement="_GyVG8NiUEeyZOdxGCuti8w"/>
+        </nestedClassifier>
+      </nestedNode>
+    </nestedNode>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_A-M6QNiWEeyZOdxGCuti8w" name="TCP/Ip" memberEnd="_A-M6QdiWEeyZOdxGCuti8w _A-M6RNiWEeyZOdxGCuti8w" navigableOwnedEnd="_A-M6QdiWEeyZOdxGCuti8w _A-M6RNiWEeyZOdxGCuti8w">
+    <ownedEnd xmi:id="_A-M6QdiWEeyZOdxGCuti8w" name="computadora del emisors" type="_BfR1gMWnEeytDqYtbYQDxQ" association="_A-M6QNiWEeyZOdxGCuti8w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A-M6QtiWEeyZOdxGCuti8w"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A-M6Q9iWEeyZOdxGCuti8w" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_A-M6RNiWEeyZOdxGCuti8w" name="computadora del receptors" type="_rMb3ENiVEeyZOdxGCuti8w" association="_A-M6QNiWEeyZOdxGCuti8w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A-M6RdiWEeyZOdxGCuti8w"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A-M6RtiWEeyZOdxGCuti8w" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_5kSQ8NiWEeyZOdxGCuti8w" name="Registro"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_Ctn0ANiXEeyZOdxGCuti8w" client="_pWjI8NiUEeyZOdxGCuti8w" supplier="_5kSQ8NiWEeyZOdxGCuti8w"/>
 </uml:Model>
