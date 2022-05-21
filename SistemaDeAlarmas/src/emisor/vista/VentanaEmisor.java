@@ -33,12 +33,6 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 	private JPanel panelConfiguracion;
 	private JPanel panelDirecciones;
 	private JPanel panelUbicacion;
-	private JLabel lblNewLabel;
-	private JLabel lblNewLabel_1;
-	private JTextField textFieldIP;
-	private JLabel lblNewLabel_2;
-	private JTextField textFieldPuerto;
-	private JButton btnAgregarIp;
 	private JLabel labelUbicacion;
 	private JTextField textFieldNuevaUbicacion;
 	private JButton btnUbicacion;
@@ -127,50 +121,11 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.panelConfiguracion.add(this.panelDirecciones);
 		this.panelDirecciones.setLayout(null);
 		
-		this.lblNewLabel = new JLabel("Direcciones receptoras");
-		this.lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		this.lblNewLabel.setForeground(Color.WHITE);
-		this.lblNewLabel.setBounds(68, 0, 124, 26);
-		this.panelDirecciones.add(this.lblNewLabel);
-		
-		this.lblNewLabel_1 = new JLabel("IP : ");
-		this.lblNewLabel_1.setForeground(Color.WHITE);
-		this.lblNewLabel_1.setBounds(51, 36, 29, 13);
-		this.panelDirecciones.add(this.lblNewLabel_1);
-		
-		this.textFieldIP = new JTextField();
-		this.textFieldIP.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		this.textFieldIP.setForeground(Color.WHITE);
-		this.textFieldIP.setBackground(Color.DARK_GRAY);
-		this.textFieldIP.setBounds(108, 33, 96, 19);
-		this.textFieldIP.setColumns(10);
-		this.panelDirecciones.add(this.textFieldIP);
-		
-		this.lblNewLabel_2 = new JLabel("Puerto : ");
-		this.lblNewLabel_2.setForeground(Color.WHITE);
-		this.lblNewLabel_2.setBounds(40, 60, 58, 13);
-		this.panelDirecciones.add(this.lblNewLabel_2);
-		
-		this.textFieldPuerto = new JTextField();
-		this.textFieldPuerto.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		this.textFieldPuerto.setForeground(Color.WHITE);
-		this.textFieldPuerto.setBackground(Color.DARK_GRAY);
-		this.textFieldPuerto.setBounds(108, 57, 96, 19);
-		this.textFieldPuerto.setColumns(10);
-		this.panelDirecciones.add(this.textFieldPuerto);
-		
-		this.btnAgregarIp = new JButton("Agregar");
-		this.btnAgregarIp.setBounds(89, 108, 83, 21);
-		this.btnAgregarIp.setFocusPainted(false);
-		this.btnAgregarIp.setBorderPainted(false);
-		this.btnAgregarIp.setBackground(new Color(152, 251, 152));
-		this.btnAgregarIp.setActionCommand("Agregar IP");
-		this.panelDirecciones.add(this.btnAgregarIp);
-		
 		this.panelUbicacion = new JPanel();
+		this.panelUbicacion.setBounds(112, 0, 293, 254);
+		this.panelDirecciones.add(this.panelUbicacion);
 		this.panelUbicacion.setBackground(Color.DARK_GRAY);
 		this.panelUbicacion.setForeground(Color.WHITE);
-		this.panelConfiguracion.add(this.panelUbicacion);
 		this.panelUbicacion.setLayout(null);
 		
 		this.labelTextoUbicacionActual = new JLabel("Ubicacion actual: ");
@@ -207,7 +162,7 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.btnUbicacion.setActionCommand("Cambiar Ubicacion");
 		this.panelUbicacion.add(this.btnUbicacion);
 		
-		this.lblNewLabel_3 = new JLabel("Cambio de ubicaci\u00F3n");
+		this.lblNewLabel_3 = new JLabel("Cambio de ubicacin");
 		this.lblNewLabel_3.setForeground(Color.WHITE);
 		this.lblNewLabel_3.setBounds(77, 56, 128, 13);
 		this.panelUbicacion.add(this.lblNewLabel_3);
@@ -220,7 +175,6 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		this.btnIncendio.addActionListener(actionListener);
 		this.botonEmergenciaMedica.addActionListener(actionListener);
 		this.btnSeguridad.addActionListener(actionListener);
-		this.btnAgregarIp.addActionListener(actionListener);
 		this.btnUbicacion.addActionListener(actionListener);
 	}
 
@@ -230,19 +184,9 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 	}
 
 	@Override
-	public String getNuevaIp() {
-		return this.textFieldIP.getText();
-	}
-
-	@Override
-	public String getNuevaPuerto() {
-		return this.textFieldPuerto.getText();
-	}
-
-	@Override
 	public void mostrarNuevaUbicacion(String ubicacion) {
 		this.labelUbicacionActual.setText(ubicacion);
-		
+		this.frmSolicitudDeEmergencias.setTitle("Solicitud de emergencias en "+ubicacion);
 	}
 
 	@Override
@@ -255,12 +199,6 @@ public class VentanaEmisor extends JFrame implements IVistaEmisor{
 		JOptionPane.showMessageDialog(this, mensaje, "OK", JOptionPane.WARNING_MESSAGE);
 	}
 
-	@Override
-	public void limpiaCamposIP() {
-		this.textFieldIP.setText("");
-		this.textFieldPuerto.setText("");
-		
-	}
 
 	@Override
 	public void limpiaCampoNuevaUbicacion() {

@@ -115,6 +115,47 @@ public class Servidor implements IServidor {
 	@Override
 	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound {
 		int bandera = 0;
+		int indice = 0;
+		ReceptorServer rs;
+		boolean huboerror=false;
+		if(indice<=this.receptores.size())
+			bandera=1;
+		while (indice<this.receptores.size()) {
+			ReceptorServer actual = this.receptores.get(indice);
+			if (n.mostrarse(actual.getInterruptor())) {
+				bandera = 2;
+				try {
+					Socket socket = new Socket(actual.getDireccion(), actual.getPuerto());
+					ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+
+					out.writeObject(n);
+					huboerror=false;
+					out.close();
+					socket.close();
+				}catch(ConnectException e) {
+					Servidor.getInstance().receptores.remove(indice);
+					huboerror=true;
+					bandera=1;
+				}catch (Exception e) {
+					huboerror=false;
+					e.printStackTrace();
+				}
+			}
+			if(!huboerror)
+				indice++;
+		}
+		
+		if (bandera == 0)
+			throw new NoReceptoresFound("No hay receptores registrados.");
+		else if (bandera == 1)
+			throw new NoReceptoresFound("No hay receptores que atiendan su emergencia.");
+	}
+
+	/*
+	 * 
+	@Override
+	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound {
+		int bandera = 0;
 		Iterator<ReceptorServer> it = this.receptores.iterator();
 		while (it.hasNext()) {
 			bandera = 1;
@@ -141,10 +182,12 @@ public class Servidor implements IServidor {
 		else if (bandera == 1)
 			throw new NoReceptoresFound("No hay receptores que atiendan su emergencia.");
 	}
-
+	 * 
+	 * 
+	 * */
 	public void logNuevoRegistroReceptor(String direccion, int puerto, boolean incendio, boolean seguridad,
-			boolean amblancia) {
-		this.vista.agregaLogRegistro(direccion, puerto, incendio, seguridad, amblancia);
+			boolean ambulancia) {
+		this.vista.agregaLogRegistro(direccion, puerto, incendio, seguridad, ambulancia);
 	}
 	
 	public void logEnvioExitoso(Notificacion n) {

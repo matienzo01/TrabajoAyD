@@ -23,7 +23,7 @@ public class Registro implements Serializable{
 	}
 
 	public boolean isSeguridad() {
-		return tipos.isMedica();
+		return tipos.isSeguridad();
 	}
 
 	public String getUbicacion() {

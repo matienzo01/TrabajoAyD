@@ -89,11 +89,11 @@ public class VistaServidor extends JFrame implements IVistaServidor{
 			boolean ambulancia) {
 		String log = "Se ha registrado un nuevo receptor. Su direccion es " + direccion + " y espera notificaciones en el puerto " + puerto;
 		if(incendio)
-			log += ". Espera incendios";
+			log += ". Atiende incendios";
 		if(seguridad)
-			log += ". Espera seguridad";
+			log += ". Atiende personal de seguridad";
 		if(ambulancia)
-			log += ". Espera ambulancia";
+			log += ". Atiende asistencias medicas";
 		log+=".\n";
 		
 		this.logTextArea.append(log);

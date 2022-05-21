@@ -6,11 +6,8 @@ public interface IVistaEmisor {
 
 	public void setActionListener(ActionListener actionListener);
 	public String getUbicacion();
-	public String getNuevaIp();
-	public String getNuevaPuerto();
 	public void mostrarNuevaUbicacion(String ubicacion);
 	public void mostrarError(String error);
-	public void limpiaCamposIP();
 	public void limpiaCampoNuevaUbicacion();
 	public void mostrarEnvio(String mensaje);
 	
