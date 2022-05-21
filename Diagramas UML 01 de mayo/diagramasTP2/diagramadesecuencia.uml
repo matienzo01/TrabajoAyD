@@ -20,6 +20,7 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ou7QMMNCEey9y-y9nWuRWA" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ou7QMcNCEey9y-y9nWuRWA" value="1"/>
     </ownedAttribute>
+    <ownedAttribute xmi:id="_F6xW8NkPEeysRZxWWUxaPQ" name="Class11" type="_F6r3YNkPEeysRZxWWUxaPQ"/>
     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_PokN8sNCEey9y-y9nWuRWA" name="Operation_1"/>
     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_QcYQgsNCEey9y-y9nWuRWA" name="Operation_1"/>
     <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Q53dwsNCEey9y-y9nWuRWA" name="Operation_1"/>
@@ -27,6 +28,7 @@
     <lifeline xmi:id="_idRfkcNBEey9y-y9nWuRWA" name="Componente : UI Botonera [1]" represents="_idRfksNBEey9y-y9nWuRWA" coveredBy="_PokN9cNCEey9y-y9nWuRWA _PokN98NCEey9y-y9nWuRWA _PokN9sNCEey9y-y9nWuRWA _QcYQhMNCEey9y-y9nWuRWA _QcYQiMNCEey9y-y9nWuRWA"/>
     <lifeline xmi:id="_0z878cNBEey9y-y9nWuRWA" name="Componente" represents="_0z878sNBEey9y-y9nWuRWA" coveredBy="_QcYQhcNCEey9y-y9nWuRWA _QcYQh8NCEey9y-y9nWuRWA _QcYQhsNCEey9y-y9nWuRWA _Q53dxMNCEey9y-y9nWuRWA _Q53dyMNCEey9y-y9nWuRWA"/>
     <lifeline xmi:id="_F8JzAcNCEey9y-y9nWuRWA" name="Componente : Comunicacion [1]" represents="_F8JzAsNCEey9y-y9nWuRWA" coveredBy="_Q53dxcNCEey9y-y9nWuRWA _Q53dx8NCEey9y-y9nWuRWA _Q53dxsNCEey9y-y9nWuRWA"/>
+    <lifeline xmi:id="_F6wI0NkPEeysRZxWWUxaPQ" name="Componente" represents="_F6xW8NkPEeysRZxWWUxaPQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_PokN9MNCEey9y-y9nWuRWA" name="Solicitar emergencia_sender" covered="_gcodgcNBEey9y-y9nWuRWA" message="_PokN8cNCEey9y-y9nWuRWA"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_PokN9cNCEey9y-y9nWuRWA" name="Solicitar emergencia_receiver" covered="_idRfkcNBEey9y-y9nWuRWA" message="_PokN8cNCEey9y-y9nWuRWA"/>
     <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_PokN98NCEey9y-y9nWuRWA" name="Solicitar emergencia" covered="_idRfkcNBEey9y-y9nWuRWA" finish="_PokN9sNCEey9y-y9nWuRWA" start="_PokN9cNCEey9y-y9nWuRWA" behavior="_PokN8sNCEey9y-y9nWuRWA"/>
@@ -319,4 +321,5 @@
     <message xmi:id="_o0J-c8mqEeySoo--mLOyjA" name="Puerto asignado" messageSort="reply" receiveEvent="_o0J-eMmqEeySoo--mLOyjA" sendEvent="_o0J-dsmqEeySoo--mLOyjA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_Sc6FEMmpEeySoo--mLOyjA" name="1]"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F6r3YNkPEeysRZxWWUxaPQ" name="Servidor"/>
 </uml:Model>

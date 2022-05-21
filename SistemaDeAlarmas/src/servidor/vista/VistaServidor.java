@@ -102,18 +102,8 @@ public class VistaServidor extends JFrame implements IVistaServidor{
 
 
 	@Override
-	public void agregaLogEmisor(String cadena) {
+	public void agregaLogNotificacion(String cadena) {
 		this.logTextArea.append(cadena+"\n");
 		
 	}
-
-
-	@Override
-	public void agregaLogError(String error) {
-		this.logTextArea.append(error + "\n");
-		
-	}
-	
-	
-
 }

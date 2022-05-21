@@ -44,6 +44,18 @@
       <packageImport xmi:id="_cIR-MMmpEey5ePa6iNCnyQ" importedPackage="_aoJoMMmpEey5ePa6iNCnyQ"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_FSXWYMmpEey5ePa6iNCnyQ" name="img"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_o-qiENkQEeysRZxWWUxaPQ" name="Servidor">
+      <packagedElement xmi:type="uml:Package" xmi:id="_4P9h4NkQEeysRZxWWUxaPQ" name="vista">
+        <packageImport xmi:id="_NUyKENkSEeysRZxWWUxaPQ" importedPackage="_oRMDIMWrEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_W5jr8NkSEeysRZxWWUxaPQ" importedPackage="_6gocsMmpEey5ePa6iNCnyQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_6BzS8NkQEeysRZxWWUxaPQ" name="modelo">
+        <packageImport xmi:id="_H0VOsNkREeysRZxWWUxaPQ" importedPackage="_4P9h4NkQEeysRZxWWUxaPQ"/>
+        <packageImport xmi:id="_l6hJsNkSEeysRZxWWUxaPQ" importedPackage="_5piPAMWrEeytDqYtbYQDxQ"/>
+        <packageImport xmi:id="_naZoENkSEeysRZxWWUxaPQ" importedPackage="_OUMjQMmpEey5ePa6iNCnyQ"/>
+        <packageImport xmi:id="_pYDnkNkSEeysRZxWWUxaPQ" importedPackage="_C-ZvsMmpEey5ePa6iNCnyQ"/>
+      </packagedElement>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_oRMDIMWrEeytDqYtbYQDxQ" name="javax.swing"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_5piPAMWrEeytDqYtbYQDxQ" name="java.net"/>

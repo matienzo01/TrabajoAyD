@@ -12,8 +12,6 @@ public interface IReceptor {
 
 	public void toggleAmbulancia();
 
-	//public void comienzaEscucha();
-
 	public Interruptor getInterruptorTipos();
 	
 	public void registraEnServidor();

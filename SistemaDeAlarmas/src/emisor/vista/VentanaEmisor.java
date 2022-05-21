@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-import javax.swing.SwingConstants;
 
 public class VentanaEmisor extends JFrame implements IVistaEmisor{
 

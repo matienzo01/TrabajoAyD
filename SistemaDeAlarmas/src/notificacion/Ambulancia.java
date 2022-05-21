@@ -4,7 +4,6 @@ public class Ambulancia extends Notificacion {
 
 	public Ambulancia(String ubicacion) {
 		super(ubicacion);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -14,7 +13,6 @@ public class Ambulancia extends Notificacion {
 
 	@Override
 	public boolean mostrarse(Interruptor tipo) {
-		// TODO Auto-generated method stub
 		return tipo.isMedica();
 	}
 

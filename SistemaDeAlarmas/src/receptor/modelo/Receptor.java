@@ -21,14 +21,17 @@ public class Receptor implements IReceptor {
 		return ComunicacionR.getInstance();
 	}
 
+	@Override
 	public boolean isIncendios() {
 		return tipos.isIncendios();
 	}
 
+	@Override
 	public boolean isAmbulancia() {
 		return tipos.isMedica();
 	}
 
+	@Override
 	public boolean isSeguridad() {
 		return tipos.isSeguridad();
 	}
@@ -52,11 +55,6 @@ public class Receptor implements IReceptor {
 	public void toggleAmbulancia() {
 		tipos.setMedica(!tipos.isMedica());
 	}
-
-//	@Override
-//	public void comienzaEscucha() {
-//		c.comienzaEscucha();
-//	}
 
 	@Override
 	public Interruptor getInterruptorTipos() {
