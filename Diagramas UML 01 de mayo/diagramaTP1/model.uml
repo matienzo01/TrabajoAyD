@@ -58,8 +58,17 @@
   <packagedElement xmi:type="uml:Component" xmi:id="_T4Om8MMvEey9y-y9nWuRWA" name="Receptor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_RsoYUMmhEeyLF_MlDiN-xQ" name="ReceptorPort" type="_T4Om8MMvEey9y-y9nWuRWA"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_pWjI8NiUEeyZOdxGCuti8w" name="port2" aggregation="composite" isConjugated="true"/>
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_4kR3YNiUEeyZOdxGCuti8w" name="port3" aggregation="composite" isConjugated="true"/>
-    <interfaceRealization xmi:id="_6Km8ANiUEeyZOdxGCuti8w" client="_T4Om8MMvEey9y-y9nWuRWA _4kR3YNiUEeyZOdxGCuti8w" supplier="_sJRIMNiUEeyZOdxGCuti8w" contract="_sJRIMNiUEeyZOdxGCuti8w"/>
+    <ownedConnector xmi:id="_RR5hgNiyEeyDoLa6sF7lTA" name="Notificacion_Notificacion_connector">
+      <end xmi:id="_RR5hgdiyEeyDoLa6sF7lTA"/>
+    </ownedConnector>
+    <ownedConnector xmi:id="_TXDQINiyEeyDoLa6sF7lTA" name="Notificacion_Notificacion_connector">
+      <end xmi:id="_TXDQIdiyEeyDoLa6sF7lTA"/>
+    </ownedConnector>
+    <ownedConnector xmi:id="_bZif4NiyEeyDoLa6sF7lTA" name="Notificacion_Notificacion_connector">
+      <end xmi:id="_bZif4diyEeyDoLa6sF7lTA" role="_ja6mENiWEeyZOdxGCuti8w"/>
+      <end xmi:id="_bZif4tiyEeyDoLa6sF7lTA"/>
+    </ownedConnector>
+    <interfaceRealization xmi:id="_6Km8ANiUEeyZOdxGCuti8w" client="_RR5hgNiyEeyDoLa6sF7lTA _TXDQINiyEeyDoLa6sF7lTA _bZif4NiyEeyDoLa6sF7lTA _T4Om8MMvEey9y-y9nWuRWA" supplier="_sJRIMNiUEeyZOdxGCuti8w" contract="_sJRIMNiUEeyZOdxGCuti8w"/>
     <nestedClassifier xmi:type="uml:Component" xmi:id="_oz3TYMMvEey9y-y9nWuRWA" name="Gestor de notificaciones">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_uAGK48MzEey9y-y9nWuRWA" name="Gestor de notificacionesPort" type="_oz3TYMMvEey9y-y9nWuRWA"/>
       <ownedConnector xmi:id="_uAGK4MMzEey9y-y9nWuRWA" name="Sonido_Sonido_connector">
@@ -153,7 +162,6 @@
   <packagedElement xmi:type="uml:Component" xmi:id="_GyVG8NiUEeyZOdxGCuti8w" name="Servidor">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_iuqkENiWEeyZOdxGCuti8w" name="port1" aggregation="composite" isConjugated="true"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_ja6mENiWEeyZOdxGCuti8w" name="port2" aggregation="composite" isConjugated="true"/>
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_kQGhoNiWEeyZOdxGCuti8w" name="port3" aggregation="composite" isConjugated="true"/>
     <interfaceRealization xmi:id="_A71tUNiXEeyZOdxGCuti8w" client="_GyVG8NiUEeyZOdxGCuti8w _ja6mENiWEeyZOdxGCuti8w" supplier="_5kSQ8NiWEeyZOdxGCuti8w" contract="_5kSQ8NiWEeyZOdxGCuti8w"/>
     <packagedElement xmi:type="uml:Component" xmi:id="_Iy40ANiVEeyZOdxGCuti8w" name="UI">
       <interfaceRealization xmi:id="_R9x2QNiVEeyZOdxGCuti8w" client="_Iy40ANiVEeyZOdxGCuti8w" supplier="_P1kMkNiVEeyZOdxGCuti8w" contract="_P1kMkNiVEeyZOdxGCuti8w"/>
@@ -164,7 +172,7 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_Rpqc4NiUEeyZOdxGCuti8w" client="_pWjI8NiUEeyZOdxGCuti8w"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_ZX-zcNiUEeyZOdxGCuti8w" client="_iuqkENiWEeyZOdxGCuti8w" supplier="_I75igMmhEeyLF_MlDiN-xQ"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_sJRIMNiUEeyZOdxGCuti8w" name="Notificacion"/>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_tzi4sNiUEeyZOdxGCuti8w" client="_kQGhoNiWEeyZOdxGCuti8w" supplier="_sJRIMNiUEeyZOdxGCuti8w"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_tzi4sNiUEeyZOdxGCuti8w" supplier="_sJRIMNiUEeyZOdxGCuti8w"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_RW6qkNiVEeyZOdxGCuti8w" client="_KX3NwNiVEeyZOdxGCuti8w" supplier="_P1kMkNiVEeyZOdxGCuti8w"/>
   <packagedElement xmi:type="uml:Device" xmi:id="_rMb3ENiVEeyZOdxGCuti8w" name="Servidor">
     <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_rMb3EdiVEeyZOdxGCuti8w" name="Windows 10">
@@ -194,4 +202,5 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_5kSQ8NiWEeyZOdxGCuti8w" name="Registro"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_Ctn0ANiXEeyZOdxGCuti8w" client="_pWjI8NiUEeyZOdxGCuti8w" supplier="_5kSQ8NiWEeyZOdxGCuti8w"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_Z7xhYNiyEeyDoLa6sF7lTA" client="_ja6mENiWEeyZOdxGCuti8w _bZif4NiyEeyDoLa6sF7lTA" supplier="_sJRIMNiUEeyZOdxGCuti8w"/>
 </uml:Model>
