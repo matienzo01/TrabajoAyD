@@ -4,15 +4,14 @@ import java.io.ObjectOutputStream;
 import java.net.ConnectException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import servidor.modelo.Servidor;
 
 public class Monitor{
 	private Boolean activo = true;
 	private Timer t = new Timer();
-	private static int puertoHeartBeat = 2222; //puerto donde recibira los latidos
+	private static int puertoHeartBeat = 4444; //puerto donde recibira los latidos
 	private static int puertoSecundario = 3333; //puerto donde lo espera el secundario para activarlo
 	
 	
@@ -23,19 +22,25 @@ public class Monitor{
 				
 				@Override
 				public void run() {
-					if(activo)
+					if(activo) {
 						Monitor.getInstance().setActivo(false);
+						System.out.println("Pasando a false");
+					}
 					else {
 						try {
 							Socket socket = new Socket("localhost", puertoSecundario);
 							ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 
+							System.out.println("Cambiando secundario a primario");
 							out.writeObject(true);
 							
+							
 							out.close();
-							socket.close();
 						} catch (ConnectException e) {
 							System.out.println("No hay secundario aun");
+						
+						}catch (SocketException e) {
+							//System.out.println("No hay secundario aun");
 						
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -69,7 +74,7 @@ public class Monitor{
 					while (true) {
 						Socket soc = s.accept();
 						Monitor.getInstance().setActivo(true);
-						soc.close();
+						System.out.println("El primario sigue vivo");
 					}
 
 				} catch (Exception e) {

@@ -4,7 +4,7 @@ import java.util.Observable;
 
 import servidor.modelo.Servidor;
 
-public abstract class State extends Observable implements IState{
+public abstract class State implements IState{
 	protected Servidor s;
 
 	public State(Servidor s) {

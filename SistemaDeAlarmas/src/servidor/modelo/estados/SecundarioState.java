@@ -5,6 +5,7 @@ import java.io.ObjectOutputStream;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 
 import notificacion.Notificacion;
@@ -68,14 +69,17 @@ public class SecundarioState extends State {
 				try {
 					@SuppressWarnings("resource")
 					ServerSocket s = new ServerSocket(puertoToggle);
+					
 					System.out.println("Escuchando en " + puertoToggle + " al momento de ser primario");
 					while (true) {
 						Socket soc = s.accept();
 						Servidor.getInstance().cambiaEstado();
-						soc.close();
+						s.close();
 					}
 
-				} catch (Exception e) {
+				} catch (SocketException e) {
+					//e.printStackTrace();
+				}catch (Exception e) {
 					e.printStackTrace();
 				}
 			}

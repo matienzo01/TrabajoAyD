@@ -21,8 +21,8 @@ public class PrimarioState extends State {
 
 	private static int puertoEmisores = 1111;
 	private static int puertoNuevosReceptores = 1234;
-	private static int puertoHeartBeat = 2222;
-	private Timer t = new Timer();
+	private static int puertoHeartBeat = 4444;
+	
 
 	public PrimarioState(Servidor s) {
 		super(s);
@@ -31,31 +31,16 @@ public class PrimarioState extends State {
 
 	@Override
 	public void initialize() {
+		this.comienzoSincronizacion();
 		this.comienzaEscuchaEmisores();
 		this.comienzaEscuchaNuevosReceptor();
-		this.comienzoSincronizacion();
+
 		
-		this.t.scheduleAtFixedRate(new TimerTask() {
-			
-			@Override
-			public void run() {
-				try {
-					Socket socket = new Socket("localhost", puertoHeartBeat);
-					ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 
-					out.writeObject(true);
-					
-					out.close();
-					socket.close();
-				 
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-			}
-		}, 0, 5000);
-
-	this.s.getVista().setPuertoEmisores(puertoEmisores);this.s.getVista().setPuertoReceptores(puertoNuevosReceptores);this.s.getVista().setState(this.informarEstado());}
+		this.s.getVista().setPuertoEmisores(puertoEmisores);
+		this.s.getVista().setPuertoReceptores(puertoNuevosReceptores);
+		this.s.getVista().setState(this.informarEstado());
+	}
 
 	@Override
 	public void cambiaEstado() {
@@ -172,6 +157,8 @@ public class PrimarioState extends State {
 
 	public void comienzoSincronizacion() {
 		new Thread() {
+			private Timer t = new Timer();
+			
 			public void run() {
 				try {
 					@SuppressWarnings("resource")
@@ -179,6 +166,7 @@ public class PrimarioState extends State {
 					System.out.println("Escuchando en " + Servidor.getPuertoSincronizacion()
 							+ " para sincronizacion con secundarios");
 
+					this.iniciaTimer();
 					while (true) {
 
 						Socket soc = s.accept();
@@ -193,6 +181,28 @@ public class PrimarioState extends State {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
+			
+			private void iniciaTimer() {
+				this.t.scheduleAtFixedRate(new TimerTask() {
+
+					@Override
+					public void run() {
+						try {
+							Socket socket = new Socket("localhost", puertoHeartBeat);
+							ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+
+							out.writeObject(true);
+
+							out.close();
+							socket.close();
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					}
+				}, 0, 5000);
 			}
 		}.start();
 	}
