@@ -9,35 +9,42 @@ import java.util.ArrayList;
 
 import notificacion.Notificacion;
 import notificacion.Registro;
+import servidor.modelo.estados.IState;
+import servidor.modelo.estados.PrimarioState;
 import servidor.vista.IVistaServidor;
 import servidor.vista.VistaServidor;
 
 public class Servidor {
+
 	private static int puertoEmisores = 1111;
 	private static int puertoNuevosReceptores = 1234;
+	private static int puertoSincronizacion = 2222;
 	private static Servidor instance = null;
 	private ArrayList<ReceptorServer> receptores = new ArrayList<ReceptorServer>();
-	private ArrayList<Notificacion> historial = new ArrayList<Notificacion>(); 
+	private ArrayList<Notificacion> historial = new ArrayList<Notificacion>();
+	private IState estado = new PrimarioState(this);
 
 	private IVistaServidor vista = new VistaServidor();
+
+	public void cambiaEstado() {
+		this.estado.cambiaEstado();
+	}
 
 	private Servidor() {
 	}
 
 	public static Servidor getInstance() {
-		if (Servidor.instance == null)
+		if (Servidor.instance == null) {
 			Servidor.instance = new Servidor();
+		}
 		return Servidor.instance;
 	}
 
 	public void initialize() {
-		this.comienzaEscuchaEmisores();
-		this.comienzaEscuchaNuevosReceptor();
-		this.vista.setPuertoEmisores(puertoEmisores);
-		this.vista.setPuertoReceptores(puertoNuevosReceptores);
+
 	}
 
-	private void comienzaEscuchaEmisores() {
+	public void comienzaEscuchaEmisores() {
 		new Thread() {
 			public void run() {
 				try {
@@ -54,7 +61,7 @@ public class Servidor {
 
 						try {
 							Servidor.getInstance().reparteNotificacion(n);
-			
+
 							out.writeObject("Se envio con exito su emergencia.");
 						} catch (NoReceptoresFound e) {
 							out.writeObject(e.getMessage());
@@ -70,7 +77,7 @@ public class Servidor {
 		}.start();
 	}
 
-	private void comienzaEscuchaNuevosReceptor() {
+	public void comienzaEscuchaNuevosReceptor() {
 		new Thread() {
 			public void run() {
 				try {
@@ -83,11 +90,12 @@ public class Servidor {
 						Socket soc = s.accept();
 						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
 						Registro r = (Registro) in.readObject();
-						
+
 						ReceptorServer rs = ReceptorServerFactory.getReceptorServer(r.getUbicacion(), r.getPuerto(),
 								r.getTipos());
 						Servidor.getInstance().agregarReceptor(rs);
-						Servidor.getInstance().logNuevoRegistroReceptor(r.getUbicacion(), r.getPuerto(), r.isIncendio(), r.isSeguridad(), r.isAmbulancia());
+						Servidor.getInstance().logNuevoRegistroReceptor(r.getUbicacion(), r.getPuerto(), r.isIncendio(),
+								r.isSeguridad(), r.isAmbulancia());
 					}
 
 				} catch (Exception e) {
@@ -97,13 +105,17 @@ public class Servidor {
 		}.start();
 	}
 
+	public void comienzoSincronizacion() {
+
+	}
+
 	public void reparteNotificacion(Notificacion n) throws NoReceptoresFound {
 		int bandera = 0;
 		int indice = 0;
-		boolean huboerror=false;
-		if(indice<=this.receptores.size())
-			bandera=1;
-		while (indice<this.receptores.size()) {
+		boolean huboerror = false;
+		if (indice <= this.receptores.size())
+			bandera = 1;
+		while (indice < this.receptores.size()) {
 			ReceptorServer actual = this.receptores.get(indice);
 			if (n.mostrarse(actual.getInterruptor())) {
 				bandera = 2;
@@ -112,22 +124,22 @@ public class Servidor {
 					ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 
 					out.writeObject(n);
-					huboerror=false;
+					huboerror = false;
 					out.close();
 					socket.close();
-				}catch(ConnectException e) {
+				} catch (ConnectException e) {
 					Servidor.getInstance().receptores.remove(indice);
-					huboerror=true;
-					bandera=1;
-				}catch (Exception e) {
-					huboerror=false;
+					huboerror = true;
+					bandera = 1;
+				} catch (Exception e) {
+					huboerror = false;
 					e.printStackTrace();
 				}
 			}
-			if(!huboerror)
+			if (!huboerror)
 				indice++;
 		}
-		
+
 		if (bandera == 0)
 			throw new NoReceptoresFound("No hay receptores registrados.");
 		else if (bandera == 1)
@@ -138,21 +150,56 @@ public class Servidor {
 			boolean ambulancia) {
 		this.vista.agregaLogRegistro(direccion, puerto, incendio, seguridad, ambulancia);
 	}
-	
+
 	public void logEnvio(Notificacion n) {
 		this.vista.agregaLogNotificacion(n.toStringAdmin());
-		
+
 	}
-	
+
 	protected void agregaAlHistorial(Notificacion n) {
 		this.historial.add(n);
-		
+
 	}
-	
+
 	public void agregarReceptor(ReceptorServer rs) {
 		this.receptores.add(rs);
 
 	}
-	
+
+	public void setEstado(IState estado) {
+		this.estado = estado;
+	}
+
+	public IVistaServidor getVista() {
+		return vista;
+	}
+
+	public static int getPuertoEmisores() {
+		return puertoEmisores;
+	}
+
+	public static int getPuertoNuevosReceptores() {
+		return puertoNuevosReceptores;
+	}
+
+	public static int getPuertoSincronizacion() {
+		return puertoSincronizacion;
+	}
+
+	public ArrayList<ReceptorServer> getReceptores() {
+		return receptores;
+	}
+
+	public void setReceptores(ArrayList<ReceptorServer> receptores) {
+		this.receptores = receptores;
+	}
+
+	public ArrayList<Notificacion> getHistorial() {
+		return historial;
+	}
+
+	public void setHistorial(ArrayList<Notificacion> historial) {
+		this.historial = historial;
+	}
 
 }

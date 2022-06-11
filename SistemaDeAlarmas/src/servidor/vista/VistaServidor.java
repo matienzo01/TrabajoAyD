@@ -106,4 +106,5 @@ public class VistaServidor extends JFrame implements IVistaServidor{
 		this.logTextArea.append(cadena+"\n");
 		
 	}
+
 }
