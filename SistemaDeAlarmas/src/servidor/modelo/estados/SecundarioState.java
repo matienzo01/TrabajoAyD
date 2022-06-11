@@ -2,14 +2,12 @@ package servidor.modelo.estados;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
 
 import notificacion.Notificacion;
-import servidor.modelo.NoReceptoresFound;
 import servidor.modelo.ReceptorServer;
 import servidor.modelo.Servidor;
 
@@ -22,6 +20,7 @@ public class SecundarioState extends State {
 		System.out.println("El servidor esta en modo secundario");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize() {
 		try {
@@ -67,7 +66,6 @@ public class SecundarioState extends State {
 		new Thread() {
 			public void run() {
 				try {
-					@SuppressWarnings("resource")
 					ServerSocket s = new ServerSocket(puertoToggle);
 					
 					System.out.println("Escuchando en " + puertoToggle + " al momento de ser primario");
@@ -78,7 +76,6 @@ public class SecundarioState extends State {
 					}
 
 				} catch (SocketException e) {
-					//e.printStackTrace();
 				}catch (Exception e) {
 					e.printStackTrace();
 				}

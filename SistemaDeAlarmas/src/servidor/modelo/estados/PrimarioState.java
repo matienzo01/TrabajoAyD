@@ -9,7 +9,6 @@ import java.net.Socket;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import monitor.Monitor;
 import notificacion.Notificacion;
 import notificacion.Registro;
 import servidor.modelo.NoReceptoresFound;
@@ -161,7 +160,6 @@ public class PrimarioState extends State {
 			
 			public void run() {
 				try {
-					@SuppressWarnings("resource")
 					ServerSocket s = new ServerSocket(Servidor.getPuertoSincronizacion());
 					System.out.println("Escuchando en " + Servidor.getPuertoSincronizacion()
 							+ " para sincronizacion con secundarios");
@@ -170,7 +168,6 @@ public class PrimarioState extends State {
 					while (true) {
 
 						Socket soc = s.accept();
-						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
 						ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());
 
 						out.writeObject(Servidor.getInstance().getReceptores());

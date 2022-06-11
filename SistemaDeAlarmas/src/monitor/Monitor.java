@@ -40,8 +40,6 @@ public class Monitor{
 							System.out.println("No hay secundario aun");
 						
 						}catch (SocketException e) {
-							//System.out.println("No hay secundario aun");
-						
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -68,7 +66,6 @@ public class Monitor{
 		new Thread() {
 			public void run() {
 				try {
-					@SuppressWarnings("resource")
 					ServerSocket s = new ServerSocket(puertoHeartBeat);
 					System.out.println("Escuchando en " + puertoHeartBeat + " a los latidos del primerio");
 					while (true) {
