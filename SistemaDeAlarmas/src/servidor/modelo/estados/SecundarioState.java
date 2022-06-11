@@ -2,17 +2,23 @@ package servidor.modelo.estados;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.BindException;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
 import notificacion.Notificacion;
+import servidor.modelo.NoReceptoresFound;
 import servidor.modelo.ReceptorServer;
 import servidor.modelo.Servidor;
 
 public class SecundarioState extends State {
 
+	private static int puertoToggle = 3333;
+
 	public SecundarioState(Servidor s) {
 		super(s);
+		System.out.println("El servidor esta en modo secundario");
 	}
 
 	@Override
@@ -22,17 +28,23 @@ public class SecundarioState extends State {
 			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 			ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
-			
 			ArrayList<ReceptorServer> receptores = (ArrayList<ReceptorServer>) in.readObject();
 			this.s.setReceptores(receptores);
-			
+
 			ArrayList<Notificacion> historial = (ArrayList<Notificacion>) in.readObject();
-			
+
 			this.s.setHistorial(historial);
-			
+
 			out.close();
-			
+
 			socket.close();
+
+			System.out.println("Los receptores mandados son");
+			System.out.println(receptores);
+			System.out.println("El historial es");
+			System.out.println(historial);
+			this.s.getVista().setState(this.informarEstado());
+			this.comienzaEspera();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,7 +54,7 @@ public class SecundarioState extends State {
 	@Override
 	public void cambiaEstado() {
 		this.s.setEstado(new PrimarioState(this.s));
-		this.initialize();
+		this.s.initialize();
 	}
 
 	@Override
@@ -50,5 +62,23 @@ public class SecundarioState extends State {
 		return "Secundario";
 	}
 
-	
+	public void comienzaEspera() {
+		new Thread() {
+			public void run() {
+				try {
+					@SuppressWarnings("resource")
+					ServerSocket s = new ServerSocket(puertoToggle);
+					System.out.println("Escuchando en " + puertoToggle + " al momento de ser primario");
+					while (true) {
+						Socket soc = s.accept();
+						Servidor.getInstance().cambiaEstado();
+						soc.close();
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+	}
 }

@@ -21,9 +21,6 @@ public class VistaServidor extends JFrame implements IVistaServidor{
 	private JLabel lblPuertoEmisores;
 
 
-	/**
-	 * Create the frame.
-	 */
 	public VistaServidor() {
 		setAlwaysOnTop(true);
 		setResizable(false);
@@ -37,7 +34,7 @@ public class VistaServidor extends JFrame implements IVistaServidor{
 		
 		this.lblServidor = new JLabel("Servidor");
 		this.lblServidor.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		this.lblServidor.setBounds(343, 11, 83, 38);
+		this.lblServidor.setBounds(343, 11, 200, 38);
 		this.contentPane.add(this.lblServidor);
 		
 		this.logTextArea = new JTextArea();
@@ -79,7 +76,6 @@ public class VistaServidor extends JFrame implements IVistaServidor{
 
 	@Override
 	public void setPuertoEmisores(int puerto) {
-		// TODO Auto-generated method stub
 		this.lblPuertoEmisores.setText(""+puerto);
 	}
 
@@ -104,6 +100,13 @@ public class VistaServidor extends JFrame implements IVistaServidor{
 	@Override
 	public void agregaLogNotificacion(String cadena) {
 		this.logTextArea.append(cadena+"\n");
+		
+	}
+
+
+	@Override
+	public void setState(String state) {
+		this.lblServidor.setText("Servidor " + state);
 		
 	}
 

@@ -1,8 +1,10 @@
 package servidor.modelo;
 
+import java.io.Serializable;
+
 import notificacion.Interruptor;
 
-public class ReceptorServer {
+public class ReceptorServer implements Serializable{
 
 	private String direccion;
 	private int puerto;
