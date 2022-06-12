@@ -8,6 +8,7 @@ import java.net.ConnectException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -97,7 +98,8 @@ public class PrimarioState extends State {
 						try {
 							Socket socket = new Socket(actual.getDireccion(), actual.getPuerto());
 							ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-							Servidor.getInstance().logReparte("Se ha enviado la emergencia al receptor con IP = "+actual.getDireccion()+" y puerto = "+actual.getPuerto()+"\n");
+							Servidor.getInstance().logReparte("Se ha enviado la emergencia al receptor con IP = "
+									+ actual.getDireccion() + " y puerto = " + actual.getPuerto() + "\n");
 							out.writeObject(n);
 							huboerror = false;
 							out.close();
@@ -126,13 +128,11 @@ public class PrimarioState extends State {
 				} catch (Exception e) {
 					System.out.println("No encuentra al secundario");
 				}
-				
-				
+
 				if (bandera == 0) {
 					Servidor.getInstance().logReparte("No hay receptores registrados.\n");
 					throw new NoReceptoresFound("No hay receptores registrados.");
-				}
-				else if (bandera == 1) {
+				} else if (bandera == 1) {
 					Servidor.getInstance().logReparte("Ningun receptor atiende el tipo de emergencia solicitada.\n");
 					throw new NoReceptoresFound("No hay receptores que atiendan su emergencia.");
 				}
@@ -171,7 +171,7 @@ public class PrimarioState extends State {
 					}
 
 				} catch (BindException e) {
-System.out.println("Hola");
+					System.out.println("Hola");
 				} catch (ConnectException e) {
 					System.out.println("No hay secundario aun");
 				} catch (Exception e) {
@@ -229,6 +229,14 @@ System.out.println("Hola");
 				}, 0, 5000);
 			}
 		}.start();
+		ArrayList<ReceptorServer> r = Servidor.getInstance().getReceptores();
+		for(int i=0;i<r.size();i++) {
+			s.logNuevoRegistroReceptor(r.get(i).getDireccion(),r.get(i).getPuerto(), r.get(i).getInterruptor().isIncendios(), r.get(i).getInterruptor().isMedica(), r.get(i).getInterruptor().isSeguridad());
+		}
+		ArrayList<Notificacion> h = Servidor.getInstance().getHistorial();
+		for(int i=0;i<h.size();i++) {
+			s.logEnvio(h.get(i));
+		}
 	}
 
 }
