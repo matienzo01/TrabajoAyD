@@ -37,6 +37,6 @@ public abstract class Notificacion implements Serializable {
 	}
 
 	public String toStringAdmin() {
-		return "enviada desde " + this.ubicacion + " a las " + this.hora + " y " + this.minutos;
+		return "enviada desde " + this.ubicacion + " a las " + this.hora + ":" + this.minutos;
 	}
 }

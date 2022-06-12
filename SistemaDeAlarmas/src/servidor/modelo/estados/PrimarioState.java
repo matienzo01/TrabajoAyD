@@ -67,6 +67,7 @@ public class PrimarioState extends State {
 						Notificacion n = (Notificacion) in.readObject();
 
 						try {
+							Servidor.getInstance().logEnvio(n);
 							this.reparteNotificacion(n);
 
 							out.writeObject("Se envio con exito su emergencia.");
@@ -74,7 +75,6 @@ public class PrimarioState extends State {
 							out.writeObject(e.getMessage());
 						}
 						Servidor.getInstance().agregaAlHistorial(n);
-						Servidor.getInstance().logEnvio(n);
 					}
 
 				} catch (BindException e) {
@@ -97,7 +97,7 @@ public class PrimarioState extends State {
 						try {
 							Socket socket = new Socket(actual.getDireccion(), actual.getPuerto());
 							ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-
+							Servidor.getInstance().logReparte("Se ha enviado la emergencia al receptor con IP = "+actual.getDireccion()+" y puerto = "+actual.getPuerto()+"\n");
 							out.writeObject(n);
 							huboerror = false;
 							out.close();
@@ -128,10 +128,14 @@ public class PrimarioState extends State {
 				}
 				
 				
-				if (bandera == 0)
+				if (bandera == 0) {
+					Servidor.getInstance().logReparte("No hay receptores registrados.\n");
 					throw new NoReceptoresFound("No hay receptores registrados.");
-				else if (bandera == 1)
+				}
+				else if (bandera == 1) {
+					Servidor.getInstance().logReparte("Ningun receptor atiende el tipo de emergencia solicitada.\n");
 					throw new NoReceptoresFound("No hay receptores que atiendan su emergencia.");
+				}
 			}
 		}.start();
 	}

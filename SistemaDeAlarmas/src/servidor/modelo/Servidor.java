@@ -95,4 +95,8 @@ public class Servidor {
 	public void cambiaEstado() {
 		this.estado.cambiaEstado();
 	}
+
+	public void logReparte(String string) {
+		this.vista.agregaLogReparte(string);
+	}
 }
