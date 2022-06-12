@@ -67,7 +67,7 @@ public class SecundarioState extends State {
 			public void run() {
 				try {
 					ServerSocket s = new ServerSocket(puertoToggle);
-					
+
 					System.out.println("Escuchando en " + puertoToggle + " al momento de ser primario");
 					while (true) {
 						Socket soc = s.accept();
@@ -76,7 +76,61 @@ public class SecundarioState extends State {
 					}
 
 				} catch (SocketException e) {
-				}catch (Exception e) {
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+
+		new Thread() {
+			public void run() {
+				try {
+					ServerSocket s = new ServerSocket(Servidor.getPuertoSyncNuevasNotificaciones());
+
+					System.out.println("Escuchando en " + Servidor.getPuertoSyncNuevasNotificaciones()
+							+ " nuevas notif mientras sea secundario");
+					while (true) {
+						Socket soc = s.accept();
+						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
+
+						Notificacion n = (Notificacion) in.readObject();
+
+						Servidor.getInstance().agregaAlHistorial(n);
+
+						System.out.println("Se ha recibido una nueva notificacion en "+ n.toString());
+						
+						soc.close();
+					}
+
+				} catch (SocketException e) {
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
+
+		new Thread() {
+			public void run() {
+				try {
+					ServerSocket s = new ServerSocket(Servidor.getPuertoSyncNuevosReceptores());
+
+					System.out.println("Escuchando en " + Servidor.getPuertoSyncNuevosReceptores()
+							+ " nuevos receptores mientras sea secundario");
+					while (true) {
+						Socket soc = s.accept();
+						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
+
+						ReceptorServer rs = (ReceptorServer) in.readObject();
+
+						Servidor.getInstance().agregarReceptor(rs);
+						
+						System.out.println("Se ha registrado un nuevo receptor en "+ rs.getPuerto());
+
+						soc.close();
+					}
+
+				} catch (SocketException e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}

@@ -10,25 +10,25 @@ import servidor.vista.VistaServidor;
 
 public class Servidor {
 
-	
-	private static int puertoSincronizacion = 2222;
 	private static Servidor instance = null;
+	private static int puertoSincronizacion = 2222;
+	private static int puertoSyncNuevasNotificaciones = 6666;
+	private static int puertoSyncNuevosReceptores = 7777;
 	protected ArrayList<ReceptorServer> receptores = new ArrayList<ReceptorServer>();
 	protected ArrayList<Notificacion> historial = new ArrayList<Notificacion>();
 	private IState estado = new PrimarioState(this);
 
 	private IVistaServidor vista = new VistaServidor();
-	
+
+	private Servidor() {
+	}
+
 	public void setEstado(IState estado) {
 		this.estado = estado;
 	}
 
 	public IVistaServidor getVista() {
 		return vista;
-	}
-
-	public static int getPuertoSincronizacion() {
-		return puertoSincronizacion;
 	}
 
 	public ArrayList<ReceptorServer> getReceptores() {
@@ -47,7 +47,18 @@ public class Servidor {
 		this.historial = historial;
 	}
 
-	private Servidor() {
+	public static int getPuertoSincronizacion() {
+		return puertoSincronizacion;
+	}
+	
+	
+
+	public static int getPuertoSyncNuevasNotificaciones() {
+		return puertoSyncNuevasNotificaciones;
+	}
+
+	public static int getPuertoSyncNuevosReceptores() {
+		return puertoSyncNuevosReceptores;
 	}
 
 	public static Servidor getInstance() {
@@ -60,8 +71,6 @@ public class Servidor {
 	public void initialize() {
 		this.estado.initialize();
 	}
-
-	
 
 	public void logNuevoRegistroReceptor(String direccion, int puerto, boolean incendio, boolean seguridad,
 			boolean ambulancia) {

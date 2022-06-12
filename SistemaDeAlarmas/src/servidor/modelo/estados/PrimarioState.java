@@ -1,11 +1,13 @@
 package servidor.modelo.estados;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.BindException;
 import java.net.ConnectException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,7 +23,6 @@ public class PrimarioState extends State {
 	private static int puertoEmisores = 1111;
 	private static int puertoNuevosReceptores = 1234;
 	private static int puertoHeartBeat = 4444;
-	
 
 	public PrimarioState(Servidor s) {
 		super(s);
@@ -33,8 +34,6 @@ public class PrimarioState extends State {
 		this.comienzoSincronizacion();
 		this.comienzaEscuchaEmisores();
 		this.comienzaEscuchaNuevosReceptor();
-
-		
 
 		this.s.getVista().setPuertoEmisores(puertoEmisores);
 		this.s.getVista().setPuertoReceptores(puertoNuevosReceptores);
@@ -116,6 +115,19 @@ public class PrimarioState extends State {
 						indice++;
 				}
 
+				try {
+					Socket socket = new Socket("localhost", Servidor.getPuertoSyncNuevasNotificaciones());
+					ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+
+					out.writeObject(n);
+
+					out.close();
+					socket.close();
+				} catch (Exception e) {
+					System.out.println("No encuentra al secundario");
+				}
+				
+				
 				if (bandera == 0)
 					throw new NoReceptoresFound("No hay receptores registrados.");
 				else if (bandera == 1)
@@ -143,10 +155,21 @@ public class PrimarioState extends State {
 						Servidor.getInstance().agregarReceptor(rs);
 						Servidor.getInstance().logNuevoRegistroReceptor(r.getUbicacion(), r.getPuerto(), r.isIncendio(),
 								r.isSeguridad(), r.isAmbulancia());
+
+						Socket socket = new Socket("localhost", Servidor.getPuertoSyncNuevosReceptores());
+						ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+
+						out.writeObject(rs);
+
+						out.close();
+						socket.close();
+
 					}
 
 				} catch (BindException e) {
-
+System.out.println("Hola");
+				} catch (ConnectException e) {
+					System.out.println("No hay secundario aun");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -157,7 +180,7 @@ public class PrimarioState extends State {
 	public void comienzoSincronizacion() {
 		new Thread() {
 			private Timer t = new Timer();
-			
+
 			public void run() {
 				try {
 					ServerSocket s = new ServerSocket(Servidor.getPuertoSincronizacion());
@@ -179,7 +202,7 @@ public class PrimarioState extends State {
 					e.printStackTrace();
 				}
 			}
-			
+
 			private void iniciaTimer() {
 				this.t.scheduleAtFixedRate(new TimerTask() {
 

@@ -8,6 +8,8 @@ public abstract class State implements IState{
 	public State(Servidor s) {
 		this.s = s;
 	}
+
+	
 	
 	
 }

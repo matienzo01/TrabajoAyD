@@ -43,10 +43,8 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 
 						Socket soc = s.accept();
 						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
-						
+
 						Notificacion notificacion = (Notificacion) in.readObject();
-						
-						System.out.println(notificacion.toString());
 
 						ComunicacionR c = ComunicacionR.getInstance();
 						setChanged();
@@ -66,10 +64,8 @@ public class ComunicacionR extends Observable implements IComunicacionR {
 		try {
 			Socket socket = new Socket("localhost", ComunicacionR.puertoServidor);
 			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-			
-			Registro r = RegistroFactory.getRegistro(tipos, "localhost", puerto);
 
-			System.out.println(r.toString());
+			Registro r = RegistroFactory.getRegistro(tipos, "localhost", puerto);
 
 			out.writeObject(r);
 
