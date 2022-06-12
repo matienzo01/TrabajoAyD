@@ -16,6 +16,7 @@ public class Servidor {
 	private static int puertoSyncNuevosReceptores = 7777;
 	protected ArrayList<ReceptorServer> receptores = new ArrayList<ReceptorServer>();
 	protected ArrayList<Notificacion> historial = new ArrayList<Notificacion>();
+	protected ArrayList<String> historialDeRepartos = new ArrayList<String>();
 	private IState estado = new PrimarioState(this);
 
 	private IVistaServidor vista = new VistaServidor();
@@ -98,5 +99,13 @@ public class Servidor {
 
 	public void logReparte(String string) {
 		this.vista.agregaLogReparte(string);
+	}
+	
+	public ArrayList<String> getHistorialDeRepartos() {
+		return historialDeRepartos;
+	}
+
+	public void agregarAlHIstorialDeReparto(String s) {
+		Servidor.getInstance().getHistorialDeRepartos().add(s);
 	}
 }

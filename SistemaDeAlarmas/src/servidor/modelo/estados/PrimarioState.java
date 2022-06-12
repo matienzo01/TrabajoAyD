@@ -91,6 +91,7 @@ public class PrimarioState extends State {
 				boolean huboerror = false;
 				if (indice <= s.getReceptores().size())
 					bandera = 1;
+				String stringArmado = " ";
 				while (indice < s.getReceptores().size()) {
 					ReceptorServer actual = s.getReceptores().get(indice);
 					if (n.mostrarse(actual.getInterruptor())) {
@@ -98,8 +99,11 @@ public class PrimarioState extends State {
 						try {
 							Socket socket = new Socket(actual.getDireccion(), actual.getPuerto());
 							ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-							Servidor.getInstance().logReparte("Se ha enviado la emergencia al receptor con IP = "
-									+ actual.getDireccion() + " y puerto = " + actual.getPuerto() + "\n");
+							String s = "Se ha enviado la emergencia al receptor con IP = " + actual.getDireccion()
+									+ " y puerto = " + actual.getPuerto() + "\n";
+							Servidor.getInstance().logReparte(s);
+							//Servidor.getInstance().agregarAlHIstorialDeReparto(s);
+							stringArmado+=s;
 							out.writeObject(n);
 							huboerror = false;
 							out.close();
@@ -116,7 +120,11 @@ public class PrimarioState extends State {
 					if (!huboerror)
 						indice++;
 				}
-
+				if(bandera==2) {
+					System.out.println("ENTROOOOOOOOOOOOOOOOOOOOOOOOO");
+					Servidor.getInstance().agregarAlHIstorialDeReparto(stringArmado);
+					System.out.println(Servidor.getInstance().getHistorialDeRepartos().toString());
+				}
 				try {
 					Socket socket = new Socket("localhost", Servidor.getPuertoSyncNuevasNotificaciones());
 					ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
@@ -128,12 +136,16 @@ public class PrimarioState extends State {
 				} catch (Exception e) {
 					System.out.println("No encuentra al secundario");
 				}
-
+				String string;
 				if (bandera == 0) {
-					Servidor.getInstance().logReparte("No hay receptores registrados.\n");
+					string = "No hay receptores registrados.\n";
+					Servidor.getInstance().logReparte(string);
+					Servidor.getInstance().agregarAlHIstorialDeReparto(string);
 					throw new NoReceptoresFound("No hay receptores registrados.");
 				} else if (bandera == 1) {
-					Servidor.getInstance().logReparte("Ningun receptor atiende el tipo de emergencia solicitada.\n");
+					string = "Ningun receptor atiende el tipo de emergencia solicitada.\n";
+					Servidor.getInstance().logReparte(string);
+					Servidor.getInstance().agregarAlHIstorialDeReparto(string);
 					throw new NoReceptoresFound("No hay receptores que atiendan su emergencia.");
 				}
 			}
@@ -230,12 +242,22 @@ public class PrimarioState extends State {
 			}
 		}.start();
 		ArrayList<ReceptorServer> r = Servidor.getInstance().getReceptores();
-		for(int i=0;i<r.size();i++) {
-			s.logNuevoRegistroReceptor(r.get(i).getDireccion(),r.get(i).getPuerto(), r.get(i).getInterruptor().isIncendios(), r.get(i).getInterruptor().isMedica(), r.get(i).getInterruptor().isSeguridad());
+		for (int i = 0; i < r.size(); i++) {
+			s.logNuevoRegistroReceptor(r.get(i).getDireccion(), r.get(i).getPuerto(),
+					r.get(i).getInterruptor().isIncendios(), r.get(i).getInterruptor().isMedica(),
+					r.get(i).getInterruptor().isSeguridad());
 		}
 		ArrayList<Notificacion> h = Servidor.getInstance().getHistorial();
-		for(int i=0;i<h.size();i++) {
+		ArrayList<String> x = Servidor.getInstance().getHistorialDeRepartos();
+		for (int i = 0; i < h.size(); i++) {
+			int j = i;
 			s.logEnvio(h.get(i));
+			try {
+				s.logReparte(x.get(j).toString());
+			}
+			catch (Exception e){
+				
+			}
 		}
 	}
 
