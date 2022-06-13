@@ -1,13 +1,11 @@
 package servidor.modelo.estados;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.BindException;
 import java.net.ConnectException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -102,8 +100,8 @@ public class PrimarioState extends State {
 							String s = "Se ha enviado la emergencia al receptor con IP = " + actual.getDireccion()
 									+ " y puerto = " + actual.getPuerto() + "\n";
 							Servidor.getInstance().logReparte(s);
-							//Servidor.getInstance().agregarAlHIstorialDeReparto(s);
-							stringArmado+=s;
+							// Servidor.getInstance().agregarAlHIstorialDeReparto(s);
+							stringArmado += s;
 							out.writeObject(n);
 							huboerror = false;
 							out.close();
@@ -120,7 +118,7 @@ public class PrimarioState extends State {
 					if (!huboerror)
 						indice++;
 				}
-				if(bandera==2) {
+				if (bandera == 2) {
 					System.out.println("ENTROOOOOOOOOOOOOOOOOOOOOOOOO");
 					Servidor.getInstance().agregarAlHIstorialDeReparto(stringArmado);
 					System.out.println(Servidor.getInstance().getHistorialDeRepartos().toString());
@@ -172,20 +170,24 @@ public class PrimarioState extends State {
 						Servidor.getInstance().logNuevoRegistroReceptor(r.getUbicacion(), r.getPuerto(), r.isIncendio(),
 								r.isSeguridad(), r.isAmbulancia());
 
-						Socket socket = new Socket("localhost", Servidor.getPuertoSyncNuevosReceptores());
-						ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+						System.out.println("q tal?");
+						try {
+							Socket socket = new Socket("localhost", Servidor.getPuertoSyncNuevosReceptores());
+							ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 
-						out.writeObject(rs);
+							out.writeObject(rs);
 
-						out.close();
-						socket.close();
+							out.close();
+							soc.close();
+						} catch (BindException e) {
+							System.out.println("Hola");
+						} catch (ConnectException e) {
+							System.out.println("No hay secundario aun");
+						}
 
 					}
-
 				} catch (BindException e) {
 					System.out.println("Hola");
-				} catch (ConnectException e) {
-					System.out.println("No hay secundario aun");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -254,9 +256,8 @@ public class PrimarioState extends State {
 			s.logEnvio(h.get(i));
 			try {
 				s.logReparte(x.get(j).toString());
-			}
-			catch (Exception e){
-				
+			} catch (Exception e) {
+
 			}
 		}
 	}
