@@ -15,8 +15,7 @@ public class Servidor {
 	private static int puertoSyncNuevasNotificaciones = 6666;
 	private static int puertoSyncNuevosReceptores = 7777;
 	protected ArrayList<ReceptorServer> receptores = new ArrayList<ReceptorServer>();
-	protected ArrayList<Notificacion> historial = new ArrayList<Notificacion>();
-	protected ArrayList<String> historialDeRepartos = new ArrayList<String>();
+	protected ArrayList<String> historial = new ArrayList<String>();
 	private IState estado = new PrimarioState(this);
 
 	private IVistaServidor vista = new VistaServidor();
@@ -40,11 +39,11 @@ public class Servidor {
 		this.receptores = receptores;
 	}
 
-	public ArrayList<Notificacion> getHistorial() {
+	public ArrayList<String> getHistorial() {
 		return historial;
 	}
 
-	public void setHistorial(ArrayList<Notificacion> historial) {
+	public void setHistorial(ArrayList<String> historial) {
 		this.historial = historial;
 	}
 
@@ -78,12 +77,12 @@ public class Servidor {
 		this.vista.agregaLogRegistro(direccion, puerto, incendio, seguridad, ambulancia);
 	}
 
-	public void logEnvio(Notificacion n) {
-		this.vista.agregaLogNotificacion(n.toStringAdmin());
+	public void logEnvio(String n) {
+		this.vista.agregaLogNotificacion(n);
 
 	}
 
-	public void agregaAlHistorial(Notificacion n) {
+	public void agregaAlHistorial(String n) {
 		this.historial.add(n);
 
 	}
@@ -95,17 +94,5 @@ public class Servidor {
 
 	public void cambiaEstado() {
 		this.estado.cambiaEstado();
-	}
-
-	public void logReparte(String string) {
-		this.vista.agregaLogReparte(string);
-	}
-	
-	public ArrayList<String> getHistorialDeRepartos() {
-		return historialDeRepartos;
-	}
-
-	public void agregarAlHIstorialDeReparto(String s) {
-		Servidor.getInstance().getHistorialDeRepartos().add(s);
 	}
 }

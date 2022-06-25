@@ -109,11 +109,4 @@ public class VistaServidor extends JFrame implements IVistaServidor{
 		this.lblServidor.setText("Servidor " + state);
 		
 	}
-
-
-	@Override
-	public void agregaLogReparte(String string) {
-		this.logTextArea.append(string);
-	}
-
 }

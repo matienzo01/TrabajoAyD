@@ -31,7 +31,7 @@ public class SecundarioState extends State {
 			ArrayList<ReceptorServer> receptores = (ArrayList<ReceptorServer>) in.readObject();
 			this.s.setReceptores(receptores);
 
-			ArrayList<Notificacion> historial = (ArrayList<Notificacion>) in.readObject();
+			ArrayList<String> historial = (ArrayList<String>) in.readObject();
 
 			this.s.setHistorial(historial);
 
@@ -93,7 +93,7 @@ public class SecundarioState extends State {
 						Socket soc = s.accept();
 						ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
 
-						Notificacion n = (Notificacion) in.readObject();
+						String n = (String) in.readObject();
 
 						Servidor.getInstance().agregaAlHistorial(n);
 
